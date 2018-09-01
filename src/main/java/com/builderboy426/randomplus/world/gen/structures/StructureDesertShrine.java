@@ -18,14 +18,15 @@ import net.minecraft.world.gen.IChunkGenerator;
 import net.minecraft.world.gen.feature.WorldGenerator;
 import net.minecraftforge.fml.common.IWorldGenerator;
 
-public class StructureIceTemple implements IWorldGenerator {
+public class StructureDesertShrine implements IWorldGenerator {
 	
-	private static final WorldGenStructure ICE_TEMPLE = new WorldGenStructure("ice_temple");
+	private static final WorldGenStructure DESERT_SHRINE = new WorldGenStructure("desert_shrine");
 	
 	@Override
-	public void generate(Random random, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator, IChunkProvider chunkProvider) {
+	public void generate(Random random, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator,
+			IChunkProvider chunkProvider) {
 		if (world.provider.getDimension() == 1) {
-			this.generateStructure(ICE_TEMPLE, world, random, chunkX, chunkZ, 250, Blocks.SNOW);
+			this.generateStructure(DESERT_SHRINE, world, random, chunkX, chunkZ, 100, Blocks.SAND);
 		}
 		
 	}
@@ -39,7 +40,7 @@ public class StructureIceTemple implements IWorldGenerator {
 		Biome curBiome = world.provider.getBiomeForCoords(pos);
 		
 		if(world.getWorldType() != WorldType.FLAT) {
-			if(curBiome == Biome.getBiome(140)) { //Ice Spikes
+			if(curBiome == Biome.getBiome(2)) { //Desert
 				if(random.nextInt(chance) == 0) {
 					generator.generate(world, random, pos);
 				}

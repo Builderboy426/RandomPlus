@@ -5,6 +5,10 @@ import com.builderboy426.randomplus.init.BlockInit;
 import com.builderboy426.randomplus.init.ItemInit;
 import com.builderboy426.randomplus.utils.interfaces.IHasModel;
 import com.builderboy426.randomplus.world.gen.WorldGenCustomOres;
+import com.builderboy426.randomplus.world.gen.structures.StructureDesertShrine;
+import com.builderboy426.randomplus.world.gen.structures.StructureIceTemple;
+import com.builderboy426.randomplus.world.gen.structures.StructureRuins;
+
 import net.minecraft.block.Block;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.item.Item;
@@ -47,5 +51,8 @@ public class RegistryHandler {
 		LootTableHandler.init();
 		
 		GameRegistry.registerWorldGenerator(new WorldGenCustomOres(), 0);
+		GameRegistry.registerWorldGenerator(new StructureIceTemple(), 0);
+		GameRegistry.registerWorldGenerator(new StructureRuins(), 0);
+		GameRegistry.registerWorldGenerator(new StructureDesertShrine(), 0);
 	}
 }
