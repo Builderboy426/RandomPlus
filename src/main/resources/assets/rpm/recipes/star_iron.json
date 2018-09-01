@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " X ",
+    "X#X",
+    " X "
+  ],
+  "key": {
+    "X": {
+      "item": "minecraft:iron"
+    },
+    "#": {
+      "item": "rpm:star_stone"
+    }
+  },
+  "result": {
+    "item": "rpm:star_iron"
+  }
+}

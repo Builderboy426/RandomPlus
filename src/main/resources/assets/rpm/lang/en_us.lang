@@ -1,0 +1,78 @@
+item.stick_stone.name=Stone Stick
+item.stick_iron.name=Iron Stick
+item.stick_gold.name=Gold Stick
+item.stick_diamond.name=Diamond Stick
+item.stick_chaos.name=Chaos Stick
+
+item.star_stone.name=Stone Star
+item.star_iron.name=Iron Star
+item.star_gold.name=Gold Star
+item.star_diamond.name=Diamond Star
+item.star_chaos.name=Chaos Star
+
+item.ruby.name=Ruby
+item.sapphire.name=Sapphire
+item.amethyst.name=Amethyst
+item.chaos.name=Chaos Crystal
+item.shard_ancient.name=Ancient Shard
+
+item.sword_ruby.name=Ruby Sword
+item.pickaxe_ruby.name=Ruby Pickaxe
+item.axe_ruby.name=Ruby Axe
+item.shovel_ruby.name=Ruby Shovel
+item.hoe_ruby.name=Ruby Hoe
+
+item.sword_sapphire.name=Sapphire Sword
+item.pickaxe_sapphire.name=Sapphire Pickaxe
+item.axe_sapphire.name=Sapphire Axe
+item.shovel_sapphire.name=Sapphire Shovel
+item.hoe_sapphire.name=Sapphire Hoe
+
+item.sword_amethyst.name=Amethyst Sword
+item.pickaxe_amethyst.name=Amethyst Pickaxe
+item.axe_amethyst.name=Amethyst Axe
+item.shovel_amethyst.name=Amethyst Shovel
+item.hoe_amethyst.name=Amethyst Hoe
+
+item.sword_emerald.name=Emerald Sword
+item.pickaxe_emerald.name=Emerald Pickaxe
+item.axe_emerald.name=Emerald Axe
+item.shovel_emerald.name=Emerald Shovel
+item.hoe_emerald.name=Emerald Hoe
+
+item.helmet_ruby.name=Ruby Helmet
+item.chestplate_ruby.name=Ruby Chestplate
+item.leggings_ruby.name=Ruby Leggings
+item.boots_ruby.name=Ruby Boots
+
+item.helmet_sapphire.name=Sapphire Helmet
+item.chestplate_sapphire.name=Sapphire Chestplate
+item.leggings_sapphire.name=Sapphire Leggings
+item.boots_sapphire.name=Sapphire Boots
+
+item.helmet_amethyst.name=Amethyst Helmet
+item.chestplate_amethyst.name=Amethyst Chestplate
+item.leggings_amethyst.name=Amethyst Leggings
+item.boots_amethyst.name=Amethyst Boots
+
+item.helmet_emerald.name=Emerald Helmet
+item.chestplate_emerald.name=Emerald Chestplate
+item.leggings_emerald.name=Emerald Leggings
+item.boots_emerald.name=Emerald Boots
+
+item.artifact_water.name=Artifact of Water
+item.artifact_fire.name=Artifact of Fire
+item.artifact_night.name=Artifact of Darkness
+item.artifact_war.name=Artifact of Warfare
+
+tile.block_ruby.name=Ruby Block
+tile.block_sapphire.name=Sapphire Block
+tile.block_amethyst.name=Amethyst Block
+tile.ore_ruby.name=Ruby Ore
+tile.ore_sapphire.name=Sapphire Ore
+tile.ore_amethyst.name=Amethyst Ore
+tile.ore_chaos.name=Chaos Ore
+tile.block_chaos.name=Chaos Block
+tile.rock_ancient.name=Ancient Rock
+
+itemGroup.randomplustab=RandomPlus

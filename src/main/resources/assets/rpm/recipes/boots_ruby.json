@@ -1,0 +1,15 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "# #",
+        "# #"
+    ],
+    "key": {
+        "#": {
+            "item": "rpm:ruby"
+        }
+    },
+    "result": {
+        "item": "rpm:boots_ruby"
+    }
+}

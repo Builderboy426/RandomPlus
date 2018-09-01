@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+	" X ",
+	"X#X",
+	" X "
+  ],
+  "key": {
+    "X": {
+      "item": "rpm:chaos"
+    },
+    "#": {
+      "item": "rpm:star_diamond"
+    }
+  },
+  "result": {
+    "item": "rpm:star_chaos"
+  }
+}

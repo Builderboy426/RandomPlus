@@ -1,0 +1,16 @@
+[
+{
+  "modid": "rpm",
+  "name": "RandomPlus",
+  "description": "A Random Assortment of Additions.",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["Builderboy426", "HauntedCorpse"],
+  "credits": "",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
