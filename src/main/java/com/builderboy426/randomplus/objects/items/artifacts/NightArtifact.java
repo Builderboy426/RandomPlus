@@ -89,7 +89,7 @@ public class NightArtifact extends ArtifactBase {
 	}
 	
 	private boolean checkActive(EntityPlayer player) {
-		if (getOverlapEffects()) {
+		if (getRestrictedArtifacts()) {
 			for (int e = 0; e < super.EFFECTS.size(); e++) {
 				if (player.getActivePotionEffect(super.EFFECTS.get(e)) != null) {
 					return true;

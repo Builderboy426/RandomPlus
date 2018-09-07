@@ -57,7 +57,7 @@ public class ArtifactBase extends Item implements IHasModel {
 		Main.proxy.registerItemRenderer(this, 0, "inventory");
 	}
 	
-	public boolean getOverlapEffects() {
+	public boolean getRestrictedArtifacts() {
 		return RandomPlusConfig.CLIENT.artifactConfig.restrictedArtifact;
 	}
 }
