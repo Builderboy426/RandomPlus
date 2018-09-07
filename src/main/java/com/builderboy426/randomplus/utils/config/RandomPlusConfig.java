@@ -11,8 +11,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 @Config(modid = Reference.MODID)
 @Config.LangKey("config." + Reference.MODID + ".title")
 @Mod.EventBusSubscriber(modid = Reference.MODID)
-public class RandomPlusConfig
-{
+public class RandomPlusConfig {
 	private static final String PREFIX = "config." + Reference.MODID + ".";
 
 	@Config.Name("Client")
@@ -74,7 +73,7 @@ public class RandomPlusConfig
 		@Config.Comment("Effect Time")
 		@Config.LangKey(PREFIX+"client.artifact.fireartifact.time")
 		@Config.RangeDouble(min = 2.0, max = 10.0)
-		public double time = 2.5;
+		public double time = 3.0;
 		
 	}
 	
@@ -94,7 +93,7 @@ public class RandomPlusConfig
 		@Config.Comment("Effect Time")
 		@Config.LangKey(PREFIX+"client.artifact.warartifact.time")
 		@Config.RangeDouble(min = 2.0, max = 10.0)
-		public double time = 2.5;
+		public double time = 3.0;
 		
 	}
 	

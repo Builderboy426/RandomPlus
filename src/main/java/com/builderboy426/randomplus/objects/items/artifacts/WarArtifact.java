@@ -2,6 +2,8 @@ package com.builderboy426.randomplus.objects.items.artifacts;
 
 import java.util.List;
 
+import com.builderboy426.randomplus.utils.config.RandomPlusConfig;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
@@ -52,8 +54,8 @@ public class WarArtifact extends ArtifactBase {
 			
 			if (usesLeft >= 1) {
 				if (!player.isPotionActive(effect)) {
-					player.addPotionEffect(new PotionEffect(this.effect, 3600, 1));
-					player.addPotionEffect(new PotionEffect(this.effect2, 3600, 1));
+					player.addPotionEffect(new PotionEffect(this.effect, (int)(RandomPlusConfig.CLIENT.artifactConfig.warArtifact.time * (20 * 60)), 1));
+					player.addPotionEffect(new PotionEffect(this.effect2, (int)(RandomPlusConfig.CLIENT.artifactConfig.warArtifact.time * (20 * 60)), 1));
 					return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, item);
 				} else {
 					player.sendMessage(new TextComponentString("The artifact's power is still within you!"));
@@ -61,8 +63,8 @@ public class WarArtifact extends ArtifactBase {
 				}
 			} else if (usesLeft < 1) {
 				if (!player.isPotionActive(effect)) {
-					player.addPotionEffect(new PotionEffect(this.effect, 3600, 1));
-					player.addPotionEffect(new PotionEffect(this.effect2, 3600, 1));
+					player.addPotionEffect(new PotionEffect(this.effect, (int)(RandomPlusConfig.CLIENT.artifactConfig.warArtifact.time * (20 * 60)), 1));
+					player.addPotionEffect(new PotionEffect(this.effect2, (int)(RandomPlusConfig.CLIENT.artifactConfig.warArtifact.time * (20 * 60)), 1));
 					player.setHeldItem(hand, new ItemStack(Items.AIR));
 					return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, item);
 				}
