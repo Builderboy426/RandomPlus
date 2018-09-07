@@ -7,6 +7,7 @@ import java.util.List;
 import com.builderboy426.randomplus.Main;
 import com.builderboy426.randomplus.init.ItemInit;
 import com.builderboy426.randomplus.objects.items.ItemBase;
+import com.builderboy426.randomplus.utils.config.RandomPlusConfig;
 import com.builderboy426.randomplus.utils.interfaces.IHasModel;
 
 import net.minecraft.enchantment.Enchantment;
@@ -54,5 +55,9 @@ public class ArtifactBase extends Item implements IHasModel {
 	@Override
 	public void registerModels() {
 		Main.proxy.registerItemRenderer(this, 0, "inventory");
+	}
+	
+	public boolean getOverlapEffects() {
+		return RandomPlusConfig.CLIENT.artifactConfig.restrictedArtifact;
 	}
 }

@@ -52,8 +52,8 @@ public class WarArtifact extends ArtifactBase {
 			
 			if (usesLeft >= 1) {
 				if (!player.isPotionActive(effect)) {
-					player.addPotionEffect(new PotionEffect(this.effect, 3000, 1));
-					player.addPotionEffect(new PotionEffect(this.effect2, 3000, 1));
+					player.addPotionEffect(new PotionEffect(this.effect, 3600, 1));
+					player.addPotionEffect(new PotionEffect(this.effect2, 3600, 1));
 					return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, item);
 				} else {
 					player.sendMessage(new TextComponentString("The artifact's power is still within you!"));
@@ -61,8 +61,8 @@ public class WarArtifact extends ArtifactBase {
 				}
 			} else if (usesLeft < 1) {
 				if (!player.isPotionActive(effect)) {
-					player.addPotionEffect(new PotionEffect(this.effect, 3000, 1));
-					player.addPotionEffect(new PotionEffect(this.effect2, 3000, 1));
+					player.addPotionEffect(new PotionEffect(this.effect, 3600, 1));
+					player.addPotionEffect(new PotionEffect(this.effect2, 3600, 1));
 					player.setHeldItem(hand, new ItemStack(Items.AIR));
 					return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, item);
 				}
@@ -93,11 +93,14 @@ public class WarArtifact extends ArtifactBase {
 	}
 	
 	private boolean checkActive(EntityPlayer player) {
-		for (int e = 0; e < super.EFFECTS.size(); e++) {
-			if (player.getActivePotionEffect(super.EFFECTS.get(e)) != null) {
-				return true;
+		if (getOverlapEffects()) {
+			for (int e = 0; e < super.EFFECTS.size(); e++) {
+				if (player.getActivePotionEffect(super.EFFECTS.get(e)) != null) {
+					return true;
+				}
 			}
+			return false;
 		}
-		return false;
+		return player.isPotionActive(this.effect);
 	}
 }

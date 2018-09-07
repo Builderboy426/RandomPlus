@@ -16,13 +16,14 @@ import net.minecraftforge.fml.common.IWorldGenerator;
 
 public class WorldGenCustomOres implements IWorldGenerator {
 	
-	private WorldGenerator ore_ruby, ore_sapphire, ore_amethyst, ore_chaos;
+	private WorldGenerator ore_ruby, ore_sapphire, ore_amethyst, ore_chaos, ore_ancient;
 	
 	public WorldGenCustomOres() {
 		ore_ruby = new WorldGenMinable(BlockInit.ORE_RUBY.getDefaultState(), 5, BlockMatcher.forBlock(Blocks.STONE));
 		ore_sapphire = new WorldGenMinable(BlockInit.ORE_SAPPHIRE.getDefaultState(), 5, BlockMatcher.forBlock(Blocks.STONE));
 		ore_amethyst = new WorldGenMinable(BlockInit.ORE_AMETHYST.getDefaultState(), 5, BlockMatcher.forBlock(Blocks.STONE));
 		ore_chaos = new WorldGenMinable(BlockInit.ORE_CHAOS.getDefaultState(), 4, BlockMatcher.forBlock(Blocks.STONE));
+		ore_ancient = new WorldGenMinable(BlockInit.ROCK_ANCIENT.getDefaultState(), 15, BlockMatcher.forBlock(Blocks.STONE));
 	}
 	
 	@Override
@@ -31,10 +32,11 @@ public class WorldGenCustomOres implements IWorldGenerator {
 			case -1: //Nether
 			break;
 			case 0: //Overworld
-				runGenerator(ore_ruby, world, random, chunkX, chunkZ, 25, 0, 40);
-				runGenerator(ore_sapphire, world, random, chunkX, chunkZ, 25, 0, 40);
-				runGenerator(ore_amethyst, world, random, chunkX, chunkZ, 25, 0, 40);
-				runGenerator(ore_chaos, world, random, chunkX, chunkZ, 20, 0, 10);
+				runGenerator(ore_ruby, world, random, chunkX, chunkZ, 10, 0, 40);
+				runGenerator(ore_sapphire, world, random, chunkX, chunkZ, 10, 0, 40);
+				runGenerator(ore_amethyst, world, random, chunkX, chunkZ, 10, 0, 40);
+				runGenerator(ore_chaos, world, random, chunkX, chunkZ, 1, 0, 10);
+				runGenerator(ore_ancient, world, random, chunkX, chunkZ, 1, 15, 50);
 			break;
 			case 1: //End
 			break;
