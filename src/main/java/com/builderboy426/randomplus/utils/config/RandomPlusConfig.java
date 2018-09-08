@@ -26,6 +26,11 @@ public class RandomPlusConfig {
 		@Config.LangKey(PREFIX+"client.artifacts")
 		public ArtifactConfig artifactConfig = new ArtifactConfig();
 		
+		//@Config.Name("Artifacts")
+		//@Config.Comment("Artifact Mechanics")
+		//@Config.LangKey(PREFIX+"client.artifacts")
+		//public ChaosConfig chaosConfig = new ChaosConfig();
+		
 	}
 	
 	public static class ArtifactConfig {

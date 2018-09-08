@@ -33,28 +33,6 @@ public class TileEntityChaosEnergizer extends TileEntity implements ITickable {
 	public void update() {
 		if (!handler.getStackInSlot(0).isEmpty() && isItemFuel(handler.getStackInSlot(0))) {
 			cookTime++;
-			if (cookTime == 80) {
-				energy += getFuelValue(handler.getStackInSlot(0));
-				handler.getStackInSlot(0).shrink(1);
-				cookTime = 0;
-			} else if (cookTime == 60) {
-				if (!handler.getStackInSlot(1).isEmpty()) {
-					if (stability < 100) {
-						stability++;
-					}
-					handler.getStackInSlot(1).shrink(1);
-				} else {
-					stability--;
-				}
-			}
-			
-			if (stability == 0) {
-				EntityTNTPrimed explosion = new EntityTNTPrimed(this.world);
-				explosion.setPosition((double)this.pos.getX(), (double)this.pos.getY(), (double)this.pos.getZ());
-				explosion.setFuse(10);
-				this.world.spawnEntity(explosion);
-				this.world.playSound((EntityPlayer)null, explosion.posX, explosion.posY, explosion.posZ, SoundEvents.ENTITY_TNT_PRIMED, SoundCategory.BLOCKS, 1.0F, 1.0F);
-			}
 		}
 	}
 	
