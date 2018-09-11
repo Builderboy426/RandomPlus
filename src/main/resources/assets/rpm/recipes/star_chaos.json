@@ -1,9 +1,9 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-	" X ",
+	"AXA",
 	"X#X",
-	" X "
+	"AXA"
   ],
   "key": {
     "X": {
@@ -11,6 +11,9 @@
     },
     "#": {
       "item": "rpm:star_diamond"
+    },
+    "A": {
+      "item": "rpm:shard_ancient"
     }
   },
   "result": {

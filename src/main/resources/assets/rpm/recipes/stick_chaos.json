@@ -1,9 +1,9 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "XXX",
+    "AXA",
     "X#X",
-    "XXX"
+    "AXA"
   ],
   "key": {
     "X": {
@@ -11,6 +11,9 @@
     },
     "#": {
       "item": "rpm:stick_diamond"
+    },
+    "A": {
+      "item": "rpm:shard_ancient"
     }
   },
   "result": {
