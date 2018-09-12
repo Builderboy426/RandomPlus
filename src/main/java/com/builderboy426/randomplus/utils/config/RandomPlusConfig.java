@@ -35,7 +35,7 @@ public class RandomPlusConfig {
 	
 	public static class ArtifactConfig {
 		
-		@Config.Name("Overlaping Effects")
+		@Config.Name("Restricted Effects")
 		@Config.Comment("Effects don't overlap")
 		@Config.LangKey(PREFIX+"client.artifact.overlap")
 		public boolean restrictedArtifact = true;

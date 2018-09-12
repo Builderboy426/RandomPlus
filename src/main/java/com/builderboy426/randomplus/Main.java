@@ -15,6 +15,7 @@ import org.apache.logging.log4j.Logger;
 
 import com.builderboy426.randomplus.creativetabs.RandomPlusTab;
 import com.builderboy426.randomplus.proxy.CommonProxy;
+import com.builderboy426.randomplus.recipes.ModRecipes;
 import com.builderboy426.randomplus.utils.Reference;
 import com.builderboy426.randomplus.utils.handlers.RegistryHandler;
 
