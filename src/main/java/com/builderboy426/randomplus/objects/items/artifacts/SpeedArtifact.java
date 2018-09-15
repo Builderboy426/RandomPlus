@@ -26,15 +26,17 @@ import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent.PlayerTickEvent;
 
-public class NightArtifact extends ArtifactBase {
+public class SpeedArtifact extends ArtifactBase {
 	
 	private int maxUses = 6;
-	private static Potion effect = MobEffects.NIGHT_VISION;
+	private static Potion effect = MobEffects.HASTE;
+	private static Potion effect2 = MobEffects.SPEED;
 	private boolean active = false;
 	
-	public NightArtifact(String name) {
+	public SpeedArtifact(String name) {
 		super(name);
 		super.EFFECTS.add(this.effect);
+		super.EFFECTS.add(this.effect2);
 	}
 	
 	@Override
@@ -54,7 +56,8 @@ public class NightArtifact extends ArtifactBase {
 			
 			if (usesLeft >= 1) {
 				if (!player.isPotionActive(effect)) {
-					player.addPotionEffect(new PotionEffect(this.effect, (int)(RandomPlusConfig.CLIENT.artifactConfig.nightArtifact.time * (20 * 60)), 1));
+					player.addPotionEffect(new PotionEffect(this.effect, (int)(RandomPlusConfig.CLIENT.artifactConfig.speedArtifact.time * (20 * 60)), 1));
+					player.addPotionEffect(new PotionEffect(this.effect2, (int)(RandomPlusConfig.CLIENT.artifactConfig.speedArtifact.time * (20 * 60)), 1));
 					return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, item);
 				} else {
 					player.sendMessage(new TextComponentString("The artifact's power is still within you!"));
@@ -62,7 +65,8 @@ public class NightArtifact extends ArtifactBase {
 				}
 			} else if (usesLeft < 1) {
 				if (!player.isPotionActive(effect)) {
-					player.addPotionEffect(new PotionEffect(this.effect, (int)(RandomPlusConfig.CLIENT.artifactConfig.nightArtifact.time * (20 * 60)), 1));
+					player.addPotionEffect(new PotionEffect(this.effect, (int)(RandomPlusConfig.CLIENT.artifactConfig.warArtifact.time * (20 * 60)), 1));
+					player.addPotionEffect(new PotionEffect(this.effect2, (int)(RandomPlusConfig.CLIENT.artifactConfig.warArtifact.time * (20 * 60)), 1));
 					player.setHeldItem(hand, new ItemStack(Items.AIR));
 					return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, item);
 				}

@@ -44,6 +44,8 @@ public class WarArtifact extends ArtifactBase {
 		ItemStack item = player.getHeldItem(hand);
 		if (this.active) { return new ActionResult<ItemStack>(EnumActionResult.PASS, item); }
 		if (!world.isRemote) {
+			if (player.isPotionActive(effect)) { return new ActionResult<ItemStack>(EnumActionResult.PASS, item); }
+			
 			NBTTagCompound nbt = item.getTagCompound();
 			
 			if (nbt == null) { nbt = new NBTTagCompound(); }
@@ -90,19 +92,7 @@ public class WarArtifact extends ArtifactBase {
 	public void onUpdate(ItemStack stack, World world, Entity entity, int itemSlot, boolean isSelected) {
 		if (entity instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer)entity;
-			this.active = checkActive(player);
+			this.active = super.checkActive(player);
 		}
-	}
-	
-	private boolean checkActive(EntityPlayer player) {
-		if (getRestrictedArtifacts()) {
-			for (int e = 0; e < super.EFFECTS.size(); e++) {
-				if (player.getActivePotionEffect(super.EFFECTS.get(e)) != null) {
-					return true;
-				}
-			}
-			return false;
-		}
-		return player.isPotionActive(this.effect);
 	}
 }

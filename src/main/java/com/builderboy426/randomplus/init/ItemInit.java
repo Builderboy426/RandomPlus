@@ -7,6 +7,7 @@ import com.builderboy426.randomplus.objects.armour.ArmorBase;
 import com.builderboy426.randomplus.objects.items.ItemBase;
 import com.builderboy426.randomplus.objects.items.artifacts.FireArtifact;
 import com.builderboy426.randomplus.objects.items.artifacts.NightArtifact;
+import com.builderboy426.randomplus.objects.items.artifacts.SpeedArtifact;
 import com.builderboy426.randomplus.objects.items.artifacts.WarArtifact;
 import com.builderboy426.randomplus.objects.items.artifacts.WaterArtifact;
 import com.builderboy426.randomplus.objects.items.tools.ToolAxe;
@@ -63,6 +64,9 @@ public class ItemInit {
 	public static final Item FIRE_ARTIFACT = new FireArtifact("artifact_fire");
 	public static final Item NIGHT_ARTIFACT = new NightArtifact("artifact_night");
 	public static final Item WAR_ARTIFACT = new WarArtifact("artifact_war");
+	public static final Item SPEED_ARTIFACT = new SpeedArtifact("artifact_speed");
+	//public static final Item ARTIFACT_CORE = new ItemBase("artifact_core");
+	//public static final Item ARTIFACT_BASE = new ItemBase("artifact_base");
 	
 	//Tools
 	public static final Item AXE_RUBY = new ToolAxe("axe_ruby", TOOL_RUBY);

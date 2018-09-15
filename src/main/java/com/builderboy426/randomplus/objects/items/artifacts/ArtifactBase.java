@@ -57,7 +57,19 @@ public class ArtifactBase extends Item implements IHasModel {
 		Main.proxy.registerItemRenderer(this, 0, "inventory");
 	}
 	
-	public boolean getRestrictedArtifacts() {
+	public boolean checkActive(EntityPlayer player) {
+		if (getRestrictedArtifacts()) {
+			for (int e = 0; e < this.EFFECTS.size(); e++) {
+				if (player.getActivePotionEffect(this.EFFECTS.get(e)) != null) {
+					return true;
+				}
+			}
+			return false;
+		}
+		return false;
+	}
+	
+	private boolean getRestrictedArtifacts() {
 		return RandomPlusConfig.CLIENT.artifactConfig.restrictedArtifact;
 	}
 }

@@ -60,6 +60,11 @@ public class RandomPlusConfig {
 		@Config.LangKey(PREFIX+"client.artifacts.warartifact")
 		public WarArtifact warArtifact = new WarArtifact();
 		
+		@Config.Name("Speed Artifact")
+		@Config.Comment("Artifact Mechanics")
+		@Config.LangKey(PREFIX+"client.artifacts.speedartifact")
+		public SpeedArtifact speedArtifact = new SpeedArtifact();
+		
 	}
 	
 	public static class WaterArtifact {
@@ -99,6 +104,16 @@ public class RandomPlusConfig {
 		@Config.LangKey(PREFIX+"client.artifact.warartifact.time")
 		@Config.RangeDouble(min = 2.0, max = 10.0)
 		public double time = 3.0;
+		
+	}
+	
+	public static class SpeedArtifact {
+		
+		@Config.Name("Time")
+		@Config.Comment("Effect Time")
+		@Config.LangKey(PREFIX+"client.artifact.warartifact.time")
+		@Config.RangeDouble(min = 2.0, max = 10.0)
+		public double time = 2.5;
 		
 	}
 	
