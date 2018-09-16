@@ -64,6 +64,7 @@ item.artifact_water.name=Artifact of Water
 item.artifact_fire.name=Artifact of Fire
 item.artifact_night.name=Artifact of Darkness
 item.artifact_war.name=Artifact of Warfare
+item.artifact_speed.name=Artifact of Speed
 
 tile.block_ruby.name=Ruby Block
 tile.block_sapphire.name=Sapphire Block

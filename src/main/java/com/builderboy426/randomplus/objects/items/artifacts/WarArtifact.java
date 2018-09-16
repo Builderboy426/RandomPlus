@@ -11,6 +11,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.init.MobEffects;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.Potion;
@@ -28,7 +29,11 @@ import net.minecraftforge.fml.common.gameevent.TickEvent.PlayerTickEvent;
 
 public class WarArtifact extends ArtifactBase {
 	
-	private int maxUses = 6;
+	//Config Variables
+	private int maxUses = RandomPlusConfig.CLIENT.artifactConfig.warArtifact.uses;
+	private int time = (int)(RandomPlusConfig.CLIENT.artifactConfig.warArtifact.time * (20 * 60));
+	
+	//Artifact Variables
 	private static Potion effect = MobEffects.STRENGTH;
 	private static Potion effect2 = MobEffects.RESISTANCE;
 	private boolean active = false;
@@ -56,8 +61,8 @@ public class WarArtifact extends ArtifactBase {
 			
 			if (usesLeft >= 1) {
 				if (!player.isPotionActive(effect)) {
-					player.addPotionEffect(new PotionEffect(this.effect, (int)(RandomPlusConfig.CLIENT.artifactConfig.warArtifact.time * (20 * 60)), 1));
-					player.addPotionEffect(new PotionEffect(this.effect2, (int)(RandomPlusConfig.CLIENT.artifactConfig.warArtifact.time * (20 * 60)), 1));
+					player.addPotionEffect(new PotionEffect(this.effect, time, 1));
+					player.addPotionEffect(new PotionEffect(this.effect2, time, 1));
 					return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, item);
 				} else {
 					player.sendMessage(new TextComponentString("The artifact's power is still within you!"));
@@ -65,9 +70,9 @@ public class WarArtifact extends ArtifactBase {
 				}
 			} else if (usesLeft < 1) {
 				if (!player.isPotionActive(effect)) {
-					player.addPotionEffect(new PotionEffect(this.effect, (int)(RandomPlusConfig.CLIENT.artifactConfig.warArtifact.time * (20 * 60)), 1));
-					player.addPotionEffect(new PotionEffect(this.effect2, (int)(RandomPlusConfig.CLIENT.artifactConfig.warArtifact.time * (20 * 60)), 1));
-					player.setHeldItem(hand, new ItemStack(Items.AIR));
+					player.addPotionEffect(new PotionEffect(this.effect, time, 1));
+					player.addPotionEffect(new PotionEffect(this.effect2, time, 1));
+					player.setHeldItem(hand, new ItemStack((Item)null));
 					return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, item);
 				}
 			}

@@ -65,8 +65,8 @@ public class ItemInit {
 	public static final Item NIGHT_ARTIFACT = new NightArtifact("artifact_night");
 	public static final Item WAR_ARTIFACT = new WarArtifact("artifact_war");
 	public static final Item SPEED_ARTIFACT = new SpeedArtifact("artifact_speed");
-	//public static final Item ARTIFACT_CORE = new ItemBase("artifact_core");
-	//public static final Item ARTIFACT_BASE = new ItemBase("artifact_base");
+	public static final Item ARTIFACT_CORE = new ItemBase("artifact_core");
+	public static final Item ARTIFACT_BASE = new ItemBase("artifact_base");
 	
 	//Tools
 	public static final Item AXE_RUBY = new ToolAxe("axe_ruby", TOOL_RUBY);
