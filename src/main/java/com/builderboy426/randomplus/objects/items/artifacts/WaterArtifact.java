@@ -31,8 +31,11 @@ import net.minecraftforge.fml.common.gameevent.TickEvent.PlayerTickEvent;
 
 public class WaterArtifact extends ArtifactBase {
 	
+	//Config Variables
 	private int maxUses = RandomPlusConfig.CLIENT.artifactConfig.waterArtifact.uses;
 	private int time = (int)(RandomPlusConfig.CLIENT.artifactConfig.waterArtifact.time * (20 * 60));
+	
+	//Artifact Varialbes
 	private static Potion effect = MobEffects.WATER_BREATHING;
 	private boolean active = false;
 	
@@ -90,9 +93,15 @@ public class WaterArtifact extends ArtifactBase {
 	
 	@Override
 	public void onUpdate(ItemStack stack, World world, Entity entity, int itemSlot, boolean isSelected) {
+		checkConfigValues();
 		if (entity instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer)entity;
 			this.active = super.checkActive(player);
 		}
+	}
+	
+	private void checkConfigValues() {
+		if (maxUses != RandomPlusConfig.CLIENT.artifactConfig.waterArtifact.uses) { maxUses = RandomPlusConfig.CLIENT.artifactConfig.waterArtifact.uses; }
+		if (time != (int)(RandomPlusConfig.CLIENT.artifactConfig.waterArtifact.time * (20 * 60))) { time = (int)(RandomPlusConfig.CLIENT.artifactConfig.waterArtifact.time * (20 * 60)); }
 	}
 }

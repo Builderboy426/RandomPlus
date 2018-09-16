@@ -29,8 +29,11 @@ import net.minecraftforge.fml.common.gameevent.TickEvent.PlayerTickEvent;
 
 public class SpeedArtifact extends ArtifactBase {
 	
+	//Config Variables
 	private int maxUses = RandomPlusConfig.CLIENT.artifactConfig.speedArtifact.uses;
 	private int time = (int)(RandomPlusConfig.CLIENT.artifactConfig.speedArtifact.time * (20 * 60));
+	
+	//Artifact Variables
 	private static Potion effect = MobEffects.HASTE;
 	private static Potion effect2 = MobEffects.SPEED;
 	private boolean active = false;
@@ -92,9 +95,15 @@ public class SpeedArtifact extends ArtifactBase {
 	
 	@Override
 	public void onUpdate(ItemStack stack, World world, Entity entity, int itemSlot, boolean isSelected) {
+		checkConfigValues();
 		if (entity instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer)entity;
 			this.active = super.checkActive(player);
 		}
+	}
+	
+	private void checkConfigValues() {
+		if (maxUses != RandomPlusConfig.CLIENT.artifactConfig.speedArtifact.uses) { maxUses = RandomPlusConfig.CLIENT.artifactConfig.speedArtifact.uses; }
+		if (time != (int)(RandomPlusConfig.CLIENT.artifactConfig.speedArtifact.time * (20 * 60))) { time = (int)(RandomPlusConfig.CLIENT.artifactConfig.speedArtifact.time * (20 * 60)); }
 	}
 }

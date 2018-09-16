@@ -29,8 +29,11 @@ import net.minecraftforge.fml.common.gameevent.TickEvent.PlayerTickEvent;
 
 public class NightArtifact extends ArtifactBase {
 	
+	//Config Variables
 	private int maxUses = RandomPlusConfig.CLIENT.artifactConfig.nightArtifact.uses;
 	private int time = (int)(RandomPlusConfig.CLIENT.artifactConfig.nightArtifact.time * (20 * 60));
+	
+	//Artifact Variables
 	private static Potion effect = MobEffects.NIGHT_VISION;
 	private boolean active = false;
 	
@@ -88,9 +91,15 @@ public class NightArtifact extends ArtifactBase {
 	
 	@Override
 	public void onUpdate(ItemStack stack, World world, Entity entity, int itemSlot, boolean isSelected) {
+		checkConfigValues();
 		if (entity instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer)entity;
 			this.active = super.checkActive(player);
 		}
+	}
+	
+	private void checkConfigValues() {
+		if (maxUses != RandomPlusConfig.CLIENT.artifactConfig.nightArtifact.uses) { maxUses = RandomPlusConfig.CLIENT.artifactConfig.nightArtifact.uses; }
+		if (time != (int)(RandomPlusConfig.CLIENT.artifactConfig.nightArtifact.time * (20 * 60))) { time = (int)(RandomPlusConfig.CLIENT.artifactConfig.nightArtifact.time * (20 * 60)); }
 	}
 }

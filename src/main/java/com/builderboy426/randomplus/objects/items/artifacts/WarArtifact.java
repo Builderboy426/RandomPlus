@@ -95,9 +95,15 @@ public class WarArtifact extends ArtifactBase {
 	
 	@Override
 	public void onUpdate(ItemStack stack, World world, Entity entity, int itemSlot, boolean isSelected) {
+		checkConfigValues();
 		if (entity instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer)entity;
 			this.active = super.checkActive(player);
 		}
+	}
+	
+	private void checkConfigValues() {
+		if (maxUses != RandomPlusConfig.CLIENT.artifactConfig.warArtifact.uses) { maxUses = RandomPlusConfig.CLIENT.artifactConfig.warArtifact.uses; }
+		if (time != (int)(RandomPlusConfig.CLIENT.artifactConfig.warArtifact.time * (20 * 60))) { time = (int)(RandomPlusConfig.CLIENT.artifactConfig.warArtifact.time * (20 * 60)); }
 	}
 }
