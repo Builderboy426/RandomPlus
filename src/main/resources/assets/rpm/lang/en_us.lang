@@ -65,6 +65,7 @@ item.artifact_fire.name=Artifact of Fire
 item.artifact_night.name=Artifact of Darkness
 item.artifact_war.name=Artifact of Warfare
 item.artifact_speed.name=Artifact of Speed
+item.artifact_water.name=Unknown Artifact
 
 tile.block_ruby.name=Ruby Block
 tile.block_sapphire.name=Sapphire Block
@@ -75,5 +76,9 @@ tile.ore_amethyst.name=Amethyst Ore
 tile.ore_chaos.name=Chaos Ore
 tile.block_chaos.name=Chaos Block
 tile.rock_ancient.name=Ancient Rock
+
+tile.ancient_generator.name=Ancient Generator
+
+container.ancient_generator=Ancient Generator
 
 itemGroup.randomplustab=RandomPlus
