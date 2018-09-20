@@ -10,7 +10,10 @@ public class Reference {
     public static final String CLIENT = "com.builderboy426.randomplus.proxy.ClientProxy";
     public static final String COMMON = "com.builderboy426.randomplus.proxy.CommonProxy";
     
+    //Ancient Machines
+    public static final int GUI_ANCIENT_GENERATOR = 1;
+    
+    //Chaos Machines
     //public static final int GUI_CHAOS_ENERGIZER = 2;
-    //public static final int GUI_CHAOS_ENCHANTER = 1;
-    public static final int GUI_ANCIENT_GENERATOR = 3;
+    //public static final int GUI_CHAOS_ENCHANTER = 3;
 }

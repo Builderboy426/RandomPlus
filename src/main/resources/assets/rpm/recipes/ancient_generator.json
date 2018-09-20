@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "OCO",
+    "I#I",
+    "AAA"
+  ],
+  "key": {
+    "C": {
+      "item": "rpm:chaos"
+    },
+    "#": {
+      "item": "rpm:star_chaos"
+    },
+    "A": {
+      "item": "rpm:shard_ancient"
+    },
+    "I": {
+      "item": "rpm:stick_iron"
+    },
+    "O": {
+      "item": "minecraft:obsidian"
+    }
+  },
+  "result": {
+    "item": "rpm:ancient_generator"
+  }
+}
