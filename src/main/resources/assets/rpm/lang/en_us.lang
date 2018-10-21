@@ -10,6 +10,8 @@ item.star_gold.name=Gold Star
 item.star_diamond.name=Diamond Star
 item.star_chaos.name=Chaos Star
 
+item.research_kit.name=Research Kit
+
 item.ruby.name=Ruby
 item.sapphire.name=Sapphire
 item.amethyst.name=Amethyst
@@ -65,7 +67,7 @@ item.artifact_fire.name=Artifact of Fire
 item.artifact_night.name=Artifact of Darkness
 item.artifact_war.name=Artifact of Warfare
 item.artifact_speed.name=Artifact of Speed
-item.artifact_water.name=Unknown Artifact
+item.artifact_unknown.name=Unknown Artifact
 
 tile.block_ruby.name=Ruby Block
 tile.block_sapphire.name=Sapphire Block
@@ -78,7 +80,9 @@ tile.block_chaos.name=Chaos Block
 tile.rock_ancient.name=Ancient Rock
 
 tile.ancient_generator.name=Ancient Generator
+tile.artifact_analyzer.name=Artifact Analyzer
 
 container.ancient_generator=Ancient Generator
+container.artifact_analyzer=Artifact Analyzer
 
 itemGroup.randomplustab=RandomPlus
