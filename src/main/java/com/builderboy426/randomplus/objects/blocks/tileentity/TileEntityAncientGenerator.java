@@ -2,8 +2,6 @@ package com.builderboy426.randomplus.objects.blocks.tileentity;
 
 import com.builderboy426.randomplus.energy.AncientEnergyStorage;
 import com.builderboy426.randomplus.init.ItemInit;
-import com.builderboy426.randomplus.utils.handlers.EnumHandler.MachineType;
-import com.jcraft.jorbis.Block;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -28,8 +26,8 @@ public class TileEntityAncientGenerator extends TileEntity implements ITickable 
 	
 	private int energy = storage.getEnergyStored();
 	private int maxEnergy = 250000;
-	public int cookTime;
-	private int sendTime;
+	public int cookTime = 0;
+	private int sendTime = 0;
 	
 	@Override
 	public void update() {
@@ -50,13 +48,14 @@ public class TileEntityAncientGenerator extends TileEntity implements ITickable 
 		}
 		
 		//TODO: Generator radius (2)
-		if (energy > 500) {
+		if (this.energy >= 501) {
 			sendTime++;
 			if (sendTime == 20) {
-			getMachines(1,0);
-			getMachines(-1,0);
-			getMachines(0,1);
-			getMachines(0,-1);
+				getMachines(1,0);
+				getMachines(-1,0);
+				getMachines(0,1);
+				getMachines(0,-1);
+				sendTime = 0;
 			}
 		} else { sendTime = 0; }
 	}
@@ -74,19 +73,18 @@ public class TileEntityAncientGenerator extends TileEntity implements ITickable 
 	}
 	
 	private void getMachines(int x, int z) {
-		if (this.energy >= 500) {
-			BlockPos tilePos = this.getPos();
-			BlockPos newPos = new BlockPos(tilePos.getX()+x, tilePos.getY(), tilePos.getZ()+z);
-			if (getWorld().getTileEntity(newPos) == new TileEntityArtifactAnalyzer()) {
-				TileEntityArtifactAnalyzer analyzer = getAnalyzer(newPos);
-				this.energy -= 500;
-				analyzer.setField(0, analyzer.getField(0)+500);
-			}
+		BlockPos tilePos = this.getPos();
+		BlockPos newPos = new BlockPos(tilePos.getX()+x, tilePos.getY(), tilePos.getZ()+z);
+		if (getWorld().getTileEntity(newPos) == (TileEntityArtifactAnalyzer)getWorld().getTileEntity(newPos)) {
+			System.out.println("Sending Energy to Artifact Analyzer!");
+			getAnalyzer(newPos);
 		}
 	}
 	
-	private TileEntityArtifactAnalyzer getAnalyzer(BlockPos pos) {
-		return (TileEntityArtifactAnalyzer)getWorld().getTileEntity(pos);
+	private void getAnalyzer(BlockPos pos) {
+		TileEntityArtifactAnalyzer analyzer = (TileEntityArtifactAnalyzer)getWorld().getTileEntity(pos);
+		this.energy -= 500;
+		analyzer.setField(0, analyzer.getEnergyStored()+500);
 	}
 	
 	@Override
@@ -108,6 +106,7 @@ public class TileEntityAncientGenerator extends TileEntity implements ITickable 
 		super.writeToNBT(compound);
 		compound.setTag("inventory", this.handler.serializeNBT());
 		compound.setInteger("cooktime", this.cookTime);
+		compound.setInteger("sendtime", this.sendTime);
 		compound.setInteger("guienergy", this.energy);
 		compound.setString("name", getDisplayName().toString());
 		this.storage.writeToNBT(compound);
@@ -119,6 +118,7 @@ public class TileEntityAncientGenerator extends TileEntity implements ITickable 
 		super.readFromNBT(compound);
 		this.handler.deserializeNBT(compound.getCompoundTag("inventory"));
 		this.cookTime = compound.getInteger("cooktime");
+		this.sendTime = compound.getInteger("sendtime");
 		this.energy = compound.getInteger("guienergy");
 		this.customName = compound.getString("name");
 		this.storage.readFromNBT(compound);

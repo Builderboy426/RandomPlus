@@ -7,7 +7,6 @@ import com.builderboy426.randomplus.init.ItemInit;
 import com.builderboy426.randomplus.objects.blocks.machines.BlockArtifactAnalyzer;
 import com.builderboy426.randomplus.objects.items.artifacts.ArtifactBase;
 import com.builderboy426.randomplus.objects.items.artifacts.WaterArtifact;
-import com.builderboy426.randomplus.utils.handlers.EnumHandler.MachineType;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;

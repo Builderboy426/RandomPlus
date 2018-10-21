@@ -1,11 +1,8 @@
 package com.builderboy426.randomplus.objects.blocks;
 
-import java.util.HashMap;
-
 import com.builderboy426.randomplus.Main;
 import com.builderboy426.randomplus.init.BlockInit;
 import com.builderboy426.randomplus.init.ItemInit;
-import com.builderboy426.randomplus.utils.handlers.EnumHandler.MachineType;
 import com.builderboy426.randomplus.utils.interfaces.IHasModel;
 
 import net.minecraft.block.Block;
@@ -14,12 +11,8 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.math.BlockPos;
 
 public class BlockBase extends Block implements IHasModel {
-	
-	public static final HashMap<BlockPos, TileEntity> MACHINES = new HashMap<BlockPos, TileEntity>();
 	
 	public BlockBase(String name, Material mat, float hardness) {
 		super(mat);

@@ -6,6 +6,7 @@ public class EnumHandler {
 		COMMON,
 		UNCOMMON,
 		RARE,
+		EPIC,
 		LEGENDARY;
 	}
 }
