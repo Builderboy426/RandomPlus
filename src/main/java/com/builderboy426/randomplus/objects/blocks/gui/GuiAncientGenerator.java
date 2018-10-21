@@ -49,7 +49,9 @@ public class GuiAncientGenerator extends GuiContainer {
 	private int getEnergyStoredScaled(int pixels)
 	{
 		int i = this.tileentity.getEnergyStored();
-		int j = 250000;
+		int j = this.tileentity.getMaxEnergyStored();
+		//if (i == 0) { return 0; }
+		//else { return (i * pixels) / j; }
 		return i != 0 ? (i * pixels) / j : 0;
 	}
 	

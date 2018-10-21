@@ -4,9 +4,9 @@
         "particle": "rpm:blocks/ancient_generator_side",
         "up": "rpm:blocks/ancient_generator_top",
         "down": "rpm:blocks/ancient_generator_bottom",
-        "north": "tutorial:blocks/biomass_generator_back",
-        "east": "tutorial:blocks/biomass_generator_side",
-        "south": "tutorial:blocks/biomass_generator_front",
-        "west": "tutorial:blocks/biomass_generator_side"
+        "north": "tutorial:blocks/ancient_generator_back",
+        "east": "tutorial:blocks/ancient_generator_side",
+        "south": "tutorial:blocks/ancient_generator_front",
+        "west": "tutorial:blocks/ancient_generator_side"
     }
 }
