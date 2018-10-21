@@ -52,6 +52,8 @@ public class ItemInit {
 	public static final Item STAR_DIAMOND = new ItemBase("star_diamond");
 	public static final Item STAR_CHAOS = new ItemBase("star_chaos");
 	
+	public static final Item RESEARCH_KIT = new ItemBase("research_kit");
+	
 	//Gems
 	public static final Item RUBY = new ItemBase("ruby");
 	public static final Item SAPPHIRE = new ItemBase("sapphire");
