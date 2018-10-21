@@ -9,11 +9,16 @@ public class RandomPlusTab extends CreativeTabs {
 
 	public RandomPlusTab(String label) {
 		super("randomplustab");
+		setBackgroundImageName("item_search.png");
 	}
 
 	@Override
 	public ItemStack getTabIconItem() {
 		return new ItemStack(ItemInit.RUBY);
 	}
-
+	
+	@Override
+	public boolean hasSearchBar() {
+		return true;
+	}
 }
