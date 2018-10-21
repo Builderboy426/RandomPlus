@@ -27,14 +27,12 @@ public class OreAncient extends OreBase {
 	
 	@Override
 	public int quantityDroppedWithBonus(int fortune, Random random) {
-		int rand = random.nextInt(1) + (fortune + 1);
-		return rand;
+		return random.nextInt(2) + fortune;
 	}
 	
 	@Override
 	public int quantityDropped(Random random) {
-		int rand = random.nextInt(1);
-		return rand;
+		return random.nextInt(2);
 	}
 	
 	@Override
