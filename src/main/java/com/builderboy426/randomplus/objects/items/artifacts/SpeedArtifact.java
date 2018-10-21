@@ -3,6 +3,7 @@ package com.builderboy426.randomplus.objects.items.artifacts;
 import java.util.List;
 
 import com.builderboy426.randomplus.utils.config.RandomPlusConfig;
+import com.builderboy426.randomplus.utils.handlers.EnumHandler.ArtifactRarity;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.I18n;
@@ -42,6 +43,7 @@ public class SpeedArtifact extends ArtifactBase {
 		super(name);
 		super.EFFECTS.add(this.effect);
 		super.EFFECTS.add(this.effect2);
+		setArtifactRarity(ArtifactRarity.RARE, new ItemStack(this));
 	}
 	
 	@Override

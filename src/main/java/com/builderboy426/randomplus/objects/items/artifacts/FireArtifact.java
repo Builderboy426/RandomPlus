@@ -3,6 +3,7 @@ package com.builderboy426.randomplus.objects.items.artifacts;
 import java.util.List;
 
 import com.builderboy426.randomplus.utils.config.RandomPlusConfig;
+import com.builderboy426.randomplus.utils.handlers.EnumHandler.ArtifactRarity;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.I18n;
@@ -40,6 +41,7 @@ public class FireArtifact extends ArtifactBase {
 	public FireArtifact(String name) {
 		super(name);
 		super.EFFECTS.add(this.effect);
+		setArtifactRarity(ArtifactRarity.COMMON, new ItemStack(this));
 	}
 	
 	@Override

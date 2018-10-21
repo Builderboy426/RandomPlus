@@ -3,7 +3,9 @@ package com.builderboy426.randomplus.objects.items.artifacts;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.builderboy426.randomplus.init.ItemInit;
 import com.builderboy426.randomplus.utils.config.RandomPlusConfig;
+import com.builderboy426.randomplus.utils.handlers.EnumHandler.ArtifactRarity;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.I18n;
@@ -38,10 +40,12 @@ public class WaterArtifact extends ArtifactBase {
 	//Artifact Varialbes
 	private static Potion effect = MobEffects.WATER_BREATHING;
 	private boolean active = false;
+	private NBTTagCompound nbt;
 	
 	public WaterArtifact(String name) {
 		super(name);
 		super.EFFECTS.add(this.effect);
+		setArtifactRarity(ArtifactRarity.COMMON, new ItemStack(this));
 	}
 	
 	@Override
@@ -97,11 +101,19 @@ public class WaterArtifact extends ArtifactBase {
 		if (entity instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer)entity;
 			this.active = super.checkActive(player);
+			if (stack.getItem() == ItemInit.WATER_ARTIFACT) {
+				this.nbt = stack.getTagCompound();
+			}
 		}
 	}
 	
 	private void checkConfigValues() {
 		if (maxUses != RandomPlusConfig.CLIENT.artifactConfig.waterArtifact.uses) { maxUses = RandomPlusConfig.CLIENT.artifactConfig.waterArtifact.uses; }
 		if (time != (int)(RandomPlusConfig.CLIENT.artifactConfig.waterArtifact.time * (20 * 60))) { time = (int)(RandomPlusConfig.CLIENT.artifactConfig.waterArtifact.time * (20 * 60)); }
+	}
+	
+	@Override
+	public NBTTagCompound getNBTTagCompound(NBTTagCompound compound) {
+		return super.getNBTTagCompound(this.nbt);
 	}
 }
