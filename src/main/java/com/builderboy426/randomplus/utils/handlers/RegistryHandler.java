@@ -5,6 +5,7 @@ import com.builderboy426.randomplus.init.BlockInit;
 
 import com.builderboy426.randomplus.init.ItemInit;
 import com.builderboy426.randomplus.objects.blocks.tileentity.TileEntityAncientGenerator;
+import com.builderboy426.randomplus.objects.blocks.tileentity.TileEntityArtifactAnalyzer;
 import com.builderboy426.randomplus.utils.Reference;
 import com.builderboy426.randomplus.utils.interfaces.IHasModel;
 import com.builderboy426.randomplus.world.gen.WorldGenCustomOres;
@@ -54,6 +55,7 @@ public class RegistryHandler {
 	public static void registerTileEntities() {
 		//Ancient Machines
 		GameRegistry.registerTileEntity(TileEntityAncientGenerator.class, new ResourceLocation(Reference.MODID+":ancient_generator"));
+		GameRegistry.registerTileEntity(TileEntityArtifactAnalyzer.class, new ResourceLocation(Reference.MODID+":artifact_analyzer"));
 		
 		//Chaos Machines
 		
