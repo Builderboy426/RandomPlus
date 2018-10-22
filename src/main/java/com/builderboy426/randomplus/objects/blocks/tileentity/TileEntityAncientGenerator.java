@@ -32,7 +32,7 @@ public class TileEntityAncientGenerator extends TileEntity implements ITickable 
 	
 	@Override
 	public void update() {
-		if (energy != maxEnergy) {
+		if (energy < maxEnergy) {
 			if (!handler.getStackInSlot(0).isEmpty() && isItemFuel(handler.getStackInSlot(0))) {
 				cookTime++;
 				if (cookTime == maxCook) {
@@ -40,8 +40,9 @@ public class TileEntityAncientGenerator extends TileEntity implements ITickable 
 					handler.getStackInSlot(0).shrink(1);
 					cookTime = 0;
 				}
-			}			
-				//TODO: Upgrade(s)
+			}
+			
+			//TODO: Upgrade(s)
 			
 			if (handler.getStackInSlot(0).isEmpty() && cookTime != 0) {
 				cookTime = 0;
@@ -73,7 +74,7 @@ public class TileEntityAncientGenerator extends TileEntity implements ITickable 
 		
 		if ((TileEntityArtifactAnalyzer)tileEntity != null) {
 			TileEntityArtifactAnalyzer machine = (TileEntityArtifactAnalyzer)tileEntity;
-			if (this.energy >= 501 && machine.getEnergyStored() < machine.getMaxEnergyStored()) {
+			if (this.energy >= 500 && machine.getEnergyStored() < machine.getMaxEnergyStored()) {
 				int newEnergy = machine.getField(0)+500;
 				this.energy -= 500;
 				machine.updateEnergy(newEnergy);
