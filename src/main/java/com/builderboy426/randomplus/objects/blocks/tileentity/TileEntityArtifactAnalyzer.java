@@ -23,28 +23,34 @@ import net.minecraftforge.items.ItemStackHandler;
 
 public class TileEntityArtifactAnalyzer extends TileEntity implements ITickable {
 	
+	private final int maxEnergy = 50000;
+	public int cookTime;
+	
 	public ItemStackHandler handler = new ItemStackHandler(3);
-	private AncientEnergyStorage storage = new AncientEnergyStorage(50000);
+	private AncientEnergyStorage storage = new AncientEnergyStorage(maxEnergy);
 	private String customName;
 	private ItemStack analyzing = ItemStack.EMPTY;
 	
-	public int cookTime;
 	private int energy = storage.getEnergyStored();
-	private int maxEnergy = 50000;
+	private final int maxCook = 200;
 	
 	@Override
 	public void update() {
-		if (handler.getStackInSlot(0).getItem() == ItemInit.RESEARCH_KIT && handler.getStackInSlot(0).getCount() > 0 && handler.getStackInSlot(1).getItem() == ItemInit.UNKNOWN_ARTIFACT && handler.getStackInSlot(1).getCount() > 0 && handler.getStackInSlot(2).isEmpty()) {
+		if (handler.getStackInSlot(0).getItem() == ItemInit.RESEARCH_KIT && handler.getStackInSlot(0).getCount() > 0
+		&& handler.getStackInSlot(1).getItem() == ItemInit.UNKNOWN_ARTIFACT && handler.getStackInSlot(1).getCount() > 0
+		&& handler.getStackInSlot(2).isEmpty()) {
 			if (energy >= 175) {
 				energy -= 175;
 				cookTime++;
-				if (cookTime == 200) {
+				if (cookTime >= maxCook) {
 					handler.getStackInSlot(0).shrink(1);
 					handler.getStackInSlot(1).shrink(1);
 					handler.setStackInSlot(2, getOutput());
 					cookTime = 0;
 				}
 			}	
+		} else {
+			cookTime = 0;
 		}
 	}
 	
@@ -85,6 +91,7 @@ public class TileEntityArtifactAnalyzer extends TileEntity implements ITickable 
 	public ITextComponent getDisplayName() { return new TextComponentTranslation("container.artifact_analyzer"); }
 	public int getEnergyStored() { return this.energy; }
 	public int getMaxEnergyStored() { return this.maxEnergy; }
+	public int getMaxCook() { return maxCook; }
 	
 	@Override
 	public NBTTagCompound writeToNBT(NBTTagCompound compound) {
@@ -111,8 +118,10 @@ public class TileEntityArtifactAnalyzer extends TileEntity implements ITickable 
 		switch (id) {
 		case 0:
 			this.energy = value;
+			break;
 		case 1:
 			this.cookTime = value;
+			break;
 		}
 	}
 	
@@ -129,5 +138,9 @@ public class TileEntityArtifactAnalyzer extends TileEntity implements ITickable 
 	
 	public boolean isUseableByPlayer(EntityPlayer player) {
 		return this.world.getTileEntity(this.pos) != this ? false : player.getDistanceSq((double)this.pos.getX()+0.5, (double)this.pos.getY()+0.5, (double)this.pos.getZ()+0.5) <=64.0D;
+	}
+
+	public void updateEnergy(int newEnergy) {
+		this.setField(0, newEnergy);
 	}
 }

@@ -20,21 +20,22 @@ import net.minecraftforge.items.ItemStackHandler;
 
 public class TileEntityAncientGenerator extends TileEntity implements ITickable {
 	
+	private final int maxEnergy = 250000;
+	public int cookTime = 0;
+	
 	public ItemStackHandler handler = new ItemStackHandler(1);
-	private AncientEnergyStorage storage = new AncientEnergyStorage(250000);
+	private AncientEnergyStorage storage = new AncientEnergyStorage(maxEnergy);
 	private String customName;
 	
 	private int energy = storage.getEnergyStored();
-	private int maxEnergy = 250000;
-	public int cookTime = 0;
-	private int sendTime = 0;
+	private final int maxCook = 40;
 	
 	@Override
 	public void update() {
 		if (energy != maxEnergy) {
 			if (!handler.getStackInSlot(0).isEmpty() && isItemFuel(handler.getStackInSlot(0))) {
 				cookTime++;
-				if (cookTime == 40) {
+				if (cookTime == maxCook) {
 					energy += getFuelValue(handler.getStackInSlot(0));
 					handler.getStackInSlot(0).shrink(1);
 					cookTime = 0;
@@ -48,16 +49,10 @@ public class TileEntityAncientGenerator extends TileEntity implements ITickable 
 		}
 		
 		//TODO: Generator radius (2)
-		if (this.energy >= 501) {
-			sendTime++;
-			if (sendTime == 20) {
-				getMachines(1,0);
-				getMachines(-1,0);
-				getMachines(0,1);
-				getMachines(0,-1);
-				sendTime = 0;
-			}
-		} else { sendTime = 0; }
+		getMachines(1,0);
+		getMachines(-1,0);
+		getMachines(0,1);
+		getMachines(0,-1);
 	}
 
 /*	private boolean isItemUpgrade(ItemStack stack) {
@@ -68,25 +63,24 @@ public class TileEntityAncientGenerator extends TileEntity implements ITickable 
 	private boolean isItemFuel(ItemStack stack) { return getFuelValue(stack) > 0; }
 	
 	private int getFuelValue(ItemStack stack) {
-		if (stack.getItem() == ItemInit.ANCIENT_SHARD) { return 1000; }
+		if (stack.getItem() == ItemInit.ANCIENT_SHARD) { return 10000; }
 		return 0;
 	}
 	
 	private void getMachines(int x, int z) {
-		BlockPos tilePos = this.getPos();
-		BlockPos newPos = new BlockPos(tilePos.getX()+x, tilePos.getY(), tilePos.getZ()+z);
-		if (getWorld().getTileEntity(newPos) == (TileEntityArtifactAnalyzer)getWorld().getTileEntity(newPos)) {
-			System.out.println("Sending Energy to Artifact Analyzer!");
-			getAnalyzer(newPos);
+		BlockPos newPos = new BlockPos(getPos().getX()+x, getPos().getY(), getPos().getZ()+z);
+		TileEntity tileEntity = getWorld().getTileEntity(newPos);
+		
+		if ((TileEntityArtifactAnalyzer)tileEntity != null) {
+			TileEntityArtifactAnalyzer machine = (TileEntityArtifactAnalyzer)tileEntity;
+			if (this.energy >= 501 && machine.getEnergyStored() < machine.getMaxEnergyStored()) {
+				int newEnergy = machine.getField(0)+500;
+				this.energy -= 500;
+				machine.updateEnergy(newEnergy);
+			}
 		}
 	}
-	
-	private void getAnalyzer(BlockPos pos) {
-		TileEntityArtifactAnalyzer analyzer = (TileEntityArtifactAnalyzer)getWorld().getTileEntity(pos);
-		this.energy -= 500;
-		analyzer.setField(0, analyzer.getEnergyStored()+500);
-	}
-	
+
 	@Override
 	public <T> T getCapability(Capability<T> capability, EnumFacing facing)  {
 		if (capability == CapabilityEnergy.ENERGY) { return (T)this.storage; }
@@ -106,7 +100,6 @@ public class TileEntityAncientGenerator extends TileEntity implements ITickable 
 		super.writeToNBT(compound);
 		compound.setTag("inventory", this.handler.serializeNBT());
 		compound.setInteger("cooktime", this.cookTime);
-		compound.setInteger("sendtime", this.sendTime);
 		compound.setInteger("guienergy", this.energy);
 		compound.setString("name", getDisplayName().toString());
 		this.storage.writeToNBT(compound);
@@ -118,7 +111,6 @@ public class TileEntityAncientGenerator extends TileEntity implements ITickable 
 		super.readFromNBT(compound);
 		this.handler.deserializeNBT(compound.getCompoundTag("inventory"));
 		this.cookTime = compound.getInteger("cooktime");
-		this.sendTime = compound.getInteger("sendtime");
 		this.energy = compound.getInteger("guienergy");
 		this.customName = compound.getString("name");
 		this.storage.readFromNBT(compound);
@@ -127,6 +119,7 @@ public class TileEntityAncientGenerator extends TileEntity implements ITickable 
 	public ITextComponent getDisplayName() { return new TextComponentTranslation("container.ancient_generator"); }
 	public int getEnergyStored() { return this.energy; }
 	public int getMaxEnergyStored() { return this.maxEnergy; }
+	public int getMaxCook() { return maxCook; }
 	
 	public void setField(int id, int value) {
 		switch (id) {

@@ -48,16 +48,17 @@ public class GuiAncientGenerator extends GuiContainer {
 	
 	private int getEnergyStoredScaled(int pixels)
 	{
-		int i = this.tileentity.getEnergyStored();
-		int j = this.tileentity.getMaxEnergyStored();
+		float i = (float)this.tileentity.getEnergyStored();
+		float j = (float)this.tileentity.getMaxEnergyStored();
 		//if (i == 0) { return 0; }
 		//else { return (i * pixels) / j; }
-		return i != 0 ? (i * pixels) / j : 0;
+		return j != 0 ? (int)((i / j)*pixels) : 0;
 	}
 	
 	private int getCookProgressScaled(int pixels)
 	{
-		int i = this.tileentity.cookTime;
-		return i != 0 ? (i * pixels) / 40 : 0;
+		float i = (float)this.tileentity.cookTime;
+		float j = (float)this.tileentity.getMaxCook();
+		return j != 0 ? (int)((i / j) * pixels) : 0;
 	}
 }

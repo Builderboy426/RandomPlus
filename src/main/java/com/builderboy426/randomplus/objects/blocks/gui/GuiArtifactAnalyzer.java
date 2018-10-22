@@ -49,14 +49,17 @@ public class GuiArtifactAnalyzer extends GuiContainer {
 	
 	private int getEnergyStoredScaled(int pixels)
 	{
-		int i = this.tileentity.getEnergyStored();
-		int j = 250000;
-		return i != 0 ? (i * pixels) / j : 0;
+		float i = (float)this.tileentity.getEnergyStored();
+		float j = (float)this.tileentity.getMaxEnergyStored();
+		return j != 0 ? (int)(i / j * pixels) : 0;
 	}
 	
 	private int getCookProgressScaled(int pixels)
 	{
-		int i = this.tileentity.cookTime;
-		return i != 0 ? (i * pixels) / 200 : 0;
+		float i = (float)this.tileentity.cookTime;
+		float j = (float)this.tileentity.getMaxCook();
+		System.out.println("Current: "+i);
+		System.out.println("Maximum: "+j);
+		return j != 0 ? (int)(i / j * pixels) : 0;
 	}
 }

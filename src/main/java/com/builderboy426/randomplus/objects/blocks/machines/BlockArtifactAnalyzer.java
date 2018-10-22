@@ -20,16 +20,11 @@ import net.minecraft.world.World;
 
 public class BlockArtifactAnalyzer extends BlockBase {
 	
-	private TileEntityArtifactAnalyzer tileEntity = new TileEntityArtifactAnalyzer();
-	
 	public BlockArtifactAnalyzer(String name) { super(name, Material.IRON, 20.125f); }
 	
 	@Override
 	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
-		if (!world.isRemote) {
-			player.openGui(Main.instance, Reference.GUI_ARTIFACT_ANALYZER, world, pos.getX(), pos.getY(), pos.getZ());
-		}
-		
+		player.openGui(Main.instance, Reference.GUI_ARTIFACT_ANALYZER, world, pos.getX(), pos.getY(), pos.getZ());
 		return true;
 	}
 	
@@ -40,7 +35,7 @@ public class BlockArtifactAnalyzer extends BlockBase {
 	
 	@Override
 	public TileEntity createTileEntity(World world, IBlockState state) {
-		return tileEntity;
+		return new TileEntityArtifactAnalyzer();
 	}
 	
 	@Override
