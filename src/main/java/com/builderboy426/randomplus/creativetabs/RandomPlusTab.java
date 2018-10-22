@@ -14,7 +14,7 @@ public class RandomPlusTab extends CreativeTabs {
 
 	@Override
 	public ItemStack getTabIconItem() {
-		return new ItemStack(ItemInit.RUBY);
+		return new ItemStack(ItemInit.WATER_ARTIFACT);
 	}
 	
 	@Override
