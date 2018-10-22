@@ -51,6 +51,9 @@ public class GuiArtifactAnalyzer extends GuiContainer {
 	{
 		float i = (float)this.tileentity.getEnergyStored();
 		float j = (float)this.tileentity.getMaxEnergyStored();
+		int compare = (int)(i/j);
+		System.out.println(compare);
+		if (compare == 1) { return pixels+1; }
 		return j != 0 ? (int)(i / j * pixels) : 0;
 	}
 	
@@ -58,8 +61,6 @@ public class GuiArtifactAnalyzer extends GuiContainer {
 	{
 		float i = (float)this.tileentity.cookTime;
 		float j = (float)this.tileentity.getMaxCook();
-		System.out.println("Current: "+i);
-		System.out.println("Maximum: "+j);
 		return j != 0 ? (int)(i / j * pixels) : 0;
 	}
 }

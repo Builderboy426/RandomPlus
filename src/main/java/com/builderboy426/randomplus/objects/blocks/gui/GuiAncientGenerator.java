@@ -50,8 +50,8 @@ public class GuiAncientGenerator extends GuiContainer {
 	{
 		float i = (float)this.tileentity.getEnergyStored();
 		float j = (float)this.tileentity.getMaxEnergyStored();
-		//if (i == 0) { return 0; }
-		//else { return (i * pixels) / j; }
+		int compare = (int)(i/j);
+		if (compare == 1) { return pixels+1; }
 		return j != 0 ? (int)((i / j)*pixels) : 0;
 	}
 	
