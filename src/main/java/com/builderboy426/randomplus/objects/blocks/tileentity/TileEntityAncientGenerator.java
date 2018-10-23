@@ -32,21 +32,21 @@ public class TileEntityAncientGenerator extends TileEntity implements ITickable 
 	
 	@Override
 	public void update() {
-		if (energy < maxEnergy) {
+		if (energy < maxEnergy || energy < (maxEnergy-10000)) {
 			if (!handler.getStackInSlot(0).isEmpty() && isItemFuel(handler.getStackInSlot(0))) {
 				cookTime++;
+				
+				//TODO: Upgrade(s)
+				
 				if (cookTime == maxCook) {
 					energy += getFuelValue(handler.getStackInSlot(0));
 					handler.getStackInSlot(0).shrink(1);
 					cookTime = 0;
 				}
-			}
+			} else { cookTime = 0; }
 			
-			//TODO: Upgrade(s)
-			
-			if (handler.getStackInSlot(0).isEmpty() && cookTime != 0) {
-				cookTime = 0;
-			}
+		} else {
+			cookTime = 0;
 		}
 		
 		//TODO: Generator radius (2)

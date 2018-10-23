@@ -52,7 +52,6 @@ public class GuiArtifactAnalyzer extends GuiContainer {
 		float i = (float)this.tileentity.getEnergyStored();
 		float j = (float)this.tileentity.getMaxEnergyStored();
 		int compare = (int)(i/j);
-		System.out.println(compare);
 		if (compare == 1) { return pixels+1; }
 		return j != 0 ? (int)(i / j * pixels) : 0;
 	}
