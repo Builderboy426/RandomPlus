@@ -3,7 +3,9 @@ package com.builderboy426.randomplus.objects.items.artifacts;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.builderboy426.randomplus.init.ItemInit;
 import com.builderboy426.randomplus.utils.config.RandomPlusConfig;
+import com.builderboy426.randomplus.utils.handlers.EnumHandler.ArtifactRarity;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.I18n;
@@ -12,6 +14,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.init.MobEffects;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.Potion;
@@ -30,13 +33,18 @@ import net.minecraftforge.fml.common.gameevent.TickEvent.PlayerTickEvent;
 
 public class WaterArtifact extends ArtifactBase {
 	
-	private int maxUses = 6;
+	//Config Variables
+	private int maxUses = RandomPlusConfig.CLIENT.artifactConfig.waterArtifact.uses;
+	private int time = (int)(RandomPlusConfig.CLIENT.artifactConfig.waterArtifact.time * (20 * 60));
+	
+	//Artifact Varialbes
 	private static Potion effect = MobEffects.WATER_BREATHING;
 	private boolean active = false;
 	
 	public WaterArtifact(String name) {
 		super(name);
 		super.EFFECTS.add(this.effect);
+		super.ARTIFACTS.add(new ItemStack(this));
 	}
 	
 	@Override
@@ -44,6 +52,8 @@ public class WaterArtifact extends ArtifactBase {
 		ItemStack item = player.getHeldItem(hand);
 		if (this.active) { return new ActionResult<ItemStack>(EnumActionResult.PASS, item); }
 		if (!world.isRemote) {
+			if (player.isPotionActive(effect)) { return new ActionResult<ItemStack>(EnumActionResult.PASS, item); }
+			
 			NBTTagCompound nbt = item.getTagCompound();
 			
 			if (nbt == null) { nbt = new NBTTagCompound(); }
@@ -54,7 +64,7 @@ public class WaterArtifact extends ArtifactBase {
 			
 			if (usesLeft >= 1) {
 				if (!player.isPotionActive(effect)) {
-					player.addPotionEffect(new PotionEffect(this.effect, (int)(RandomPlusConfig.CLIENT.artifactConfig.waterArtifact.time * (20 * 60)), 1));
+					player.addPotionEffect(new PotionEffect(this.effect, time, 1));
 					return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, item);
 				} else {
 					player.sendMessage(new TextComponentString("The artifact's power is still within you!"));
@@ -62,8 +72,8 @@ public class WaterArtifact extends ArtifactBase {
 				}
 			} else if (usesLeft < 1) {
 				if (!player.isPotionActive(effect)) {
-					player.addPotionEffect(new PotionEffect(this.effect, (int)(RandomPlusConfig.CLIENT.artifactConfig.waterArtifact.time * (20 * 60)), 1));
-					player.setHeldItem(hand, new ItemStack(Items.AIR));
+					player.addPotionEffect(new PotionEffect(this.effect, time, 1));
+					player.setHeldItem(hand, new ItemStack((Item)null));
 					return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, item);
 				}
 			}
@@ -86,21 +96,19 @@ public class WaterArtifact extends ArtifactBase {
 	
 	@Override
 	public void onUpdate(ItemStack stack, World world, Entity entity, int itemSlot, boolean isSelected) {
+		checkConfigValues();
 		if (entity instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer)entity;
-			this.active = checkActive(player);
+			this.active = super.checkActive(player);
 		}
 	}
 	
-	private boolean checkActive(EntityPlayer player) {
-		if (getRestrictedArtifacts()) {
-			for (int e = 0; e < super.EFFECTS.size(); e++) {
-				if (player.getActivePotionEffect(super.EFFECTS.get(e)) != null) {
-					return true;
-				}
-			}
-			return false;
-		}
-		return player.isPotionActive(this.effect);
+	private void checkConfigValues() {
+		if (maxUses != RandomPlusConfig.CLIENT.artifactConfig.waterArtifact.uses) { maxUses = RandomPlusConfig.CLIENT.artifactConfig.waterArtifact.uses; }
+		if (time != (int)(RandomPlusConfig.CLIENT.artifactConfig.waterArtifact.time * (20 * 60))) { time = (int)(RandomPlusConfig.CLIENT.artifactConfig.waterArtifact.time * (20 * 60)); }
+	}
+	
+	public static ArtifactRarity getRarity() {
+		return ArtifactRarity.COMMON;
 	}
 }

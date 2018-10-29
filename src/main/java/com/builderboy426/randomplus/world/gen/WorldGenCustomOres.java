@@ -32,11 +32,11 @@ public class WorldGenCustomOres implements IWorldGenerator {
 			case -1: //Nether
 			break;
 			case 0: //Overworld
-				runGenerator(ore_ruby, world, random, chunkX, chunkZ, 10, 0, 40);
-				runGenerator(ore_sapphire, world, random, chunkX, chunkZ, 10, 0, 40);
-				runGenerator(ore_amethyst, world, random, chunkX, chunkZ, 10, 0, 40);
-				runGenerator(ore_chaos, world, random, chunkX, chunkZ, 1, 0, 10);
-				runGenerator(ore_ancient, world, random, chunkX, chunkZ, 1, 15, 50);
+				runGenerator(ore_ruby, world, random, chunkX, chunkZ, 13, 0, 40);
+				runGenerator(ore_sapphire, world, random, chunkX, chunkZ, 13, 0, 40);
+				runGenerator(ore_amethyst, world, random, chunkX, chunkZ, 13, 0, 40);
+				runGenerator(ore_chaos, world, random, chunkX, chunkZ, 2, 0, 10);
+				runGenerator(ore_ancient, world, random, chunkX, chunkZ, 2, 15, 50);
 			break;
 			case 1: //End
 			break;

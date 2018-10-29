@@ -27,7 +27,7 @@ public class OreSapphire extends OreBase {
 	
 	@Override
 	public int quantityDroppedWithBonus(int fortune, Random random) {
-		return fortune >= 3 ? 2 : 1;
+		return random.nextInt(2) + fortune;
 	}
 	
 	@Override

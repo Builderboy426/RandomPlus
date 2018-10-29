@@ -7,13 +7,14 @@ import com.builderboy426.randomplus.utils.interfaces.IHasModel;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 
 public class BlockBase extends Block implements IHasModel {
 	
-	public BlockBase(String name, Material mat, float hardness, int harvest) {
+	public BlockBase(String name, Material mat, float hardness) {
 		super(mat);
 		setUnlocalizedName(name);
 		setRegistryName(name);

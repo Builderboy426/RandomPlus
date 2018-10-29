@@ -1,0 +1,12 @@
+{
+    "parent": "block/orientable",
+    "textures": {
+        "particle": "rpm:blocks/ancient_generator_side",
+        "up": "rpm:blocks/ancient_generator_top",
+        "down": "rpm:blocks/ancient_generator_bottom",
+        "north": "rpm:blocks/ancient_generator_back",
+        "east": "rpm:blocks/ancient_generator_side",
+        "south": "rpm:blocks/ancient_generator_front",
+        "west": "rpm:blocks/ancient_generator_side"
+    }
+}
