@@ -1,5 +1,7 @@
 package com.builderboy426.randomplus.objects.blocks.gui;
 
+import java.util.List;
+
 import com.builderboy426.randomplus.objects.blocks.container.ContainerAncientGenerator;
 import com.builderboy426.randomplus.objects.blocks.tileentity.TileEntityAncientGenerator;
 import com.builderboy426.randomplus.utils.Reference;
@@ -21,6 +23,13 @@ public class GuiAncientGenerator extends GuiContainer {
 		super(new ContainerAncientGenerator(player, tileentity));
 		this.player = player;
 		this.tileentity = tileentity;
+	}
+	
+	@Override
+	public void drawScreen(int mouseX, int mouseY, float partialTicks) {
+		this.drawGuiContainerBackgroundLayer(partialTicks, mouseX, mouseY);
+		super.drawScreen(mouseX, mouseY, partialTicks);
+		super.renderHoveredToolTip(mouseX, mouseY);
 	}
 	
 	@Override

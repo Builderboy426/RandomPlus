@@ -60,10 +60,10 @@ public class RandomPlusConfig {
 		@Config.LangKey(PREFIX+"client.artifacts.warartifact")
 		public WarArtifact warArtifact = new WarArtifact();
 		
-		@Config.Name("Speed Artifact")
+		/*@Config.Name("Speed Artifact")
 		@Config.Comment("Artifact Mechanics")
 		@Config.LangKey(PREFIX+"client.artifacts.speedartifact")
-		public SpeedArtifact speedArtifact = new SpeedArtifact();
+		public SpeedArtifact speedArtifact = new SpeedArtifact();*/
 		
 	}
 	
@@ -128,7 +128,7 @@ public class RandomPlusConfig {
 		public int uses = 6;
 	}
 	
-	public static class SpeedArtifact {
+	/*public static class SpeedArtifact {
 		
 		@Config.Name("Time")
 		@Config.Comment("Effect Time")
@@ -141,7 +141,7 @@ public class RandomPlusConfig {
 		@Config.LangKey(PREFIX+"client.artifact.speedartifact.uses")
 		@Config.RangeInt(min = 6, max = 24)
 		public int uses = 6;
-	}
+	}*/
 	
 	@SubscribeEvent
 	public static void onConfigChanged(ConfigChangedEvent.OnConfigChangedEvent event)

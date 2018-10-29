@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Random;
 
 import com.builderboy426.randomplus.Main;
 import com.builderboy426.randomplus.init.ItemInit;
@@ -31,7 +32,7 @@ import net.minecraftforge.fml.common.gameevent.TickEvent;
 public class ArtifactBase extends Item implements IHasModel {
 	
 	public static final List<Potion> EFFECTS = new ArrayList<Potion>();
-	private static final HashMap<ArtifactRarity, ItemStack> RARITY = new HashMap<ArtifactRarity, ItemStack>();
+	public static final List<ItemStack> ARTIFACTS = new ArrayList<ItemStack>();
 	
 	public ArtifactBase(String name) {
 		setUnlocalizedName(name);
@@ -61,6 +62,22 @@ public class ArtifactBase extends Item implements IHasModel {
 		Main.proxy.registerItemRenderer(this, 0, "inventory");
 	}
 	
+	public NBTTagCompound getNBTTagCompound(NBTTagCompound compound) {
+		if (compound != null && compound.hasKey("uses")) { return compound; }
+		return null;
+	}
+	
+	public static ArtifactRarity getRarity(int chance) {
+		if (chance >= 0 && chance <= 59) {
+			return ArtifactRarity.COMMON;
+		} else if (chance >= 60 && chance <= 84) {
+			return ArtifactRarity.UNCOMMON;
+		} else if (chance >= 85 && chance <= 99) {
+			return ArtifactRarity.RARE;
+		}
+		return ArtifactRarity.COMMON;
+	}
+	
 	protected boolean checkActive(EntityPlayer player) {
 		if (getRestrictedArtifacts()) {
 			for (int e = 0; e < this.EFFECTS.size(); e++) {
@@ -75,14 +92,5 @@ public class ArtifactBase extends Item implements IHasModel {
 	
 	private boolean getRestrictedArtifacts() {
 		return RandomPlusConfig.CLIENT.artifactConfig.restrictedArtifact;
-	}
-	
-	public void setArtifactRarity(ArtifactRarity rarity, ItemStack artifact) {
-		RARITY.put(rarity, artifact);
-	}
-	
-	public NBTTagCompound getNBTTagCompound(NBTTagCompound compound) {
-		if (compound != null && compound.hasKey("uses")) { return compound; }
-		return null;
 	}
 }

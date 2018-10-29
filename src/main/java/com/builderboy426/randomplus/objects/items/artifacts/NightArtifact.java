@@ -41,7 +41,7 @@ public class NightArtifact extends ArtifactBase {
 	public NightArtifact(String name) {
 		super(name);
 		super.EFFECTS.add(this.effect);
-		setArtifactRarity(ArtifactRarity.UNCOMMON, new ItemStack(this));
+		super.ARTIFACTS.add(new ItemStack(this));
 	}
 	
 	@Override
@@ -103,5 +103,9 @@ public class NightArtifact extends ArtifactBase {
 	private void checkConfigValues() {
 		if (maxUses != RandomPlusConfig.CLIENT.artifactConfig.nightArtifact.uses) { maxUses = RandomPlusConfig.CLIENT.artifactConfig.nightArtifact.uses; }
 		if (time != (int)(RandomPlusConfig.CLIENT.artifactConfig.nightArtifact.time * (20 * 60))) { time = (int)(RandomPlusConfig.CLIENT.artifactConfig.nightArtifact.time * (20 * 60)); }
+	}
+	
+	public static ArtifactRarity getRarity() {
+		return ArtifactRarity.UNCOMMON;
 	}
 }

@@ -43,7 +43,7 @@ public class WarArtifact extends ArtifactBase {
 		super(name);
 		super.EFFECTS.add(this.effect);
 		super.EFFECTS.add(this.effect2);
-		setArtifactRarity(ArtifactRarity.RARE, new ItemStack(this));
+		super.ARTIFACTS.add(new ItemStack(this));
 	}
 	
 	@Override
@@ -107,5 +107,9 @@ public class WarArtifact extends ArtifactBase {
 	private void checkConfigValues() {
 		if (maxUses != RandomPlusConfig.CLIENT.artifactConfig.warArtifact.uses) { maxUses = RandomPlusConfig.CLIENT.artifactConfig.warArtifact.uses; }
 		if (time != (int)(RandomPlusConfig.CLIENT.artifactConfig.warArtifact.time * (20 * 60))) { time = (int)(RandomPlusConfig.CLIENT.artifactConfig.warArtifact.time * (20 * 60)); }
+	}
+	
+	public static ArtifactRarity getRarity() {
+		return ArtifactRarity.RARE;
 	}
 }

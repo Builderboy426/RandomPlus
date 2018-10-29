@@ -1,14 +1,22 @@
 package com.builderboy426.randomplus.objects.blocks.tileentity;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 import com.builderboy426.randomplus.energy.AncientEnergyStorage;
 import com.builderboy426.randomplus.init.ItemInit;
 import com.builderboy426.randomplus.objects.blocks.machines.BlockArtifactAnalyzer;
 import com.builderboy426.randomplus.objects.items.artifacts.ArtifactBase;
+import com.builderboy426.randomplus.objects.items.artifacts.FireArtifact;
+import com.builderboy426.randomplus.objects.items.artifacts.NightArtifact;
+import com.builderboy426.randomplus.objects.items.artifacts.WarArtifact;
 import com.builderboy426.randomplus.objects.items.artifacts.WaterArtifact;
+import com.builderboy426.randomplus.utils.handlers.EnumHandler.ArtifactRarity;
+import com.builderboy426.randomplus.utils.misc.Artifacts;
 
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
@@ -29,7 +37,6 @@ public class TileEntityArtifactAnalyzer extends TileEntity implements ITickable 
 	public ItemStackHandler handler = new ItemStackHandler(3);
 	private AncientEnergyStorage storage = new AncientEnergyStorage(maxEnergy);
 	private String customName;
-	private ItemStack analyzing = ItemStack.EMPTY;
 	
 	private int energy = storage.getEnergyStored();
 	private final int maxCook = 200;
@@ -56,24 +63,21 @@ public class TileEntityArtifactAnalyzer extends TileEntity implements ITickable 
 	
 	private ItemStack getOutput() {
 		//TODO: get artifacts based on rarity
-		Random rarity = new Random();
-		int randArtifact = rarity.nextInt(4);
+		Random rand = new Random();
+		int randRarity = rand.nextInt(99);
 		
-		switch (randArtifact) {
-		case 0:
-			return new ItemStack(ItemInit.WATER_ARTIFACT);
-		case 1:
-			return new ItemStack(ItemInit.FIRE_ARTIFACT);
-		case 2:
-			return new ItemStack(ItemInit.NIGHT_ARTIFACT);
-		case 3:
-			return new ItemStack(ItemInit.WAR_ARTIFACT);
-		case 4:
-			return new ItemStack(ItemInit.SPEED_ARTIFACT);
-		}
-		return ItemStack.EMPTY;
+		ArtifactRarity rarity = ArtifactBase.getRarity(randRarity);
+		
+		Item artifact = getArtifact(rarity);
+		return new ItemStack(artifact);
 	}
-
+	
+	private Item getArtifact(ArtifactRarity rarity) {
+		Random random = new Random();
+		Item item = ArtifactBase.ARTIFACTS.get(random.nextInt(ArtifactBase.ARTIFACTS.size())).getItem();
+		return item;
+	}
+	
 	@Override
 	public <T> T getCapability(Capability<T> capability, EnumFacing facing)  {
 		if (capability == CapabilityEnergy.ENERGY) { return (T)this.storage; }

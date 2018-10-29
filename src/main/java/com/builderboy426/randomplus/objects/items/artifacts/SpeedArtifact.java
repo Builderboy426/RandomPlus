@@ -1,4 +1,4 @@
-package com.builderboy426.randomplus.objects.items.artifacts;
+/*package com.builderboy426.randomplus.objects.items.artifacts;
 
 import java.util.List;
 
@@ -108,4 +108,4 @@ public class SpeedArtifact extends ArtifactBase {
 		if (maxUses != RandomPlusConfig.CLIENT.artifactConfig.speedArtifact.uses) { maxUses = RandomPlusConfig.CLIENT.artifactConfig.speedArtifact.uses; }
 		if (time != (int)(RandomPlusConfig.CLIENT.artifactConfig.speedArtifact.time * (20 * 60))) { time = (int)(RandomPlusConfig.CLIENT.artifactConfig.speedArtifact.time * (20 * 60)); }
 	}
-}
+}*/

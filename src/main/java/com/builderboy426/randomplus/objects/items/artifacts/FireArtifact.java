@@ -41,7 +41,7 @@ public class FireArtifact extends ArtifactBase {
 	public FireArtifact(String name) {
 		super(name);
 		super.EFFECTS.add(this.effect);
-		setArtifactRarity(ArtifactRarity.COMMON, new ItemStack(this));
+		super.ARTIFACTS.add(new ItemStack(this));
 	}
 	
 	@Override
@@ -103,5 +103,9 @@ public class FireArtifact extends ArtifactBase {
 	private void checkConfigValues() {
 		if (maxUses != RandomPlusConfig.CLIENT.artifactConfig.fireArtifact.uses) { maxUses = RandomPlusConfig.CLIENT.artifactConfig.fireArtifact.uses; }
 		if (time != (int)(RandomPlusConfig.CLIENT.artifactConfig.fireArtifact.time * (20 * 60))) { time = (int)(RandomPlusConfig.CLIENT.artifactConfig.fireArtifact.time * (20 * 60)); }
+	}
+	
+	public static ArtifactRarity getRarity() {
+		return ArtifactRarity.COMMON;
 	}
 }

@@ -25,6 +25,13 @@ public class GuiArtifactAnalyzer extends GuiContainer {
 	}
 	
 	@Override
+	public void drawScreen(int mouseX, int mouseY, float partialTicks) {
+		this.drawGuiContainerBackgroundLayer(partialTicks, mouseX, mouseY);
+		super.drawScreen(mouseX, mouseY, partialTicks);
+		super.renderHoveredToolTip(mouseX, mouseY);
+	}
+	
+	@Override
 	protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY) 
 	{
 		String tileName = this.tileentity.getDisplayName().getUnformattedText();
