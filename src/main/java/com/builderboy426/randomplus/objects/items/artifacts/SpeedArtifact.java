@@ -1,4 +1,4 @@
-package com.builderboy426.randomplus.objects.items.artifacts;
+/*package com.builderboy426.randomplus.objects.items.artifacts;
 
 import java.util.List;
 
@@ -28,20 +28,22 @@ import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent.PlayerTickEvent;
 
-public class FireArtifact extends ArtifactBase {
+public class SpeedArtifact extends ArtifactBase {
 	
 	//Config Variables
-	private int maxUses = RandomPlusConfig.CLIENT.artifactConfig.fireArtifact.uses;
-	private int time = (int)(RandomPlusConfig.CLIENT.artifactConfig.fireArtifact.time * (20 * 60));
+	private int maxUses = RandomPlusConfig.CLIENT.artifactConfig.speedArtifact.uses;
+	private int time = (int)(RandomPlusConfig.CLIENT.artifactConfig.speedArtifact.time * (20 * 60));
 	
 	//Artifact Variables
-	private static Potion effect = MobEffects.FIRE_RESISTANCE;
+	private static Potion effect = MobEffects.HASTE;
+	private static Potion effect2 = MobEffects.SPEED;
 	private boolean active = false;
 	
-	public FireArtifact(String name) {
+	public SpeedArtifact(String name) {
 		super(name);
 		super.EFFECTS.add(this.effect);
-		super.ARTIFACTS.add(new ItemStack(this));
+		super.EFFECTS.add(this.effect2);
+		setArtifactRarity(ArtifactRarity.RARE, new ItemStack(this));
 	}
 	
 	@Override
@@ -62,6 +64,7 @@ public class FireArtifact extends ArtifactBase {
 			if (usesLeft >= 1) {
 				if (!player.isPotionActive(effect)) {
 					player.addPotionEffect(new PotionEffect(this.effect, time, 1));
+					player.addPotionEffect(new PotionEffect(this.effect2, time, 1));
 					return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, item);
 				} else {
 					player.sendMessage(new TextComponentString("The artifact's power is still within you!"));
@@ -70,6 +73,7 @@ public class FireArtifact extends ArtifactBase {
 			} else if (usesLeft < 1) {
 				if (!player.isPotionActive(effect)) {
 					player.addPotionEffect(new PotionEffect(this.effect, time, 1));
+					player.addPotionEffect(new PotionEffect(this.effect2, time, 1));
 					player.setHeldItem(hand, new ItemStack((Item)null));
 					return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, item);
 				}
@@ -101,11 +105,7 @@ public class FireArtifact extends ArtifactBase {
 	}
 	
 	private void checkConfigValues() {
-		if (maxUses != RandomPlusConfig.CLIENT.artifactConfig.fireArtifact.uses) { maxUses = RandomPlusConfig.CLIENT.artifactConfig.fireArtifact.uses; }
-		if (time != (int)(RandomPlusConfig.CLIENT.artifactConfig.fireArtifact.time * (20 * 60))) { time = (int)(RandomPlusConfig.CLIENT.artifactConfig.fireArtifact.time * (20 * 60)); }
+		if (maxUses != RandomPlusConfig.CLIENT.artifactConfig.speedArtifact.uses) { maxUses = RandomPlusConfig.CLIENT.artifactConfig.speedArtifact.uses; }
+		if (time != (int)(RandomPlusConfig.CLIENT.artifactConfig.speedArtifact.time * (20 * 60))) { time = (int)(RandomPlusConfig.CLIENT.artifactConfig.speedArtifact.time * (20 * 60)); }
 	}
-	
-	public static ArtifactRarity getRarity() {
-		return ArtifactRarity.COMMON;
-	}
-}
+}*/

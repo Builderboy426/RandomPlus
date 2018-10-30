@@ -28,7 +28,7 @@ public class OreRuby extends OreBase {
 	
 	@Override
 	public int quantityDroppedWithBonus(int fortune, Random random) {
-		return fortune >= 1 ? 2 : 1;
+		return random.nextInt(2) + fortune;
 	}
 	
 	@Override

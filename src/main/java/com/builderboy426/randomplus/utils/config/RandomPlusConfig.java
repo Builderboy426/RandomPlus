@@ -60,6 +60,11 @@ public class RandomPlusConfig {
 		@Config.LangKey(PREFIX+"client.artifacts.warartifact")
 		public WarArtifact warArtifact = new WarArtifact();
 		
+		/*@Config.Name("Speed Artifact")
+		@Config.Comment("Artifact Mechanics")
+		@Config.LangKey(PREFIX+"client.artifacts.speedartifact")
+		public SpeedArtifact speedArtifact = new SpeedArtifact();*/
+		
 	}
 	
 	public static class WaterArtifact {
@@ -69,6 +74,12 @@ public class RandomPlusConfig {
 		@Config.LangKey(PREFIX+"client.artifact.waterartifact.time")
 		@Config.RangeDouble(min = 2.0, max = 10.0)
 		public double time = 2.5;
+		
+		@Config.Name("Uses")
+		@Config.Comment("Total Uses")
+		@Config.LangKey(PREFIX+"client.artifact.waterartifact.uses")
+		@Config.RangeInt(min = 6, max = 24)
+		public int uses = 6;
 		
 	}
 	
@@ -80,6 +91,11 @@ public class RandomPlusConfig {
 		@Config.RangeDouble(min = 2.0, max = 10.0)
 		public double time = 3.0;
 		
+		@Config.Name("Uses")
+		@Config.Comment("Total Uses")
+		@Config.LangKey(PREFIX+"client.artifact.fireartifact.uses")
+		@Config.RangeInt(min = 6, max = 24)
+		public int uses = 6;
 	}
 	
 	public static class NightArtifact {
@@ -90,6 +106,11 @@ public class RandomPlusConfig {
 		@Config.RangeDouble(min = 2.0, max = 10.0)
 		public double time = 2.5;
 		
+		@Config.Name("Uses")
+		@Config.Comment("Total Uses")
+		@Config.LangKey(PREFIX+"client.artifact.nightartifact.uses")
+		@Config.RangeInt(min = 6, max = 24)
+		public int uses = 6;
 	}
 	
 	public static class WarArtifact {
@@ -100,7 +121,27 @@ public class RandomPlusConfig {
 		@Config.RangeDouble(min = 2.0, max = 10.0)
 		public double time = 3.0;
 		
+		@Config.Name("Uses")
+		@Config.Comment("Total Uses")
+		@Config.LangKey(PREFIX+"client.artifact.warartifact.uses")
+		@Config.RangeInt(min = 6, max = 24)
+		public int uses = 6;
 	}
+	
+	/*public static class SpeedArtifact {
+		
+		@Config.Name("Time")
+		@Config.Comment("Effect Time")
+		@Config.LangKey(PREFIX+"client.artifact.speedartifact.time")
+		@Config.RangeDouble(min = 2.0, max = 10.0)
+		public double time = 2.5;
+		
+		@Config.Name("Uses")
+		@Config.Comment("Total Uses")
+		@Config.LangKey(PREFIX+"client.artifact.speedartifact.uses")
+		@Config.RangeInt(min = 6, max = 24)
+		public int uses = 6;
+	}*/
 	
 	@SubscribeEvent
 	public static void onConfigChanged(ConfigChangedEvent.OnConfigChangedEvent event)
