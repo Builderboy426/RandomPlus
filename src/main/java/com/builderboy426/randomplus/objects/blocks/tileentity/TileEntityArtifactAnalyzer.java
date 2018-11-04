@@ -41,6 +41,8 @@ public class TileEntityArtifactAnalyzer extends TileEntity implements ITickable 
 	private int energy = storage.getEnergyStored();
 	private final int maxCook = 200;
 	
+	private List<ArtifactBase> foundArtifacts;
+	
 	@Override
 	public void update() {
 		if (handler.getStackInSlot(0).getItem() == ItemInit.RESEARCH_KIT && handler.getStackInSlot(0).getCount() > 0
@@ -75,6 +77,7 @@ public class TileEntityArtifactAnalyzer extends TileEntity implements ITickable 
 	private Item getArtifact(ArtifactRarity rarity) {
 		Random random = new Random();
 		Item item = ArtifactBase.ARTIFACTS.get(random.nextInt(ArtifactBase.ARTIFACTS.size())).getItem();
+		//foundArtifacts = new ArrayList<ArtifactBase>();
 		return item;
 	}
 	
