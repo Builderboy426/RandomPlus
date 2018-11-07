@@ -41,7 +41,7 @@ public class FireArtifact extends ArtifactBase {
 	public FireArtifact(String name) {
 		super(name);
 		super.EFFECTS.add(this.effect);
-		super.ARTIFACTS.add(new ItemStack(this));
+		super.COMMON_ARTIFACTS.add(new ItemStack(this));
 	}
 	
 	@Override

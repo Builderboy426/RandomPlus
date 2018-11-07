@@ -32,7 +32,11 @@ import net.minecraftforge.fml.common.gameevent.TickEvent;
 public class ArtifactBase extends Item implements IHasModel {
 	
 	public static final List<Potion> EFFECTS = new ArrayList<Potion>();
-	public static final List<ItemStack> ARTIFACTS = new ArrayList<ItemStack>();
+	public static final List<ItemStack> COMMON_ARTIFACTS = new ArrayList<ItemStack>();
+	public static final List<ItemStack> UNCOMMON_ARTIFACTS = new ArrayList<ItemStack>();
+	public static final List<ItemStack> RARE_ARTIFACTS = new ArrayList<ItemStack>();
+	public static final List<ItemStack> EPIC_ARTIFACTS = new ArrayList<ItemStack>();
+	public static final List<ItemStack> LEGENDARY_ARTIFACTS = new ArrayList<ItemStack>();
 	
 	public ArtifactBase(String name) {
 		setUnlocalizedName(name);
@@ -69,13 +73,32 @@ public class ArtifactBase extends Item implements IHasModel {
 	
 	public static ArtifactRarity getRarity(int chance) {
 		if (chance >= 0 && chance <= 59) {
+			System.out.println("COMMON");
 			return ArtifactRarity.COMMON;
 		} else if (chance >= 60 && chance <= 84) {
+			System.out.println("UNCOMMON");
 			return ArtifactRarity.UNCOMMON;
 		} else if (chance >= 85 && chance <= 99) {
+			System.out.println("RARE");
 			return ArtifactRarity.RARE;
 		}
 		return ArtifactRarity.COMMON;
+	}
+	
+	public static List<ItemStack> getRarityList(ArtifactRarity rarity) {
+		switch (rarity) {
+		case COMMON:
+			return COMMON_ARTIFACTS;
+		case UNCOMMON:
+			return UNCOMMON_ARTIFACTS;
+		case RARE:
+			return RARE_ARTIFACTS;
+		case EPIC:
+			return EPIC_ARTIFACTS;
+		case LEGENDARY:
+			return LEGENDARY_ARTIFACTS;
+		}
+		return COMMON_ARTIFACTS;
 	}
 	
 	protected boolean checkActive(EntityPlayer player) {
