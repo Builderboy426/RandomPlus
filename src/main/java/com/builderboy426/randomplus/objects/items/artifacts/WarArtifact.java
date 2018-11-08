@@ -43,7 +43,7 @@ public class WarArtifact extends ArtifactBase {
 		super(name);
 		super.EFFECTS.add(this.effect);
 		super.EFFECTS.add(this.effect2);
-		super.ARTIFACTS.add(new ItemStack(this));
+		super.RARE_ARTIFACTS.add(new ItemStack(this));
 	}
 	
 	@Override
