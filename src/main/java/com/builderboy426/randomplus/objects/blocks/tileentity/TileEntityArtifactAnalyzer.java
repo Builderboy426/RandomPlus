@@ -47,7 +47,7 @@ public class TileEntityArtifactAnalyzer extends TileEntity implements ITickable 
 		&& handler.getStackInSlot(2).isEmpty()) {
 			if (energy >= 35000) {
 				cookTime++;
-				if (cookTime >= maxCook) {
+				if (cookTime == maxCook) {
 					handler.getStackInSlot(0).shrink(1);
 					handler.getStackInSlot(1).shrink(1);
 					handler.setStackInSlot(2, getOutput());

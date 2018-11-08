@@ -73,13 +73,10 @@ public class ArtifactBase extends Item implements IHasModel {
 	
 	public static ArtifactRarity getRarity(int chance) {
 		if (chance >= 0 && chance <= 59) {
-			System.out.println("COMMON");
 			return ArtifactRarity.COMMON;
 		} else if (chance >= 60 && chance <= 84) {
-			System.out.println("UNCOMMON");
 			return ArtifactRarity.UNCOMMON;
 		} else if (chance >= 85 && chance <= 99) {
-			System.out.println("RARE");
 			return ArtifactRarity.RARE;
 		}
 		return ArtifactRarity.COMMON;
