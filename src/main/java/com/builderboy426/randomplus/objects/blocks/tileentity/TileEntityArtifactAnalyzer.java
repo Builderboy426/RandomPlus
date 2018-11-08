@@ -76,7 +76,6 @@ public class TileEntityArtifactAnalyzer extends TileEntity implements ITickable 
 		List<ItemStack> rarityList = ArtifactBase.getRarityList(rarity);
 		
 		Item item = rarityList.get(random.nextInt(rarityList.size())).getItem();
-		
 		return item;
 	}
 	
