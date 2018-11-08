@@ -13,7 +13,6 @@ import com.builderboy426.randomplus.objects.items.artifacts.NightArtifact;
 import com.builderboy426.randomplus.objects.items.artifacts.WarArtifact;
 import com.builderboy426.randomplus.objects.items.artifacts.WaterArtifact;
 import com.builderboy426.randomplus.utils.handlers.EnumHandler.ArtifactRarity;
-import com.builderboy426.randomplus.utils.misc.Artifacts;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
@@ -39,20 +38,20 @@ public class TileEntityArtifactAnalyzer extends TileEntity implements ITickable 
 	private String customName;
 	
 	private int energy = storage.getEnergyStored();
-	private final int maxCook = 200;
+	private final int maxCook = 40;
 	
 	@Override
 	public void update() {
 		if (handler.getStackInSlot(0).getItem() == ItemInit.RESEARCH_KIT && handler.getStackInSlot(0).getCount() > 0
 		&& handler.getStackInSlot(1).getItem() == ItemInit.UNKNOWN_ARTIFACT && handler.getStackInSlot(1).getCount() > 0
 		&& handler.getStackInSlot(2).isEmpty()) {
-			if (energy >= 175) {
-				energy -= 175;
+			if (energy >= 35000) {
 				cookTime++;
-				if (cookTime >= maxCook) {
+				if (cookTime == maxCook) {
 					handler.getStackInSlot(0).shrink(1);
 					handler.getStackInSlot(1).shrink(1);
 					handler.setStackInSlot(2, getOutput());
+					energy -= 35000;
 					cookTime = 0;
 				}
 			}	
@@ -64,7 +63,7 @@ public class TileEntityArtifactAnalyzer extends TileEntity implements ITickable 
 	private ItemStack getOutput() {
 		//TODO: get artifacts based on rarity
 		Random rand = new Random();
-		int randRarity = rand.nextInt(99);
+		int randRarity = rand.nextInt(100);
 		
 		ArtifactRarity rarity = ArtifactBase.getRarity(randRarity);
 		
@@ -74,7 +73,9 @@ public class TileEntityArtifactAnalyzer extends TileEntity implements ITickable 
 	
 	private Item getArtifact(ArtifactRarity rarity) {
 		Random random = new Random();
-		Item item = ArtifactBase.ARTIFACTS.get(random.nextInt(ArtifactBase.ARTIFACTS.size())).getItem();
+		List<ItemStack> rarityList = ArtifactBase.getRarityList(rarity);
+		
+		Item item = rarityList.get(random.nextInt(rarityList.size())).getItem();
 		return item;
 	}
 	

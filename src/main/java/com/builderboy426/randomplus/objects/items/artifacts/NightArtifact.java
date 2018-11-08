@@ -41,7 +41,7 @@ public class NightArtifact extends ArtifactBase {
 	public NightArtifact(String name) {
 		super(name);
 		super.EFFECTS.add(this.effect);
-		super.ARTIFACTS.add(new ItemStack(this));
+		super.UNCOMMON_ARTIFACTS.add(new ItemStack(this));
 	}
 	
 	@Override
