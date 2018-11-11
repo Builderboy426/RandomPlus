@@ -1,4 +1,4 @@
-package com.builderboy426.randomplus.objects.blocks.machines;
+/*package com.builderboy426.randomplus.objects.blocks.machines;
 
 import java.util.Random;
 
@@ -6,6 +6,7 @@ import com.builderboy426.randomplus.Main;
 import com.builderboy426.randomplus.init.BlockInit;
 import com.builderboy426.randomplus.objects.blocks.BlockBase;
 import com.builderboy426.randomplus.objects.blocks.tileentity.TileEntityAncientGenerator;
+import com.builderboy426.randomplus.objects.blocks.tileentity.TileEntityPylon;
 import com.builderboy426.randomplus.utils.Reference;
 
 import net.minecraft.block.Block;
@@ -21,13 +22,13 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public class BlockAncientGenerator extends BlockBase {
+public class BlockPylon extends BlockBase {
 
-	public BlockAncientGenerator(String name) { super(name, Material.IRON, 20.125f); }
+	public BlockPylon(String name) { super(name, Material.IRON, 20.125f); }
 	
 	@Override
 	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
-		player.openGui(Main.instance, Reference.GUI_ANCIENT_GENERATOR, world, pos.getX(), pos.getY(), pos.getZ());
+		player.openGui(Main.instance, Reference.GUI_PYLON, world, pos.getX(), pos.getY(), pos.getZ());
 		return true;
 	}
 	
@@ -35,15 +36,11 @@ public class BlockAncientGenerator extends BlockBase {
 	public boolean hasTileEntity(IBlockState state) { return true; }
 	
 	@Override
-	public TileEntity createTileEntity(World world, IBlockState state) { return new TileEntityAncientGenerator(); }
+	public TileEntity createTileEntity(World world, IBlockState state) { return new TileEntityPylon(); }
 	
 	@Override
-	public void breakBlock(World world, BlockPos pos, IBlockState state) {
-		TileEntityAncientGenerator tileEntity = (TileEntityAncientGenerator)world.getTileEntity(pos);
-		world.spawnEntity(new EntityItem(world, pos.getX(), pos.getY(), pos.getZ(), tileEntity.handler.getStackInSlot(0)));
-		super.breakBlock(world, pos, state);
-	}
+	public void breakBlock(World world, BlockPos pos, IBlockState state) { super.breakBlock(world, pos, state); }
 	
 	@Override
 	public int getHarvestLevel(IBlockState state) { return 2; }
-}
+}*/

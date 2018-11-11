@@ -29,14 +29,10 @@ public class BlockArtifactAnalyzer extends BlockBase {
 	}
 	
 	@Override
-	public boolean hasTileEntity(IBlockState state) {
-		return true;
-	}
+	public boolean hasTileEntity(IBlockState state) { return true; }
 	
 	@Override
-	public TileEntity createTileEntity(World world, IBlockState state) {
-		return new TileEntityArtifactAnalyzer();
-	}
+	public TileEntity createTileEntity(World world, IBlockState state) { return new TileEntityArtifactAnalyzer(); }
 	
 	@Override
 	public void breakBlock(World world, BlockPos pos, IBlockState state) {

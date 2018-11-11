@@ -6,6 +6,7 @@ import java.util.List;
 import com.builderboy426.randomplus.objects.blocks.BlockBase;
 import com.builderboy426.randomplus.objects.blocks.machines.BlockAncientGenerator;
 import com.builderboy426.randomplus.objects.blocks.machines.BlockArtifactAnalyzer;
+//import com.builderboy426.randomplus.objects.blocks.machines.BlockPylon;
 import com.builderboy426.randomplus.objects.blocks.ores.*;
 
 import net.minecraft.block.Block;
@@ -35,4 +36,7 @@ public class BlockInit {
 	//Chaos Machines
 	//public static final Block CHAOS_ENERGIZER = new BlockChaosEnergizer("chaos_energizer", Material.IRON, 42.5f, 3);
 	//public static final Block CHAOS_ENCHANTER = new BlockChaosEnchanter("chaos_enchanter", Material.IRON, 45.75f, 3);
+	
+	//Energy Transmitters
+	//public static final Block PYLON = new BlockPylon("pylon");
 }

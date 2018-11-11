@@ -1,8 +1,8 @@
-package com.builderboy426.randomplus.objects.blocks.tileentity;
+/*package com.builderboy426.randomplus.objects.blocks.tileentity;
 
 import com.builderboy426.randomplus.energy.AncientEnergyStorage;
+import com.builderboy426.randomplus.energy.ChaosEnergyStorage;
 import com.builderboy426.randomplus.init.ItemInit;
-import com.builderboy426.randomplus.objects.blocks.utils.Machines;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -15,61 +15,31 @@ import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.energy.CapabilityEnergy;
-import net.minecraftforge.fml.common.WorldAccessContainer;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 
-public class TileEntityAncientGenerator extends TileEntity implements ITickable {
+public class TileEntityPylon extends TileEntity implements ITickable {
 	
 	private final int maxEnergy = 250000;
 	public int cookTime = 0;
 	
 	public ItemStackHandler handler = new ItemStackHandler(1);
-	private AncientEnergyStorage storage = new AncientEnergyStorage(maxEnergy);
+	private AncientEnergyStorage ancientStorage = new AncientEnergyStorage(maxEnergy);
+	private ChaosEnergyStorage chaosStorage = new ChaosEnergyStorage(maxEnergy);
 	private String customName;
 	
-	private int energy = storage.getEnergyStored();
+	private int ancientEnergy = ancientStorage.getEnergyStored();
+	private int chaosEnergy = chaosStorage.getEnergyStored();
 	private final int maxCook = 40;
 	private final int maxSendEnergy = 500;
 	
 	@Override
 	public void update() {
-		/*if (energy <= (maxEnergy-10000)) {
-			if (!handler.getStackInSlot(0).isEmpty() && isItemFuel(handler.getStackInSlot(0))) {
-				cookTime++;
-				
-				//TODO: Upgrade(s)
-				
-				if (cookTime == maxCook) {
-					energy += getFuelValue(handler.getStackInSlot(0));
-					handler.getStackInSlot(0).shrink(1);
-					cookTime = 0;
-				}
-			} else { cookTime = 0; }
-		}*/
-		
-		if (!handler.getStackInSlot(0).isEmpty() && isItemFuel(handler.getStackInSlot(0))) {
-			if (energy <= (maxEnergy-10000)) {
-				cookTime++;
-				
-				//TODO: Upgrade(s)
-				
-				if (cookTime == maxCook) {
-					energy += getFuelValue(handler.getStackInSlot(0));
-					handler.getStackInSlot(0).shrink(1);
-					cookTime = 0;
-				}
-			} else { cookTime = 0; }
-		} else { cookTime = 0; }
-		
-		//TODO: Generator radius (2)
-		for (int x = -3; x < 3; x++) {
-			for (int y = -3; y < 3; y++) {
-				for (int z = -3; z < 3; z++) {
-					getMachines(x, y, z);
-				}
-			}	
-		}
+		//TODO: Generator radius (5)
+		getMachines(1,0);
+		getMachines(-1,0);
+		getMachines(0,1);
+		getMachines(0,-1);
 	}
 
 	@Override
@@ -140,11 +110,6 @@ public class TileEntityAncientGenerator extends TileEntity implements ITickable 
 		return this.world.getTileEntity(this.pos) != this ? false : player.getDistanceSq((double)this.pos.getX()+0.5, (double)this.pos.getY()+0.5, (double)this.pos.getZ()+0.5) <=64.0D;
 	}
 	
-/*	private boolean isItemUpgrade(ItemStack stack) {
-		if (stack.getItem() == ItemInit.UPGRADE) { return true; }
-		return false;
-	}*/
-	
 	private boolean isItemFuel(ItemStack stack) { return getFuelValue(stack) > 0; }
 	
 	private int getFuelValue(ItemStack stack) {
@@ -152,10 +117,8 @@ public class TileEntityAncientGenerator extends TileEntity implements ITickable 
 		return 0;
 	}
 	
-	private void getMachines(int x, int y, int z) {
-		BlockPos newPos = new BlockPos(getPos().getX()+x, getPos().getY()+y, getPos().getZ()+z);
+	private void getMachines(int x, int z) {
+		BlockPos newPos = new BlockPos(getPos().getX()+x, getPos().getY(), getPos().getZ()+z);
 		TileEntity tileEntity = getWorld().getTileEntity(newPos);
-		
-		Machines.updateAnalyzer(tileEntity, (TileEntity)this, this.energy, maxSendEnergy);
 	}
-}
+}*/
