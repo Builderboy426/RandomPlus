@@ -13,7 +13,7 @@ public class Reference {
     //Ancient Machines
     public static final int GUI_ANCIENT_GENERATOR = 1;
     public static final int GUI_ARTIFACT_ANALYZER = 2;
-    public static final int GUI_PYLON = 3;
+    public static final int GUI_ANCIENT_PYLON = 3;
     
     //Chaos Machines
     //public static final int GUI_CHAOS_ENERGIZER = 2;

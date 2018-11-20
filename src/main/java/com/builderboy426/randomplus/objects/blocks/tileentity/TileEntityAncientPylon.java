@@ -1,8 +1,8 @@
-/*package com.builderboy426.randomplus.objects.blocks.tileentity;
+package com.builderboy426.randomplus.objects.blocks.tileentity;
 
 import com.builderboy426.randomplus.energy.AncientEnergyStorage;
-import com.builderboy426.randomplus.energy.ChaosEnergyStorage;
 import com.builderboy426.randomplus.init.ItemInit;
+import com.builderboy426.randomplus.objects.blocks.utils.Machines;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -18,28 +18,28 @@ import net.minecraftforge.energy.CapabilityEnergy;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 
-public class TileEntityPylon extends TileEntity implements ITickable {
+public class TileEntityAncientPylon extends TileEntity implements ITickable {
 	
 	private final int maxEnergy = 250000;
-	public int cookTime = 0;
 	
 	public ItemStackHandler handler = new ItemStackHandler(1);
-	private AncientEnergyStorage ancientStorage = new AncientEnergyStorage(maxEnergy);
-	private ChaosEnergyStorage chaosStorage = new ChaosEnergyStorage(maxEnergy);
+	private AncientEnergyStorage storage = new AncientEnergyStorage(maxEnergy);
 	private String customName;
 	
-	private int ancientEnergy = ancientStorage.getEnergyStored();
-	private int chaosEnergy = chaosStorage.getEnergyStored();
-	private final int maxCook = 40;
-	private final int maxSendEnergy = 500;
+	private int energy = storage.getEnergyStored();
+	private int maxSendEnergy = 500;
 	
 	@Override
 	public void update() {
-		//TODO: Generator radius (5)
-		getMachines(1,0);
-		getMachines(-1,0);
-		getMachines(0,1);
-		getMachines(0,-1);
+		//TODO: UPGRADES
+		//Generator radius (5)
+		for (int x = -6; x < 6; x++) {
+			for (int y = -6; y < 6; y++) {
+				for (int z = -6; z < 6; z++) {
+					getMachines(x, y, z);
+				}
+			}	
+		}
 	}
 
 	@Override
@@ -60,7 +60,6 @@ public class TileEntityPylon extends TileEntity implements ITickable {
 	public NBTTagCompound writeToNBT(NBTTagCompound compound) {
 		super.writeToNBT(compound);
 		compound.setTag("inventory", this.handler.serializeNBT());
-		compound.setInteger("cooktime", this.cookTime);
 		compound.setInteger("guienergy", this.energy);
 		compound.setString("name", getDisplayName().toString());
 		this.storage.writeToNBT(compound);
@@ -71,7 +70,6 @@ public class TileEntityPylon extends TileEntity implements ITickable {
 	public void readFromNBT(NBTTagCompound compound) {
 		super.readFromNBT(compound);
 		this.handler.deserializeNBT(compound.getCompoundTag("inventory"));
-		this.cookTime = compound.getInteger("cooktime");
 		this.energy = compound.getInteger("guienergy");
 		this.customName = compound.getString("name");
 		this.storage.readFromNBT(compound);
@@ -80,35 +78,16 @@ public class TileEntityPylon extends TileEntity implements ITickable {
 	public ITextComponent getDisplayName() { return new TextComponentTranslation("container.ancient_generator"); }
 	public int getEnergyStored() { return this.energy; }
 	public int getMaxEnergyStored() { return this.maxEnergy; }
-	public int getMaxCook() { return maxCook; }
-	
-	public void setField(int id, int value) {
-		switch (id) {
-		case 0:
-			this.energy = value;
-			break;
-		case 1:
-			this.cookTime = value;
-			break;
-		default:
-			return;
-		}
-	}
-	
-	public int getField(int id) {
-		switch (id) {
-		case 0:
-			return this.energy;
-		case 1:
-			return this.cookTime;
-		default:
-			return 0;
-		}
-	}
+	public void setEnergy(int newEnergy) { this.energy = newEnergy; }
 	
 	public boolean isUseableByPlayer(EntityPlayer player) {
 		return this.world.getTileEntity(this.pos) != this ? false : player.getDistanceSq((double)this.pos.getX()+0.5, (double)this.pos.getY()+0.5, (double)this.pos.getZ()+0.5) <=64.0D;
 	}
+	
+/*	private boolean isItemUpgrade(ItemStack stack) {
+		if (stack.getItem() == ItemInit.UPGRADE) { return true; }
+		return false;
+	}*/
 	
 	private boolean isItemFuel(ItemStack stack) { return getFuelValue(stack) > 0; }
 	
@@ -117,8 +96,10 @@ public class TileEntityPylon extends TileEntity implements ITickable {
 		return 0;
 	}
 	
-	private void getMachines(int x, int z) {
-		BlockPos newPos = new BlockPos(getPos().getX()+x, getPos().getY(), getPos().getZ()+z);
+	private void getMachines(int x, int y, int z) {
+		BlockPos newPos = new BlockPos(getPos().getX()+x, getPos().getY()+y, getPos().getZ()+z);
 		TileEntity tileEntity = getWorld().getTileEntity(newPos);
+		
+		Machines.updateAnalyzer(tileEntity, (TileEntity)this, this.energy, maxSendEnergy);
 	}
-}*/
+}

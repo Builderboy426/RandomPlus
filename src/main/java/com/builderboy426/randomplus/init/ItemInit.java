@@ -58,6 +58,7 @@ public class ItemInit {
 	public static final Item LITHIUM_BATTERY = new ItemBase("battery_lithium", 16);
 	public static final Item MACHINE_CASING = new ItemBase("casing_machine", 1);
 	public static final Item SCREEN = new ItemBase("screen", 16);
+	public static final Item ENERGY_TRANSMITTER = new ItemBase("transmitter_energy", 1);
 	
 	//Gems and/or Materials
 	public static final Item RUBY = new ItemBase("ruby");
@@ -70,16 +71,10 @@ public class ItemInit {
 	//Metals
 	//Pure
 	public static final Item COPPER_INGOT = new ItemBase("ingot_copper");
-	public static final Item COPPER_NUGGET = new ItemBase("nugget_copper");
-	public static final Item COPPER_DUST = new ItemBase("dust_copper");
 	
 	public static final Item ALUMINIUM_INGOT = new ItemBase("ingot_aluminium");
-	public static final Item ALUMINIUM_NUGGET = new ItemBase("nugget_aluminium");
-	public static final Item ALUMINIUM_DUST = new ItemBase("dust_aluminium");
 	
-	//Alloys
-	public static final Item BRONZE_INGOT = new ItemBase("ingot_bronze");
-	public static final Item BRONZE_NUGGET = new ItemBase("nugget_bronze");
+	//Alloys (Soon)
 	
 	//Artifacts
 	public static final Item WATER_ARTIFACT = new WaterArtifact("artifact_water");
