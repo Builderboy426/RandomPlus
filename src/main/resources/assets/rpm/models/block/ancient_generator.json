@@ -6,7 +6,7 @@
         "down": "rpm:blocks/ancient_generator_bottom",
         "north": "rpm:blocks/ancient_generator_back",
         "east": "rpm:blocks/ancient_generator_side",
-        "south": "rpm:blocks/ancient_generator_front",
+        "south": "rpm:blocks/ancient_generator_front_off",
         "west": "rpm:blocks/ancient_generator_side"
     }
 }
