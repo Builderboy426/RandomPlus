@@ -17,6 +17,15 @@ public class ItemBase extends Item implements IHasModel {
 		ItemInit.ITEMS.add(this);
 	}
 	
+	public ItemBase(String name, int stackSize) {
+		setUnlocalizedName(name);
+		setRegistryName(name);
+		setCreativeTab(Main.RANDOM_PLUS);
+		setMaxStackSize(stackSize);
+		
+		ItemInit.ITEMS.add(this);
+	}
+	
 	@Override
 	public void registerModels() {
 		Main.proxy.registerItemRenderer(this, 0, "inventory");

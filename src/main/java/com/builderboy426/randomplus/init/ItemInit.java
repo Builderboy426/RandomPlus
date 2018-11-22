@@ -52,7 +52,7 @@ public class ItemInit {
 	public static final Item STAR_DIAMOND = new ItemBase("star_diamond");
 	public static final Item STAR_CHAOS = new ItemBase("star_chaos");
 	
-	public static final Item RESEARCH_KIT = new ItemBase("research_kit");
+	public static final Item RESEARCH_KIT = new ItemBase("research_kit", 32);
 	
 	//Gems
 	public static final Item RUBY = new ItemBase("ruby");
@@ -67,7 +67,7 @@ public class ItemInit {
 	public static final Item NIGHT_ARTIFACT = new NightArtifact("artifact_night");
 	public static final Item WAR_ARTIFACT = new WarArtifact("artifact_war");
 	//public static final Item SPEED_ARTIFACT = new SpeedArtifact("artifact_speed");
-	public static final Item UNKNOWN_ARTIFACT = new ItemBase("artifact_unknown");
+	public static final Item UNKNOWN_ARTIFACT = new ItemBase("artifact_unknown", 1);
 	
 	//Tools
 	public static final Item AXE_RUBY = new ToolAxe("axe_ruby", TOOL_RUBY);
