@@ -142,6 +142,7 @@ public class TileEntityAncientGenerator extends TileEntity implements ITickable 
 		BlockPos newPos = new BlockPos(getPos().getX()+x, getPos().getY()+y, getPos().getZ()+z);
 		TileEntity tileEntity = getWorld().getTileEntity(newPos);
 		
+		Machines.updatePylon(tileEntity, (TileEntity)this, this.energy, maxSendEnergy);
 		Machines.updateAnalyzer(tileEntity, (TileEntity)this, this.energy, maxSendEnergy);
 	}
 }

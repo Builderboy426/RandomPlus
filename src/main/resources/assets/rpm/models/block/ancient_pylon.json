@@ -1,0 +1,12 @@
+{
+    "parent": "block/orientable",
+    "textures": {
+        "particle": "rpm:blocks/ancient_pylon_side",
+        "up": "rpm:blocks/ancient_pylon_top",
+        "down": "rpm:blocks/ancient_pylon_bottom",
+        "north": "rpm:blocks/ancient_pylon_back",
+        "east": "rpm:blocks/ancient_pylon_side",
+        "south": "rpm:blocks/ancient_pylon_front",
+        "west": "rpm:blocks/ancient_pylon_side"
+    }
+}

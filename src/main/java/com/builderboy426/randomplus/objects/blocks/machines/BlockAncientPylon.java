@@ -22,8 +22,7 @@ public class BlockAncientPylon extends BlockBase {
 	
 	@Override
 	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
-		player.openGui(Main.instance, Reference.GUI_ANCIENT_PYLON, world, pos.getX(), pos.getY(), pos.getZ());
-		return true;
+		return super.onBlockActivated(world, pos, state, player, hand, facing, hitX, hitY, hitZ);
 	}
 	
 	@Override
