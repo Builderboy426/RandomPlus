@@ -7,6 +7,7 @@ import com.builderboy426.randomplus.objects.blocks.BlockBase;
 import com.builderboy426.randomplus.objects.blocks.machines.BlockAncientGenerator;
 import com.builderboy426.randomplus.objects.blocks.machines.BlockAncientPylon;
 import com.builderboy426.randomplus.objects.blocks.machines.BlockArtifactAnalyzer;
+import com.builderboy426.randomplus.objects.blocks.machines.BlockBlastFurnace;
 import com.builderboy426.randomplus.objects.blocks.ores.*;
 
 import net.minecraft.block.Block;
@@ -45,4 +46,5 @@ public class BlockInit {
 	//public static final Block CHAOS_PYLON = new BlockChaosPylon("chaos_pylon");
 	
 	//Misc. Machines
+	public static final Block BLAST_FURNACE = new BlockBlastFurnace("blast_furnace");
 }
