@@ -145,7 +145,7 @@ public class TileEntityAncientGenerator extends TileEntity implements ITickable 
 	private boolean isItemFuel(ItemStack stack) { return getFuelValue(stack) > 0; }
 	
 	private int getFuelValue(ItemStack stack) {
-		if (stack.getItem() == ItemInit.ANCIENT_SHARD) { return 10000; }
+		if (stack.getItem() == ItemInit.ANCIENT_SHARD) { return 7500; }
 		return 0;
 	}
 	
