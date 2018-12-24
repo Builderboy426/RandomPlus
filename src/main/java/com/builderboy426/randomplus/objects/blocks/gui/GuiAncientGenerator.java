@@ -48,8 +48,8 @@ public class GuiAncientGenerator extends GuiContainer {
 		this.mc.getTextureManager().bindTexture(TEXTURES);
 		this.drawTexturedModalRect(this.guiLeft, this.guiTop, 0, 0, this.xSize, this.ySize);
 		
-		int l = this.getCookProgressScaled(24);
-		this.drawTexturedModalRect(this.guiLeft + 113, this.guiTop + 32, 176, 14, l + 1, 16);
+		int l = -this.getCookProgressScaled(24);
+		this.drawTexturedModalRect(this.guiLeft + 113, this.guiTop + 32, 176, 14, 1+l, 16);
 		
 		int k = this.getEnergyStoredScaled(75);
 		this.drawTexturedModalRect(this.guiLeft + 152, this.guiTop + 7, 176, 32, 16, 76 - k);
@@ -66,8 +66,8 @@ public class GuiAncientGenerator extends GuiContainer {
 	
 	private int getCookProgressScaled(int pixels)
 	{
-		float i = (float)this.tileentity.cookTime;
-		float j = (float)this.tileentity.getMaxCook();
-		return j != 0 ? (int)((i / j) * pixels) : 0;
+		float i = (float)this.tileentity.burnTime;
+		float j = (float)40;
+		return i < 40 ? (int)((i/j)*pixels) : 0;
 	}
 }
