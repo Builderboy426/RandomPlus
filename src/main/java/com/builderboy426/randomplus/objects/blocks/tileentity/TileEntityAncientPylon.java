@@ -22,7 +22,6 @@ public class TileEntityAncientPylon extends TileEntity implements ITickable {
 	
 	private final int maxEnergy = 250000;
 	
-	public ItemStackHandler handler = new ItemStackHandler(1);
 	private AncientEnergyStorage storage = new AncientEnergyStorage(maxEnergy);
 	private String customName;
 	
@@ -31,7 +30,6 @@ public class TileEntityAncientPylon extends TileEntity implements ITickable {
 	
 	@Override
 	public void update() {
-		//TODO: UPGRADES
 		//Generator radius (5)
 		for (int x = -6; x < 6; x++) {
 			for (int y = -6; y < 6; y++) {
@@ -45,21 +43,18 @@ public class TileEntityAncientPylon extends TileEntity implements ITickable {
 	@Override
 	public <T> T getCapability(Capability<T> capability, EnumFacing facing)  {
 		if (capability == CapabilityEnergy.ENERGY) { return (T)this.storage; }
-		if (capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) { return (T)this.handler; }
 		return super.getCapability(capability, facing);
 	}
 	
 	@Override
 	public boolean hasCapability(Capability<?> capability, EnumFacing facing)  {
 		if (capability == CapabilityEnergy.ENERGY) { return true; }
-		if (capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) { return true; }
 		return super.hasCapability(capability, facing);
 	}
 	
 	@Override
 	public NBTTagCompound writeToNBT(NBTTagCompound compound) {
 		super.writeToNBT(compound);
-		compound.setTag("inventory", this.handler.serializeNBT());
 		compound.setInteger("guienergy", this.energy);
 		compound.setString("name", getDisplayName().toString());
 		this.storage.writeToNBT(compound);
@@ -69,7 +64,6 @@ public class TileEntityAncientPylon extends TileEntity implements ITickable {
 	@Override
 	public void readFromNBT(NBTTagCompound compound) {
 		super.readFromNBT(compound);
-		this.handler.deserializeNBT(compound.getCompoundTag("inventory"));
 		this.energy = compound.getInteger("guienergy");
 		this.customName = compound.getString("name");
 		this.storage.readFromNBT(compound);

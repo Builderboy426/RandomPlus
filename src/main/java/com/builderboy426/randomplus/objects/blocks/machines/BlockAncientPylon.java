@@ -33,8 +33,6 @@ public class BlockAncientPylon extends BlockBase {
 	
 	@Override
 	public void breakBlock(World world, BlockPos pos, IBlockState state) {
-		TileEntityAncientPylon tileEntity = (TileEntityAncientPylon)world.getTileEntity(pos);
-		world.spawnEntity(new EntityItem(world, pos.getX(), pos.getY(), pos.getZ(), tileEntity.handler.getStackInSlot(0)));
 		super.breakBlock(world, pos, state);
 	}
 	

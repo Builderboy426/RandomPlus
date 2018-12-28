@@ -2,6 +2,7 @@ package com.builderboy426.randomplus.objects.blocks.tileentity;
 
 import com.builderboy426.randomplus.energy.AncientEnergyStorage;
 import com.builderboy426.randomplus.init.ItemInit;
+import com.builderboy426.randomplus.objects.blocks.machines.BlockAncientGenerator;
 import com.builderboy426.randomplus.objects.blocks.utils.Machines;
 
 import net.minecraft.entity.player.EntityPlayer;
@@ -22,40 +23,51 @@ import net.minecraftforge.items.ItemStackHandler;
 public class TileEntityAncientGenerator extends TileEntity implements ITickable {
 	
 	private final int maxEnergy = 250000;
-	public int cookTime = 0;
 	
 	public ItemStackHandler handler = new ItemStackHandler(1);
 	private AncientEnergyStorage storage = new AncientEnergyStorage(maxEnergy);
 	private String customName;
 	
+	public int cookTime = 0;
 	private int energy = storage.getEnergyStored();
-	private final int maxCook = 40;
 	private final int maxSendEnergy = 500;
 	
 	@Override
 	public void update() {
-		if (!handler.getStackInSlot(0).isEmpty() && isItemFuel(handler.getStackInSlot(0))) {
-			if (energy <= (maxEnergy-10000)) {
-				cookTime++;
-				
-				//TODO: Upgrade(s)
-				
-				if (cookTime == maxCook) {
-					energy += getFuelValue(handler.getStackInSlot(0));
-					handler.getStackInSlot(0).shrink(1);
-					cookTime = 0;
-				}
+		/*
+		 * if (!handler.getStackInSlot(0).isEmpty() &&
+		 * isItemFuel(handler.getStackInSlot(0))) { if (energy <= (maxEnergy-7500)) {
+		 * burnTime--; cookTime++;
+		 * 
+		 * if (burnTime == 0) { energy += getFuelValue(handler.getStackInSlot(0));
+		 * handler.getStackInSlot(0).shrink(1); burnTime = 40; cookTime = 0; } } else {
+		 * burnTime = 40; cookTime = 0; } } else { burnTime = 40; cookTime = 0; }
+		 */
+		
+		ItemStack fuel = handler.getStackInSlot(0);
+		if (isItemFuel(fuel)) {
+			if (fuel.isEmpty() || energy > (maxEnergy-7500)) { BlockAncientGenerator.setState(false, world, pos); }
+			
+			if (!fuel.isEmpty()) {
+				if (energy <= (maxEnergy-7500)) {
+					cookTime++;
+					
+					BlockAncientGenerator.setState(true, world, pos);
+					
+					if (cookTime == 40) {
+						energy += getFuelValue(fuel);
+						fuel.shrink(1);
+						cookTime = 0;
+						if (fuel.isEmpty()) { BlockAncientGenerator.setState(false, world, pos); }
+					}
+				} else { cookTime = 0; }
 			} else { cookTime = 0; }
 		} else { cookTime = 0; }
 		
-		//Generator radius (2)
-		for (int x = -3; x < 3; x++) {
-			for (int y = -3; y < 3; y++) {
-				for (int z = -3; z < 3; z++) {
-					getMachines(x, y, z);
-				}
-			}	
-		}
+		getMachines(1,0);
+		getMachines(-1,0);
+		getMachines(0,1);
+		getMachines(0,-1);
 	}
 
 	@Override
@@ -96,7 +108,6 @@ public class TileEntityAncientGenerator extends TileEntity implements ITickable 
 	public ITextComponent getDisplayName() { return new TextComponentTranslation("container.ancient_generator"); }
 	public int getEnergyStored() { return this.energy; }
 	public int getMaxEnergyStored() { return this.maxEnergy; }
-	public int getMaxCook() { return maxCook; }
 	
 	public void setField(int id, int value) {
 		switch (id) {
@@ -134,15 +145,15 @@ public class TileEntityAncientGenerator extends TileEntity implements ITickable 
 	private boolean isItemFuel(ItemStack stack) { return getFuelValue(stack) > 0; }
 	
 	private int getFuelValue(ItemStack stack) {
-		if (stack.getItem() == ItemInit.ANCIENT_SHARD) { return 10000; }
+		if (stack.getItem() == ItemInit.ANCIENT_SHARD) { return 7500; }
 		return 0;
 	}
 	
-	private void getMachines(int x, int y, int z) {
-		BlockPos newPos = new BlockPos(getPos().getX()+x, getPos().getY()+y, getPos().getZ()+z);
+	private void getMachines(int x, int z) {
+		BlockPos newPos = new BlockPos(getPos().getX()+x, getPos().getY(), getPos().getZ()+z);
 		TileEntity tileEntity = getWorld().getTileEntity(newPos);
 		
-		Machines.updatePylon(tileEntity, (TileEntity)this, this.energy, maxSendEnergy);
-		Machines.updateAnalyzer(tileEntity, (TileEntity)this, this.energy, maxSendEnergy);
+		Machines.updateAnalyzer(tileEntity, (TileEntity)this, this.energy, this.maxSendEnergy);
+		Machines.updatePylon(tileEntity, (TileEntity)this, this.energy, this.maxSendEnergy);
 	}
 }
