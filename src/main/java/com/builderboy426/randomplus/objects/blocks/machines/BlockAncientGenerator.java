@@ -62,7 +62,6 @@ public class BlockAncientGenerator extends BlockBase {
 			else if (face == EnumFacing.NORTH && !west.isFullBlock() && east.isFullBlock()) { face = EnumFacing.SOUTH; }
 			world.setBlockState(pos, state.withProperty(FACING, face), 2);
 		}
-		
 	}
 	
 	@Override

@@ -28,25 +28,41 @@ public class TileEntityAncientGenerator extends TileEntity implements ITickable 
 	private AncientEnergyStorage storage = new AncientEnergyStorage(maxEnergy);
 	private String customName;
 	
-	public int burnTime = 40;
+	public int cookTime = 0;
 	private int energy = storage.getEnergyStored();
 	private final int maxSendEnergy = 500;
 	
 	@Override
 	public void update() {
-		if (!handler.getStackInSlot(0).isEmpty() && isItemFuel(handler.getStackInSlot(0))) {
-			if (energy <= (maxEnergy-7500)) {
-				burnTime -= 1;
-				
-				if (burnTime == 0) {
-					energy += getFuelValue(handler.getStackInSlot(0));
-					handler.getStackInSlot(0).shrink(1);
-					burnTime = 40;
-				}
-			} else { burnTime = 40; }
-		} else { burnTime = 40; }
+		/*
+		 * if (!handler.getStackInSlot(0).isEmpty() &&
+		 * isItemFuel(handler.getStackInSlot(0))) { if (energy <= (maxEnergy-7500)) {
+		 * burnTime--; cookTime++;
+		 * 
+		 * if (burnTime == 0) { energy += getFuelValue(handler.getStackInSlot(0));
+		 * handler.getStackInSlot(0).shrink(1); burnTime = 40; cookTime = 0; } } else {
+		 * burnTime = 40; cookTime = 0; } } else { burnTime = 40; cookTime = 0; }
+		 */
 		
-		BlockAncientGenerator.setState(isBurning(), world, pos);
+		ItemStack fuel = handler.getStackInSlot(0);
+		if (isItemFuel(fuel)) {
+			if (fuel.isEmpty() || energy > (maxEnergy-7500)) { BlockAncientGenerator.setState(false, world, pos); }
+			
+			if (!fuel.isEmpty()) {
+				if (energy <= (maxEnergy-7500)) {
+					cookTime++;
+					
+					BlockAncientGenerator.setState(true, world, pos);
+					
+					if (cookTime == 40) {
+						energy += getFuelValue(fuel);
+						fuel.shrink(1);
+						cookTime = 0;
+						if (fuel.isEmpty()) { BlockAncientGenerator.setState(false, world, pos); }
+					}
+				} else { cookTime = 0; }
+			} else { cookTime = 0; }
+		} else { cookTime = 0; }
 		
 		//TODO: Generator radius (2)
 		getMachines(1,0);
@@ -73,7 +89,7 @@ public class TileEntityAncientGenerator extends TileEntity implements ITickable 
 	public NBTTagCompound writeToNBT(NBTTagCompound compound) {
 		super.writeToNBT(compound);
 		compound.setTag("inventory", this.handler.serializeNBT());
-		compound.setInteger("burntime", this.burnTime);
+		compound.setInteger("cooktime", this.cookTime);
 		compound.setInteger("guienergy", this.energy);
 		compound.setString("name", getDisplayName().toString());
 		this.storage.writeToNBT(compound);
@@ -84,7 +100,7 @@ public class TileEntityAncientGenerator extends TileEntity implements ITickable 
 	public void readFromNBT(NBTTagCompound compound) {
 		super.readFromNBT(compound);
 		this.handler.deserializeNBT(compound.getCompoundTag("inventory"));
-		this.burnTime = compound.getInteger("burntime");
+		this.cookTime = compound.getInteger("cooktime");
 		this.energy = compound.getInteger("guienergy");
 		this.customName = compound.getString("name");
 		this.storage.readFromNBT(compound);
@@ -100,7 +116,7 @@ public class TileEntityAncientGenerator extends TileEntity implements ITickable 
 			this.energy = value;
 			break;
 		case 1:
-			this.burnTime = value;
+			this.cookTime = value;
 			break;
 		default:
 			return;
@@ -112,7 +128,7 @@ public class TileEntityAncientGenerator extends TileEntity implements ITickable 
 		case 0:
 			return this.energy;
 		case 1:
-			return this.burnTime;
+			return this.cookTime;
 		default:
 			return 0;
 		}
@@ -128,8 +144,6 @@ public class TileEntityAncientGenerator extends TileEntity implements ITickable 
 	}*/
 	
 	private boolean isItemFuel(ItemStack stack) { return getFuelValue(stack) > 0; }
-	
-	private boolean isBurning() { return burnTime > 0 ? false : true; }
 	
 	private int getFuelValue(ItemStack stack) {
 		if (stack.getItem() == ItemInit.ANCIENT_SHARD) { return 7500; }

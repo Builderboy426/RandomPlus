@@ -1,5 +1,8 @@
 {
     "variants": {
-        "normal": { "model": "rpm:artifact_analyzer" }
+        "facing=north": { "model": "rpm:artifact_analyzer" },
+        "facing=east": { "model": "rpm:artifact_analyzer", "y": 90 },
+        "facing=south": { "model": "rpm:artifact_analyzer", "y": 180 },
+        "facing=west": { "model": "rpm:artifact_analyzer", "y": 270 }
     }
 }
