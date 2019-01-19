@@ -4,8 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.builderboy426.randomplus.init.ItemInit;
-import com.builderboy426.randomplus.utils.config.RandomPlusConfig;
-import com.builderboy426.randomplus.utils.handlers.EnumHandler.ArtifactRarity;
+import com.builderboy426.randomplus.utils.RandomPlusConfig;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.I18n;

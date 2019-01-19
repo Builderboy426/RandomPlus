@@ -1,6 +1,4 @@
-package com.builderboy426.randomplus.utils.config;
-
-import com.builderboy426.randomplus.utils.Reference;
+package com.builderboy426.randomplus.utils;
 
 import net.minecraftforge.common.config.Config;
 import net.minecraftforge.common.config.ConfigManager;
@@ -127,21 +125,6 @@ public class RandomPlusConfig {
 		@Config.RangeInt(min = 6, max = 24)
 		public int uses = 6;
 	}
-	
-	/*public static class SpeedArtifact {
-		
-		@Config.Name("Time")
-		@Config.Comment("Effect Time")
-		@Config.LangKey(PREFIX+"client.artifact.speedartifact.time")
-		@Config.RangeDouble(min = 2.0, max = 10.0)
-		public double time = 2.5;
-		
-		@Config.Name("Uses")
-		@Config.Comment("Total Uses")
-		@Config.LangKey(PREFIX+"client.artifact.speedartifact.uses")
-		@Config.RangeInt(min = 6, max = 24)
-		public int uses = 6;
-	}*/
 	
 	@SubscribeEvent
 	public static void onConfigChanged(ConfigChangedEvent.OnConfigChangedEvent event)

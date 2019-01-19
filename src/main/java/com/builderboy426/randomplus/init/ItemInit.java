@@ -26,8 +26,6 @@ import net.minecraftforge.common.util.EnumHelper;
 
 public class ItemInit {
 	
-	public static final List<Item> ITEMS = new ArrayList<Item>();
-	
 	//Materials
 	public static final ToolMaterial TOOL_RUBY = EnumHelper.addToolMaterial("tool_ruby", 2, 350, 6.2f, 1.5f, 16);
 	public static final ToolMaterial TOOL_SAPPHIRE = EnumHelper.addToolMaterial("tool_sapphire", 2, 340, 6.0f, 1.5f, 16);
@@ -81,7 +79,6 @@ public class ItemInit {
 	public static final Item FIRE_ARTIFACT = new FireArtifact("artifact_fire");
 	public static final Item NIGHT_ARTIFACT = new NightArtifact("artifact_night");
 	public static final Item WAR_ARTIFACT = new WarArtifact("artifact_war");
-	//public static final Item SPEED_ARTIFACT = new SpeedArtifact("artifact_speed");
 	public static final Item UNKNOWN_ARTIFACT = new ItemBase("artifact_unknown", 1);
 	
 	//Tools
@@ -129,4 +126,38 @@ public class ItemInit {
 	public static final Item CHESTPLATE_AMETHYST = new ArmorBase("chestplate_amethyst", ARMOUR_AMETHYST, 1, EntityEquipmentSlot.CHEST);
 	public static final Item LEGGINGS_AMETHYST = new ArmorBase("leggings_amethyst", ARMOUR_AMETHYST, 2, EntityEquipmentSlot.LEGS);
 	public static final Item BOOTS_AMETHYST = new ArmorBase("boots_amethyst", ARMOUR_AMETHYST, 1, EntityEquipmentSlot.FEET);
+	
+	public static void init() {
+		//Items
+		registerItems(STAR_CHAOS, STAR_DIAMOND, STAR_GOLD, STAR_IRON, STAR_STONE,
+				  STICK_CHAOS, STICK_DIAMOND, STICK_GOLD, STICK_IRON, STICK_STONE,
+				  RESEARCH_KIT);
+		//Machine Parts
+		registerItems(LITHIUM_BATTERY, MACHINE_CASING, SCREEN, ENERGY_TRANSMITTER);
+		//Gems & Materials
+		registerItems(ALUMINIUM_INGOT, AMETHYST, ANCIENT_SHARD, CHAOS, COPPER_INGOT,
+				  LITHIUM, RUBY, SAPPHIRE);
+		//Artifacts
+		registerItems(FIRE_ARTIFACT, NIGHT_ARTIFACT, UNKNOWN_ARTIFACT, WAR_ARTIFACT, WATER_ARTIFACT);
+		//Tools
+		registerItems(AXE_AMETHYST, HOE_AMETHYST, PICKAXE_AMETHYST, SHOVEL_AMETHYST, SWORD_AMETHYST);
+		registerItems(AXE_EMERALD, HOE_EMERALD, PICKAXE_EMERALD, SHOVEL_EMERALD, SWORD_EMERALD);
+		registerItems(AXE_RUBY, HOE_RUBY, PICKAXE_RUBY, SHOVEL_RUBY, SWORD_RUBY);
+		registerItems(AXE_SAPPHIRE, HOE_SAPPHIRE, PICKAXE_SAPPHIRE, SHOVEL_SAPPHIRE, SWORD_SAPPHIRE);
+		//Armor
+		registerItems(BOOTS_AMETHYST, CHESTPLATE_AMETHYST, HELMET_AMETHYST, LEGGINGS_AMETHYST);
+		registerItems(BOOTS_EMERALD, CHESTPLATE_EMERALD, HELMET_EMERALD, LEGGINGS_EMERALD);
+		registerItems(BOOTS_RUBY, CHESTPLATE_RUBY, HELMET_RUBY, LEGGINGS_RUBY);
+		registerItems(BOOTS_SAPPHIRE, CHESTPLATE_SAPPHIRE, HELMET_SAPPHIRE, LEGGINGS_SAPPHIRE);
+	}
+	
+	public static void registerItems(Item... items) {
+		for (Item item : items) {
+			registerItem(item);
+		}
+	}
+
+	public static void registerItem(Item item) {
+		RegistryHandler.Items.ITEMS.add(item);
+	}
 }

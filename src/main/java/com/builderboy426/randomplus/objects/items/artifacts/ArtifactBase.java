@@ -9,9 +9,7 @@ import java.util.Random;
 import com.builderboy426.randomplus.Main;
 import com.builderboy426.randomplus.init.ItemInit;
 import com.builderboy426.randomplus.objects.items.ItemBase;
-import com.builderboy426.randomplus.utils.config.RandomPlusConfig;
-import com.builderboy426.randomplus.utils.handlers.EnumHandler.ArtifactRarity;
-import com.builderboy426.randomplus.utils.interfaces.IHasModel;
+import com.builderboy426.randomplus.utils.RandomPlusConfig;
 
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.Entity;
@@ -29,7 +27,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 
 @EventBusSubscriber
-public class ArtifactBase extends Item implements IHasModel {
+public class ArtifactBase extends Item {
 	
 	public static final List<Potion> EFFECTS = new ArrayList<Potion>();
 	public static final List<ItemStack> COMMON_ARTIFACTS = new ArrayList<ItemStack>();
@@ -38,12 +36,18 @@ public class ArtifactBase extends Item implements IHasModel {
 	public static final List<ItemStack> EPIC_ARTIFACTS = new ArrayList<ItemStack>();
 	public static final List<ItemStack> LEGENDARY_ARTIFACTS = new ArrayList<ItemStack>();
 	
+	public enum ArtifactRarity {
+		COMMON, //50 (60)
+		UNCOMMON, //20 (25)
+		RARE, //15 (15)
+		EPIC, //10
+		LEGENDARY; //5
+	}
+	
 	public ArtifactBase(String name) {
 		setUnlocalizedName(name);
 		setRegistryName(name);
 		setCreativeTab(Main.RANDOM_PLUS);
-		
-		ItemInit.ITEMS.add(this);
 	}
 	
 	@Override
@@ -59,11 +63,6 @@ public class ArtifactBase extends Item implements IHasModel {
 	@Override
 	public boolean canDestroyBlockInCreative(World world, BlockPos pos, ItemStack stack, EntityPlayer player) {
 		return false;
-	}
-	
-	@Override
-	public void registerModels() {
-		Main.proxy.registerItemRenderer(this, 0, "inventory");
 	}
 	
 	public NBTTagCompound getNBTTagCompound(NBTTagCompound compound) {

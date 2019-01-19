@@ -4,7 +4,7 @@
         "particle": "rpm:blocks/ancient_generator_side",
         "up": "rpm:blocks/artifact_analyzer_top",
         "down": "rpm:blocks/artifact_analyzer_top",
-        "north": "rpm:blocks/ancient_generator_front_off",
+        "north": "rpm:blocks/ancient_generator_front_on",
         "east": "rpm:blocks/ancient_generator_side",
         "south": "rpm:blocks/ancient_generator_side",
         "west": "rpm:blocks/ancient_generator_side"

@@ -55,7 +55,7 @@ public class TileEntityAncientPylon extends TileEntity implements ITickable {
 	@Override
 	public NBTTagCompound writeToNBT(NBTTagCompound compound) {
 		super.writeToNBT(compound);
-		compound.setInteger("guienergy", this.energy);
+		compound.setInteger("energy", this.energy);
 		compound.setString("name", getDisplayName().toString());
 		this.storage.writeToNBT(compound);
 		return compound;
@@ -64,7 +64,7 @@ public class TileEntityAncientPylon extends TileEntity implements ITickable {
 	@Override
 	public void readFromNBT(NBTTagCompound compound) {
 		super.readFromNBT(compound);
-		this.energy = compound.getInteger("guienergy");
+		this.energy = compound.getInteger("energy");
 		this.customName = compound.getString("name");
 		this.storage.readFromNBT(compound);
 	}
