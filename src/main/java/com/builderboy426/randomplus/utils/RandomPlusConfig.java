@@ -18,25 +18,22 @@ public class RandomPlusConfig {
 	public static final Client CLIENT = new Client();
 	
 	public static class Client {
-		
 		@Config.Name("Artifacts")
 		@Config.Comment("Artifact Mechanics")
 		@Config.LangKey(PREFIX+"client.artifacts")
 		public ArtifactConfig artifactConfig = new ArtifactConfig();
-		
-		//@Config.Name("Artifacts")
-		//@Config.Comment("Artifact Mechanics")
-		//@Config.LangKey(PREFIX+"client.artifacts")
-		//public ChaosConfig chaosConfig = new ChaosConfig();
-		
 	}
 	
 	public static class ArtifactConfig {
-		
 		@Config.Name("Restricted Effects")
 		@Config.Comment("Effects don't overlap")
 		@Config.LangKey(PREFIX+"client.artifact.overlap")
 		public boolean restrictedArtifact = true;
+		
+		@Config.Name("Artifact Message")
+		@Config.Comment("The display message if an artifact is active")
+		@Config.LangKey(PREFIX+"client.artifact.message")
+		public String artifactMessage = "The artifact's power is still within you!";
 		
 		@Config.Name("Water Artifact")
 		@Config.Comment("Artifact Mechanics")
@@ -56,17 +53,10 @@ public class RandomPlusConfig {
 		@Config.Name("War Artifact")
 		@Config.Comment("Artifact Mechanics")
 		@Config.LangKey(PREFIX+"client.artifacts.warartifact")
-		public WarArtifact warArtifact = new WarArtifact();
-		
-		/*@Config.Name("Speed Artifact")
-		@Config.Comment("Artifact Mechanics")
-		@Config.LangKey(PREFIX+"client.artifacts.speedartifact")
-		public SpeedArtifact speedArtifact = new SpeedArtifact();*/
-		
+		public WarArtifact warArtifact = new WarArtifact();	
 	}
 	
 	public static class WaterArtifact {
-		
 		@Config.Name("Time")
 		@Config.Comment("Effect Time")
 		@Config.LangKey(PREFIX+"client.artifact.waterartifact.time")
@@ -78,11 +68,9 @@ public class RandomPlusConfig {
 		@Config.LangKey(PREFIX+"client.artifact.waterartifact.uses")
 		@Config.RangeInt(min = 6, max = 24)
 		public int uses = 6;
-		
 	}
 	
 	public static class FireArtifact {
-		
 		@Config.Name("Time")
 		@Config.Comment("Effect Time")
 		@Config.LangKey(PREFIX+"client.artifact.fireartifact.time")
@@ -97,7 +85,6 @@ public class RandomPlusConfig {
 	}
 	
 	public static class NightArtifact {
-		
 		@Config.Name("Time")
 		@Config.Comment("Effect Time")
 		@Config.LangKey(PREFIX+"client.artifact.nightartifact.time")
@@ -112,7 +99,6 @@ public class RandomPlusConfig {
 	}
 	
 	public static class WarArtifact {
-		
 		@Config.Name("Time")
 		@Config.Comment("Effect Time")
 		@Config.LangKey(PREFIX+"client.artifact.warartifact.time")

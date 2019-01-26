@@ -19,7 +19,7 @@ import com.builderboy426.randomplus.proxy.CommonProxy;
 import com.builderboy426.randomplus.recipes.ModRecipes;
 import com.builderboy426.randomplus.utils.Reference;
 
-@Mod(modid = Reference.MODID, name = Reference.NAME, version = Reference.VERSION, acceptedMinecraftVersions = Reference.MCVERSION)
+@Mod(modid = Reference.MODID, name = Reference.NAME, version = Reference.VERSION, acceptedMinecraftVersions = Reference.MCVERSION, dependencies = Reference.DEPENDENCIES)
 public class Main {
 
     @Instance

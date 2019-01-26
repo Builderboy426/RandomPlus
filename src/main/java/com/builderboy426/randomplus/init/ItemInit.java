@@ -7,7 +7,6 @@ import com.builderboy426.randomplus.objects.armour.ArmorBase;
 import com.builderboy426.randomplus.objects.items.ItemBase;
 import com.builderboy426.randomplus.objects.items.artifacts.FireArtifact;
 import com.builderboy426.randomplus.objects.items.artifacts.NightArtifact;
-//import com.builderboy426.randomplus.objects.items.artifacts.SpeedArtifact;
 import com.builderboy426.randomplus.objects.items.artifacts.WarArtifact;
 import com.builderboy426.randomplus.objects.items.artifacts.WaterArtifact;
 import com.builderboy426.randomplus.objects.items.tools.ToolAxe;
@@ -72,7 +71,8 @@ public class ItemInit {
 	
 	public static final Item ALUMINIUM_INGOT = new ItemBase("ingot_aluminium");
 	
-	//Alloys (Soon)
+	//Alloys
+	public static final Item STEEL_INGOT = new ItemBase("ingot_steel");
 	
 	//Artifacts
 	public static final Item WATER_ARTIFACT = new WaterArtifact("artifact_water");
@@ -105,7 +105,7 @@ public class ItemInit {
 	public static final Item PICKAXE_EMERALD = new ToolPickaxe("pickaxe_emerald", TOOL_EMERALD);
 	public static final Item SHOVEL_EMERALD = new ToolShovel("shovel_emerald", TOOL_EMERALD);
 	public static final Item SWORD_EMERALD = new ToolSword("sword_emerald", TOOL_EMERALD);
-
+	
 	//Armour
 	public static final Item HELMET_EMERALD = new ArmorBase("helmet_emerald", ARMOUR_EMERALD, 1, EntityEquipmentSlot.HEAD);
 	public static final Item CHESTPLATE_EMERALD = new ArmorBase("chestplate_emerald", ARMOUR_EMERALD, 1, EntityEquipmentSlot.CHEST);

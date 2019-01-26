@@ -9,10 +9,9 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 public class ModRecipes {
 	
 	public static void init() {
+		GameRegistry.addSmelting(new ItemStack(BlockInit.ORE_COPPER, 3), new ItemStack(ItemInit.COPPER_INGOT), 0.5f);
+		GameRegistry.addSmelting(new ItemStack(BlockInit.ORE_ALUMINIUM, 3), new ItemStack(ItemInit.ALUMINIUM_INGOT), 0.5f);
 		
-		//Testing Smelting Recipes
-		GameRegistry.addSmelting(new ItemStack(BlockInit.ORE_AMETHYST, 3), new ItemStack(ItemInit.CHAOS), 0.5f);
 		
 	}
-	
 }

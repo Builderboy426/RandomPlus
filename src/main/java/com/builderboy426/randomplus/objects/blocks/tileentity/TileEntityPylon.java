@@ -1,8 +1,6 @@
 package com.builderboy426.randomplus.objects.blocks.tileentity;
 
 import com.builderboy426.randomplus.init.ItemInit;
-import com.builderboy426.randomplus.objects.blocks.machines.BlockAncientGenerator;
-
 
 import cofh.redstoneflux.api.IEnergyProvider;
 import cofh.redstoneflux.api.IEnergyReceiver;
@@ -18,19 +16,16 @@ import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.energy.CapabilityEnergy;
-import net.minecraftforge.fml.common.WorldAccessContainer;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 
-public class TileEntityAncientGenerator extends TileEntity implements ITickable, IEnergyProvider {
+public class TileEntityPylon extends TileEntity implements ITickable, IEnergyProvider, IEnergyReceiver {
 	
-	private final int maxEnergy = 250000;
-	private final int maxSendEnergy = 250;
-	private int cookTime;
+	private final int maxEnergy = 500;
+	private int maxSendEnergy = 250;
 	
 	private EnergyStorage storage = new EnergyStorage(maxEnergy, maxSendEnergy);
 	private String customName;
-	public ItemStackHandler handler = new ItemStackHandler(1);
 	
 	private void extractEnergyToSurroundingReceivers(int x, int y, int z) {
 		for (EnumFacing facing : EnumFacing.VALUES) {
@@ -45,37 +40,11 @@ public class TileEntityAncientGenerator extends TileEntity implements ITickable,
 		}
 	}
 	
-	private void generateEnergy(int generatedAmount) {
-		if (storage.getEnergyStored() < storage.getMaxEnergyStored()) {
-			storage.modifyEnergyStored(generatedAmount);
-		}
-	}
-	
 	@Override
 	public void update() {
-		ItemStack fuel = handler.getStackInSlot(0);
-		if (isItemFuel(fuel)) {
-			if (fuel.isEmpty() || storage.getEnergyStored() > (maxEnergy-7500)) {
-				BlockAncientGenerator.setState(false, world, pos); 
-			}
-			if (!fuel.isEmpty()) {
-				if (storage.getEnergyStored() <= (maxEnergy-7500)) {
-					cookTime++;
-					BlockAncientGenerator.setState(true, world, pos);
-					if (cookTime == 40) {
-						generateEnergy(getFuelValue(fuel));
-						fuel.shrink(1);
-						cookTime = 0;
-						
-						if (fuel.isEmpty()) { BlockAncientGenerator.setState(false, world, pos); } 
-					}
-				} else { cookTime = 0; }
-			} else { cookTime = 0; }
-		} else { cookTime = 0; }
-		
-		for (int x = -2; x < 2; x++) {
-			for (int y = -2; y < 2; y++) {
-				for (int z = -2; z < 2; z++) {
+		for (int x = -6; x < 6; x++) {
+			for (int y = -6; y < 6; y++) {
+				for (int z = -6; z < 6; z++) {
 					extractEnergyToSurroundingReceivers(x, y, z);
 				}
 			}
@@ -85,22 +54,18 @@ public class TileEntityAncientGenerator extends TileEntity implements ITickable,
 	@Override
 	public <T> T getCapability(Capability<T> capability, EnumFacing facing)  {
 		if (capability == CapabilityEnergy.ENERGY) { return (T)this.storage; }
-		if (capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) { return (T)this.handler; }
 		return super.getCapability(capability, facing);
 	}
 	
 	@Override
 	public boolean hasCapability(Capability<?> capability, EnumFacing facing)  {
 		if (capability == CapabilityEnergy.ENERGY) { return true; }
-		if (capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) { return true; }
 		return super.hasCapability(capability, facing);
 	}
 	
 	@Override
 	public NBTTagCompound writeToNBT(NBTTagCompound compound) {
 		super.writeToNBT(compound);
-		compound.setTag("inventory", this.handler.serializeNBT());
-		compound.setInteger("cooktime", this.cookTime);
 		compound.setInteger("energy", storage.getEnergyStored());
 		compound.setString("name", getDisplayName().toString());
 		return compound;
@@ -109,30 +74,19 @@ public class TileEntityAncientGenerator extends TileEntity implements ITickable,
 	@Override
 	public void readFromNBT(NBTTagCompound compound) {
 		super.readFromNBT(compound);
-		this.handler.deserializeNBT(compound.getCompoundTag("inventory"));
-		this.cookTime = compound.getInteger("cooktime");
 		storage.setEnergyStored(compound.getInteger("energy"));
+		this.customName = compound.getString("name");
 	}
 	
 	public ITextComponent getDisplayName() { return new TextComponentTranslation("container.ancient_generator"); }
 	public int getEnergyStored() { return storage.getEnergyStored(); }
 	public int getMaxEnergyStored() { return storage.getMaxEnergyStored(); }
+	public int getMaxSendEnergy() { return maxSendEnergy; }
 	
 	public boolean isUseableByPlayer(EntityPlayer player) {
 		return this.world.getTileEntity(this.pos) != this ? false : player.getDistanceSq((double)this.pos.getX()+0.5, (double)this.pos.getY()+0.5, (double)this.pos.getZ()+0.5) <=64.0D;
 	}
-	
-	private boolean isItemFuel(ItemStack stack) { return getFuelValue(stack) > 0; }
-	
-	private int getFuelValue(ItemStack stack) {
-		if (stack.getItem() == ItemInit.ANCIENT_SHARD) { return 7500; }
-		return 0;
-	}
-	
-	public int getCookTime() {
-		return cookTime;
-	}
-	
+
 	@Override
 	public int getEnergyStored(EnumFacing from) {
 		return storage.getEnergyStored();
@@ -149,15 +103,29 @@ public class TileEntityAncientGenerator extends TileEntity implements ITickable,
 	}
 
 	@Override
+	public int receiveEnergy(EnumFacing from, int maxReceive, boolean simulate) {
+		return storage.receiveEnergy(maxReceive, simulate);
+	}
+
+	@Override
 	public int extractEnergy(EnumFacing from, int maxExtract, boolean simulate) {
 		return storage.extractEnergy(maxExtract, simulate);
 	}
 
-	public void setEnergy(int data) {
-		storage.setEnergyStored(data);
-	}
-	
-	public void setCookTime(int data) {
-		cookTime = data;
+	public int getNumberReceivers() {
+		int machines = 0;
+		for (int x = -6; x < 6; x++) {
+			for (int y = -6; y < 6; y++) {
+				for (int z = -6; z < 6; z++) {
+					TileEntity tileEntity = world.getTileEntity(pos);
+					if (tileEntity.getPos().getX() != this.pos.getX() &&
+					tileEntity.getPos().getY() != this.pos.getY() &&
+					tileEntity.getPos().getZ() != this.pos.getX()) {
+						if (tileEntity instanceof IEnergyReceiver) { ++machines; }
+					}
+				}
+			}
+		}
+		return machines;
 	}
 }

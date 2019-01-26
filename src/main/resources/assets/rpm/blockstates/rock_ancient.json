@@ -1,5 +1,10 @@
 {
     "variants": {
-        "normal": { "model": "rpm:rock_ancient" }
+        "normal": [
+            { "model": "rpm:rock_ancient" },
+            { "model": "rpm:rock_ancient", y: 90 },
+            { "model": "rpm:rock_ancient", y: 180 },
+            { "model": "rpm:rock_ancient", y: 270 }
+        ]
     }
 }

@@ -27,7 +27,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 
 @EventBusSubscriber
-public class ArtifactBase extends Item {
+public class ArtifactBase extends ItemBase {
 	
 	public static final List<Potion> EFFECTS = new ArrayList<Potion>();
 	public static final List<ItemStack> COMMON_ARTIFACTS = new ArrayList<ItemStack>();
@@ -45,9 +45,7 @@ public class ArtifactBase extends Item {
 	}
 	
 	public ArtifactBase(String name) {
-		setUnlocalizedName(name);
-		setRegistryName(name);
-		setCreativeTab(Main.RANDOM_PLUS);
+		super(name);
 	}
 	
 	@Override
@@ -63,11 +61,6 @@ public class ArtifactBase extends Item {
 	@Override
 	public boolean canDestroyBlockInCreative(World world, BlockPos pos, ItemStack stack, EntityPlayer player) {
 		return false;
-	}
-	
-	public NBTTagCompound getNBTTagCompound(NBTTagCompound compound) {
-		if (compound != null && compound.hasKey("uses")) { return compound; }
-		return null;
 	}
 	
 	public static ArtifactRarity getRarity(int chance) {
@@ -107,6 +100,10 @@ public class ArtifactBase extends Item {
 			return false;
 		}
 		return false;
+	}
+	
+	protected String getArtifactMessage() {
+		return RandomPlusConfig.CLIENT.artifactConfig.artifactMessage;
 	}
 	
 	private boolean getRestrictedArtifacts() {

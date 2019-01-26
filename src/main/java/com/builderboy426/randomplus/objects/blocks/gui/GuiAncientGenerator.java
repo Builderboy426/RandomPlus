@@ -38,7 +38,7 @@ public class GuiAncientGenerator extends GuiContainer {
 		String tileName = this.tileentity.getDisplayName().getUnformattedText();
 		this.fontRenderer.drawString(tileName, (this.xSize / 2 - this.fontRenderer.getStringWidth(tileName) / 2) -5, 6, 4210752);
 		this.fontRenderer.drawString(this.player.getDisplayName().getUnformattedText(), 7, this.ySize - 96 + 2, 4210752);
-		this.fontRenderer.drawString(Integer.toString(this.tileentity.getEnergyStored()), 115, 72, 4210752);
+		this.fontRenderer.drawString(Integer.toString(this.tileentity.getEnergyStored())+" RF", 115, 72, 4210752);
 	}
 	
 	@Override
@@ -66,7 +66,7 @@ public class GuiAncientGenerator extends GuiContainer {
 	
 	private int getCookProgressScaled(int pixels)
 	{
-		float i = (float)this.tileentity.cookTime;
+		float i = (float)this.tileentity.getCookTime();
 		float j = (float)40;
 		return j != 0 ? (int)((i/j)*pixels) : 0;
 	}
