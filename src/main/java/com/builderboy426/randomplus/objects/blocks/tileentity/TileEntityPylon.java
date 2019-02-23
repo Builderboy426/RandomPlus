@@ -68,6 +68,7 @@ public class TileEntityPylon extends TileEntity implements ITickable, IEnergyPro
 		super.writeToNBT(compound);
 		compound.setInteger("energy", storage.getEnergyStored());
 		compound.setString("name", getDisplayName().toString());
+		this.markDirty();
 		return compound;
 	}
 	
@@ -77,55 +78,26 @@ public class TileEntityPylon extends TileEntity implements ITickable, IEnergyPro
 		storage.setEnergyStored(compound.getInteger("energy"));
 		this.customName = compound.getString("name");
 	}
+
+	@Override
+	public int getEnergyStored(EnumFacing from) { return storage.getEnergyStored(); }
+
+	@Override
+	public int getMaxEnergyStored(EnumFacing from) { return storage.getMaxEnergyStored(); }
+
+	@Override
+	public boolean canConnectEnergy(EnumFacing from) { return true; }
+
+	@Override
+	public int receiveEnergy(EnumFacing from, int maxReceive, boolean simulate) { return storage.receiveEnergy(maxReceive, simulate); }
+
+	@Override
+	public int extractEnergy(EnumFacing from, int maxExtract, boolean simulate) { return storage.extractEnergy(maxExtract, simulate); }
+	
+	public boolean isUseableByPlayer(EntityPlayer player) { return this.world.getTileEntity(this.pos) != this ? false : player.getDistanceSq((double)this.pos.getX()+0.5, (double)this.pos.getY()+0.5, (double)this.pos.getZ()+0.5) <=64.0D; }
 	
 	public ITextComponent getDisplayName() { return new TextComponentTranslation("container.ancient_generator"); }
 	public int getEnergyStored() { return storage.getEnergyStored(); }
 	public int getMaxEnergyStored() { return storage.getMaxEnergyStored(); }
 	public int getMaxSendEnergy() { return maxSendEnergy; }
-	
-	public boolean isUseableByPlayer(EntityPlayer player) {
-		return this.world.getTileEntity(this.pos) != this ? false : player.getDistanceSq((double)this.pos.getX()+0.5, (double)this.pos.getY()+0.5, (double)this.pos.getZ()+0.5) <=64.0D;
-	}
-
-	@Override
-	public int getEnergyStored(EnumFacing from) {
-		return storage.getEnergyStored();
-	}
-
-	@Override
-	public int getMaxEnergyStored(EnumFacing from) {
-		return storage.getMaxEnergyStored();
-	}
-
-	@Override
-	public boolean canConnectEnergy(EnumFacing from) {
-		return true;
-	}
-
-	@Override
-	public int receiveEnergy(EnumFacing from, int maxReceive, boolean simulate) {
-		return storage.receiveEnergy(maxReceive, simulate);
-	}
-
-	@Override
-	public int extractEnergy(EnumFacing from, int maxExtract, boolean simulate) {
-		return storage.extractEnergy(maxExtract, simulate);
-	}
-
-	public int getNumberReceivers() {
-		int machines = 0;
-		for (int x = -6; x < 6; x++) {
-			for (int y = -6; y < 6; y++) {
-				for (int z = -6; z < 6; z++) {
-					TileEntity tileEntity = world.getTileEntity(pos);
-					if (tileEntity.getPos().getX() != this.pos.getX() &&
-					tileEntity.getPos().getY() != this.pos.getY() &&
-					tileEntity.getPos().getZ() != this.pos.getX()) {
-						if (tileEntity instanceof IEnergyReceiver) { ++machines; }
-					}
-				}
-			}
-		}
-		return machines;
-	}
 }

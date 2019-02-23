@@ -22,6 +22,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.Item.ToolMaterial;
 import net.minecraft.item.ItemArmor.ArmorMaterial;
 import net.minecraftforge.common.util.EnumHelper;
+import net.minecraftforge.fml.common.registry.GameRegistry.ObjectHolder;
 
 public class ItemInit {
 	
@@ -136,7 +137,7 @@ public class ItemInit {
 		registerItems(LITHIUM_BATTERY, MACHINE_CASING, SCREEN, ENERGY_TRANSMITTER);
 		//Gems & Materials
 		registerItems(ALUMINIUM_INGOT, AMETHYST, ANCIENT_SHARD, CHAOS, COPPER_INGOT,
-				  LITHIUM, RUBY, SAPPHIRE);
+				  LITHIUM, RUBY, SAPPHIRE, STEEL_INGOT);
 		//Artifacts
 		registerItems(FIRE_ARTIFACT, NIGHT_ARTIFACT, UNKNOWN_ARTIFACT, WAR_ARTIFACT, WATER_ARTIFACT);
 		//Tools

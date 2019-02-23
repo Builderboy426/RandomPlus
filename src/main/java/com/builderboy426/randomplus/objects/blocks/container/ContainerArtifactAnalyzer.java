@@ -21,9 +21,9 @@ public class ContainerArtifactAnalyzer extends Container {
 		this.tileEntity = tileEntity;
 		IItemHandler handler = tileEntity.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null);
 		
-		this.addSlotToContainer(new SlotItemHandler(handler, 0, 0, 0));
-		this.addSlotToContainer(new SlotItemHandler(handler, 1, 0, 24));
-		this.addSlotToContainer(new SlotItemHandler(handler, 2, 0, 48));
+		this.addSlotToContainer(new SlotItemHandler(handler, 0, 69, 21));
+		this.addSlotToContainer(new SlotItemHandler(handler, 1, 69, 42));
+		this.addSlotToContainer(new SlotItemHandler(handler, 2, 129, 32));
 		
 		for (int y = 0; y < 3; y++) {
 			for (int x = 0; x < 9; x++) {

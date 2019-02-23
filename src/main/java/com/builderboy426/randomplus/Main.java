@@ -16,7 +16,6 @@ import org.apache.logging.log4j.Logger;
 import com.builderboy426.randomplus.creativetabs.RandomPlusTab;
 import com.builderboy426.randomplus.init.RegistryHandler;
 import com.builderboy426.randomplus.proxy.CommonProxy;
-import com.builderboy426.randomplus.recipes.ModRecipes;
 import com.builderboy426.randomplus.utils.Reference;
 
 @Mod(modid = Reference.MODID, name = Reference.NAME, version = Reference.VERSION, acceptedMinecraftVersions = Reference.MCVERSION, dependencies = Reference.DEPENDENCIES)
@@ -31,13 +30,11 @@ public class Main {
     public static CommonProxy proxy; 
     
     @EventHandler
-    public void preInit(FMLPreInitializationEvent event) {
-    	RegistryHandler.preInit();
-    }
+    public void preInit(FMLPreInitializationEvent event) { proxy.preInit(event); }
 
     @EventHandler
-    public void init(FMLInitializationEvent event) { RegistryHandler.init(); }
+    public void init(FMLInitializationEvent event) { proxy.init(event); }
     
     @EventHandler
-    public void postInit(FMLPostInitializationEvent event) {}
+    public void postInit(FMLPostInitializationEvent event) { proxy.postInit(event); }
 }

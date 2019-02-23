@@ -1,0 +1,12 @@
+{
+    "variants": {
+        "burning=false,facing=north": { "model": "rpm:alloy_press" },
+        "burning=false,facing=east": { "model": "rpm:alloy_press", "y": 90 },
+        "burning=false,facing=south": { "model": "rpm:alloy_press", "y": 180 },
+        "burning=false,facing=west": { "model": "rpm:alloy_press", "y": 270 },
+        "burning=true,facing=north": { "model": "rpm:lit_alloy_press" },
+        "burning=true,facing=east": { "model": "rpm:lit_alloy_press", "y": 90 },
+        "burning=true,facing=south": { "model": "rpm:lit_alloy_press", "y": 180 },
+        "burning=true,facing=west": { "model": "rpm:lit_alloy_press", "y": 270 }
+    }
+}

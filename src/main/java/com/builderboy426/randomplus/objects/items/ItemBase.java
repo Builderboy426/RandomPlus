@@ -27,6 +27,6 @@ public class ItemBase extends Item {
 		setRegistryName(name);
 		setCreativeTab(Main.RANDOM_PLUS);
 		
-		if (stackSize <= 64) { setMaxStackSize(stackSize); } else { setMaxStackSize(64); }
+		if (stackSize <= 64 && stackSize != 0) { setMaxStackSize(stackSize); } else { setMaxStackSize(64); }
 	}
 }

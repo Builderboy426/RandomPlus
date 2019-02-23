@@ -32,16 +32,16 @@ public class BlockInit {
 	public static final Block BLOCK_SAPPHIRE = new BlockBase("block_sapphire", Material.IRON, 5.0f);
 	public static final Block BLOCK_AMETHYST = new BlockBase("block_amethyst", Material.IRON, 5.0f);
 	public static final Block BLOCK_CHAOS = new BlockBase("block_chaos", Material.IRON, 13.75f);
-	public static final Block BLOCK_COPPER = new BlockBase("block_copper", Material.IRON, 13.75f);
-	public static final Block BLOCK_ALUMINIUM = new BlockBase("block_aluminium", Material.IRON, 13.75f);
-	public static final Block BLOCK_STEEL = new BlockBase("block_steel", Material.IRON, 13.75f);
+	public static final Block BLOCK_COPPER = new BlockBase("block_copper", Material.IRON, 5.0f);
+	public static final Block BLOCK_ALUMINIUM = new BlockBase("block_aluminium", Material.IRON, 5.0f);
+	public static final Block BLOCK_STEEL = new BlockBase("block_steel", Material.IRON, 10.5f);
 	
 	//Ores / Materials
 	public static final Block ORE_RUBY = new OreRuby("ore_ruby", Material.ROCK, 1.75f);
 	public static final Block ORE_SAPPHIRE = new OreSapphire("ore_sapphire", Material.ROCK, 1.75f);
 	public static final Block ORE_AMETHYST = new OreAmethyst("ore_amethyst", Material.ROCK, 1.75f);
-	public static final Block ORE_CHAOS = new OreChaos("ore_chaos", Material.ROCK, 29.5f);
-	public static final Block ROCK_ANCIENT = new OreAncient("rock_ancient", Material.ROCK, 20.5f);
+	public static final Block ORE_CHAOS = new OreChaos("ore_chaos", Material.ROCK, 17.5f);
+	public static final Block ROCK_ANCIENT = new OreAncient("rock_ancient", Material.ROCK, 15.5f);
 	public static final Block ORE_LITHIUM = new OreLithium("ore_lithium", Material.ROCK, 1.75f);
 	public static final Block ORE_COPPER = new OreCopper("ore_copper", Material.ROCK, 1.75f);
 	public static final Block ORE_ALUMINIUM = new OreAluminium("ore_aluminium", Material.ROCK, 1.75f);

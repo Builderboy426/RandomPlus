@@ -44,6 +44,8 @@ public class GuiAncientGenerator extends GuiContainer {
 	@Override
 	protected void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY)
 	{
+		this.drawDefaultBackground();
+		
 		GlStateManager.color(1.0f, 1.0f, 1.0f, 1.0f);
 		this.mc.getTextureManager().bindTexture(TEXTURES);
 		this.drawTexturedModalRect(this.guiLeft, this.guiTop, 0, 0, this.xSize, this.ySize);
@@ -51,8 +53,8 @@ public class GuiAncientGenerator extends GuiContainer {
 		int l = this.getCookProgressScaled(24);
 		this.drawTexturedModalRect(this.guiLeft + 113, this.guiTop + 32, 176, 14, l+1, 16);
 		
-		int k = this.getEnergyStoredScaled(75);
-		this.drawTexturedModalRect(this.guiLeft + 152, this.guiTop + 7, 176, 32, 16, 76 - k);
+		int k = this.getEnergyStoredScaled(73);
+		this.drawTexturedModalRect(this.guiLeft + 152, this.guiTop + 7, 176, 32, 16, 73 - k);
 	}
 	
 	private int getEnergyStoredScaled(int pixels)

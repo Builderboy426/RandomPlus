@@ -1,6 +1,7 @@
 package com.builderboy426.randomplus.objects.blocks.tileentity;
 
 import com.builderboy426.randomplus.init.ItemInit;
+import com.builderboy426.randomplus.objects.blocks.machines.BlockAlloyPress;
 import com.builderboy426.randomplus.objects.blocks.machines.BlockAncientGenerator;
 
 
@@ -51,28 +52,17 @@ public class TileEntityAncientGenerator extends TileEntity implements ITickable,
 		}
 	}
 	
+	private void setState(boolean active) {
+		if (!active) {
+			BlockAncientGenerator.setState(active, world, pos);
+			cookTime = 0;
+			return;
+		}
+		BlockAncientGenerator.setState(active, world, pos);
+	}
+	
 	@Override
 	public void update() {
-		ItemStack fuel = handler.getStackInSlot(0);
-		if (isItemFuel(fuel)) {
-			if (fuel.isEmpty() || storage.getEnergyStored() > (maxEnergy-7500)) {
-				BlockAncientGenerator.setState(false, world, pos); 
-			}
-			if (!fuel.isEmpty()) {
-				if (storage.getEnergyStored() <= (maxEnergy-7500)) {
-					cookTime++;
-					BlockAncientGenerator.setState(true, world, pos);
-					if (cookTime == 40) {
-						generateEnergy(getFuelValue(fuel));
-						fuel.shrink(1);
-						cookTime = 0;
-						
-						if (fuel.isEmpty()) { BlockAncientGenerator.setState(false, world, pos); } 
-					}
-				} else { cookTime = 0; }
-			} else { cookTime = 0; }
-		} else { cookTime = 0; }
-		
 		for (int x = -2; x < 2; x++) {
 			for (int y = -2; y < 2; y++) {
 				for (int z = -2; z < 2; z++) {
@@ -80,6 +70,26 @@ public class TileEntityAncientGenerator extends TileEntity implements ITickable,
 				}
 			}
 		}
+		
+		ItemStack fuel = handler.getStackInSlot(0);
+		
+		//if (fuel.isEmpty() || storage.getEnergyStored() > (maxEnergy-7500)) { setState(false); }
+		
+		if (isItemFuel(fuel)) {	
+			if (!fuel.isEmpty()) {
+				if (storage.getEnergyStored() <= (maxEnergy-7500)) {
+					cookTime++;
+					setState(true);
+					if (cookTime == 40) {
+						generateEnergy(getFuelValue(fuel));
+						fuel.shrink(1);
+						cookTime = 0;
+						if (fuel.isEmpty()) { setState(false); }
+					}
+				}
+			}
+			return;
+		} else { setState(false); }
 	}
 
 	@Override
@@ -103,6 +113,7 @@ public class TileEntityAncientGenerator extends TileEntity implements ITickable,
 		compound.setInteger("cooktime", this.cookTime);
 		compound.setInteger("energy", storage.getEnergyStored());
 		compound.setString("name", getDisplayName().toString());
+		this.markDirty();
 		return compound;
 	}
 	
@@ -114,50 +125,27 @@ public class TileEntityAncientGenerator extends TileEntity implements ITickable,
 		storage.setEnergyStored(compound.getInteger("energy"));
 	}
 	
+	@Override
+	public int getEnergyStored(EnumFacing from) { return storage.getEnergyStored(); }
+
+	@Override
+	public int getMaxEnergyStored(EnumFacing from) { return storage.getMaxEnergyStored(); }
+
+	@Override
+	public boolean canConnectEnergy(EnumFacing from) { return true; }
+
+	@Override
+	public int extractEnergy(EnumFacing from, int maxExtract, boolean simulate) { return storage.extractEnergy(maxExtract, simulate); }
+	
+	private boolean isItemFuel(ItemStack stack) { return getFuelValue(stack) > 0; }
+	public boolean isUseableByPlayer(EntityPlayer player) { return this.world.getTileEntity(this.pos) != this ? false : player.getDistanceSq((double)this.pos.getX()+0.5, (double)this.pos.getY()+0.5, (double)this.pos.getZ()+0.5) <=64.0D; }
+	
+	private int getFuelValue(ItemStack stack) { if (stack.getItem() == ItemInit.ANCIENT_SHARD) { return 7500; } return 0; }
 	public ITextComponent getDisplayName() { return new TextComponentTranslation("container.ancient_generator"); }
 	public int getEnergyStored() { return storage.getEnergyStored(); }
 	public int getMaxEnergyStored() { return storage.getMaxEnergyStored(); }
+	public int getCookTime() { return cookTime; }
 	
-	public boolean isUseableByPlayer(EntityPlayer player) {
-		return this.world.getTileEntity(this.pos) != this ? false : player.getDistanceSq((double)this.pos.getX()+0.5, (double)this.pos.getY()+0.5, (double)this.pos.getZ()+0.5) <=64.0D;
-	}
-	
-	private boolean isItemFuel(ItemStack stack) { return getFuelValue(stack) > 0; }
-	
-	private int getFuelValue(ItemStack stack) {
-		if (stack.getItem() == ItemInit.ANCIENT_SHARD) { return 7500; }
-		return 0;
-	}
-	
-	public int getCookTime() {
-		return cookTime;
-	}
-	
-	@Override
-	public int getEnergyStored(EnumFacing from) {
-		return storage.getEnergyStored();
-	}
-
-	@Override
-	public int getMaxEnergyStored(EnumFacing from) {
-		return storage.getMaxEnergyStored();
-	}
-
-	@Override
-	public boolean canConnectEnergy(EnumFacing from) {
-		return true;
-	}
-
-	@Override
-	public int extractEnergy(EnumFacing from, int maxExtract, boolean simulate) {
-		return storage.extractEnergy(maxExtract, simulate);
-	}
-
-	public void setEnergy(int data) {
-		storage.setEnergyStored(data);
-	}
-	
-	public void setCookTime(int data) {
-		cookTime = data;
-	}
+	public void setEnergy(int data) { storage.setEnergyStored(data); }
+	public void setCookTime(int data) { cookTime = data; }
 }

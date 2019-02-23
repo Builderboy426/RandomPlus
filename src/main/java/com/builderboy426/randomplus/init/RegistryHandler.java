@@ -5,13 +5,13 @@ import java.util.Set;
 
 import com.builderboy426.randomplus.Main;
 import com.builderboy426.randomplus.utils.Reference;
-import com.builderboy426.randomplus.utils.compat.OreDictionaryCompat;
 import com.builderboy426.randomplus.utils.handlers.GuiHandler;
 import com.builderboy426.randomplus.utils.handlers.LootTableHandler;
 import com.builderboy426.randomplus.world.gen.WorldGenCustomOres;
 
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
+import net.minecraft.enchantment.Enchantment;
 import net.minecraft.item.Item;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.client.model.ModelLoader;
@@ -49,7 +49,7 @@ public class RegistryHandler {
 		public static final Set<Item> ITEMS = new HashSet<>();
 		
 		@SubscribeEvent
-		public static void registerBlocks(final RegistryEvent.Register<Item> event) {
+		public static void registerItems(final RegistryEvent.Register<Item> event) {
 			for (Item item : ITEMS) {
 				event.getRegistry().register(item);
 			}
@@ -65,10 +65,23 @@ public class RegistryHandler {
 		}
 	}
 	
+	@EventBusSubscriber
+	public static class Enchantments {
+		public static final Set<Enchantment> ENCHANTMENTS = new HashSet<>();
+		
+		@SubscribeEvent
+		public static void registerEnchantments(final RegistryEvent.Register<Enchantment> event) {
+			for (Enchantment enchantment : ENCHANTMENTS) {
+				event.getRegistry().register(enchantment);
+			}
+		}
+	}
+	
 	public static void preInit() {
 		BlockInit.init();
 		BlockInit.registerTileEntities();
 		ItemInit.init();
+		EnchantmentInit.init();
 		
 		LootTableHandler.init();
 		GameRegistry.registerWorldGenerator(new WorldGenCustomOres(), 0);
@@ -76,7 +89,8 @@ public class RegistryHandler {
 	
 	public static void init() {
 		NetworkRegistry.INSTANCE.registerGuiHandler(Main.instance, new GuiHandler());
-		OreDictionaryCompat.registerOres();
+		RecipeInit.init();
+		//OreDictionaryCompat.registerOres();
 	}
 	
 	public static void postInit() {}
