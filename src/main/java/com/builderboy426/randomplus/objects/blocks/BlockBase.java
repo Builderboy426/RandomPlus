@@ -5,6 +5,7 @@ import com.builderboy426.randomplus.init.BlockInit;
 import com.builderboy426.randomplus.init.ItemInit;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
@@ -18,7 +19,7 @@ public class BlockBase extends Block {
 		setUnlocalizedName(name);
 		setRegistryName(name);
 		setCreativeTab(Main.RANDOM_PLUS);
-		
+		setSoundType(SoundType.METAL); // Temporary until we have blocks with sounds other than metal.
 		setHardness(hardness);
 		setResistance(15.0f);
 	}
