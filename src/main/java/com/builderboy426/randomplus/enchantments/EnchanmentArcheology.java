@@ -40,11 +40,7 @@ public class EnchanmentArcheology extends Enchantment {
 	
 	@Override
 	public boolean canApply(ItemStack stack) {
-		if (stack.getItem() == Items.WOODEN_PICKAXE
-		  || stack.getItem() == Items.STONE_PICKAXE
-		  || stack.getItem() == Items.IRON_PICKAXE
-		  || stack.getItem() == Items.GOLDEN_PICKAXE
-		  || stack.getItem() == Items.DIAMOND_PICKAXE) {
+		if (stack.getItem() instanceof ItemPickaxe) {
 			return super.canApply(stack);
 		}
 		return false;

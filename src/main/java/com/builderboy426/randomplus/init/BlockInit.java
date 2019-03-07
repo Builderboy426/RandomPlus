@@ -57,7 +57,7 @@ public class BlockInit {
 	public static void init() {
 		//Materials
 		registerBlocks(BLOCK_AMETHYST, BLOCK_CHAOS, BLOCK_RUBY, BLOCK_SAPPHIRE, BLOCK_COPPER,
-				   BLOCK_ALUMINIUM);
+				   BLOCK_ALUMINIUM, BLOCK_STEEL);
 		//Ores
 		registerBlocks(ORE_ALUMINIUM, ORE_AMETHYST, ORE_CHAOS, ORE_COPPER, ORE_LITHIUM,
 				   ORE_RUBY, ORE_SAPPHIRE, ROCK_ANCIENT);
@@ -68,7 +68,7 @@ public class BlockInit {
 	public static void registerTileEntities() {
 		GameRegistry.registerTileEntity(TileEntityAncientGenerator.class, new ResourceLocation(Reference.MODID+":ancient_generator"));
 		GameRegistry.registerTileEntity(TileEntityArtifactAnalyzer.class, new ResourceLocation(Reference.MODID+":artifact_analyzer"));
-		GameRegistry.registerTileEntity(TileEntityPylon.class, new ResourceLocation(Reference.MODID+":ancient_pylon"));
+		GameRegistry.registerTileEntity(TileEntityPylon.class, new ResourceLocation(Reference.MODID+":pylon"));
 		GameRegistry.registerTileEntity(TileEntityAlloyPress.class, new ResourceLocation(Reference.MODID+":alloy_press"));
 	}
 	

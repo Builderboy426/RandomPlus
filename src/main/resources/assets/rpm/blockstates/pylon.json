@@ -1,5 +1,5 @@
 {
     "variants": {
-        "normal": { "model": "rpm:ancient_pylon" }
+        "normal": { "model": "rpm:pylon" }
     }
 }

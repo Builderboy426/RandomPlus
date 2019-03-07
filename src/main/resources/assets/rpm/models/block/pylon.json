@@ -1,12 +1,12 @@
 {
-    "parent": "block/orientable",
+    "parent": "block/cube_all",
     "textures": {
-        "particle": "rpm:blocks/ancient_pylon_side",
-        "up": "rpm:blocks/ancient_pylon_top",
-        "down": "rpm:blocks/ancient_pylon_bottom",
-        "north": "rpm:blocks/ancient_pylon_back",
-        "east": "rpm:blocks/ancient_pylon_side",
-        "south": "rpm:blocks/ancient_pylon_front",
-        "west": "rpm:blocks/ancient_pylon_side"
+        "particle": "rpm:blocks/artifact_analyzer_side",
+        "up": "rpm:blocks/artifact_analyzer_top",
+        "down": "rpm:blocks/artifact_analyzer_top",
+        "north": "rpm:blocks/pylon_side",
+        "east": "rpm:blocks/pylon_side",
+        "south": "rpm:blocks/pylon_side",
+        "west": "rpm:blocks/pylon_side"
     }
 }

@@ -1,14 +1,13 @@
 package com.builderboy426.randomplus.objects.blocks.tileentity;
 
 import com.builderboy426.randomplus.init.ItemInit;
-import com.builderboy426.randomplus.objects.blocks.machines.BlockAlloyPress;
 import com.builderboy426.randomplus.objects.blocks.machines.BlockAncientGenerator;
-
 
 import cofh.redstoneflux.api.IEnergyProvider;
 import cofh.redstoneflux.api.IEnergyReceiver;
 import cofh.redstoneflux.impl.EnergyStorage;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
@@ -19,7 +18,6 @@ import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.energy.CapabilityEnergy;
-import net.minecraftforge.fml.common.WorldAccessContainer;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 
@@ -75,6 +73,12 @@ public class TileEntityAncientGenerator extends TileEntity implements ITickable,
 		
 		//if (fuel.isEmpty() || storage.getEnergyStored() > (maxEnergy-7500)) { setState(false); }
 		
+		if (storage.getEnergyStored() > (maxEnergy-7500)) {
+			if (handler.getStackInSlot(0).getItem() == (Item)null) {
+				setState(false);
+			}
+		}
+		
 		if (isItemFuel(fuel)) {	
 			if (!fuel.isEmpty()) {
 				if (storage.getEnergyStored() <= (maxEnergy-7500)) {
@@ -85,11 +89,12 @@ public class TileEntityAncientGenerator extends TileEntity implements ITickable,
 						fuel.shrink(1);
 						cookTime = 0;
 						if (fuel.isEmpty()) { setState(false); }
+						return;
 					}
+					return;
 				}
 			}
-			return;
-		} else { setState(false); }
+		}
 	}
 
 	@Override

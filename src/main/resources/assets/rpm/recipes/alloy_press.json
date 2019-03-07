@@ -1,25 +1,25 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "OCO",
+    "OBO",
     "S#S",
     "III"
   ],
   "key": {
-    "C": {
-      "item": "minecraft:cobblestone"
+    "B": {
+      "item": "minecraft:gold_ingot"
     },
     "#": {
       "item": "rpm:casing_machine"
     },
     "S": {
-      "item": "rpm:stick_iron"
+      "item": "rpm:stick_gold"
     },
     "I": {
       "item": "minecraft:iron_ingot"
     },
     "O": {
-      "item": "minecraft:obsidian"
+      "item": "minecraft:stone"
     }
   },
   "result": {
