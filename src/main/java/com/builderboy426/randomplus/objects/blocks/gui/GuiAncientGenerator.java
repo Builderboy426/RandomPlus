@@ -27,6 +27,7 @@ public class GuiAncientGenerator extends GuiContainer {
 	
 	@Override
 	public void drawScreen(int mouseX, int mouseY, float partialTicks) {
+		this.drawDefaultBackground();
 		this.drawGuiContainerBackgroundLayer(partialTicks, mouseX, mouseY);
 		super.drawScreen(mouseX, mouseY, partialTicks);
 		super.renderHoveredToolTip(mouseX, mouseY);
@@ -44,8 +45,6 @@ public class GuiAncientGenerator extends GuiContainer {
 	@Override
 	protected void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY)
 	{
-		this.drawDefaultBackground();
-		
 		GlStateManager.color(1.0f, 1.0f, 1.0f, 1.0f);
 		this.mc.getTextureManager().bindTexture(TEXTURES);
 		this.drawTexturedModalRect(this.guiLeft, this.guiTop, 0, 0, this.xSize, this.ySize);
