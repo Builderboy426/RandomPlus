@@ -17,9 +17,9 @@
         },
 		"G": {
             "item": "minecraft:glass_pane"
-        },
+        }
     },
     "result": {
-        "item": "rpm:screen",
+        "item": "rpm:screen"
     }
 }

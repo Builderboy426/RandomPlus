@@ -7,7 +7,7 @@
   ],
   "key": {
     "C": {
-      "item": "minecraft:cobblestone"
+      "item": "rpm:screen"
     },
     "#": {
       "item": "rpm:casing_machine"
