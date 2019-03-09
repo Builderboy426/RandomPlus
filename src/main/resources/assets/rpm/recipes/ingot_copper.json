@@ -5,11 +5,11 @@
     ],
     "key": {
         "#": {
-            "item": "rpm:block_sapphire"
+            "item": "rpm:block_copper"
         }
     },
     "result": {
-        "item": "rpm:sapphire",
+        "item": "rpm:ingot_copper",
 		"count": 9
     }
 }

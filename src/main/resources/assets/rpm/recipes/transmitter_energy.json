@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "ICI",
+    "IBI",
+    "ICI"
+  ],
+  "key": {
+    "C": {
+      "item": "rpm:ingot_copper"
+    },
+    "B": {
+      "item": "rpm:battery_lithium"
+    },
+    "I": {
+      "item": "minecraft:iron_ingot"
+    }
+  },
+  "result": {
+    "item": "rpm:transmitter_energy"
+  }
+}
