@@ -2,7 +2,8 @@
 	"type": "minecraft:crafting_shapeless",
 	"ingredients": [
 		{
-			"item": "minecraft:dye_black"
+			"item": "minecraft:dye",
+			"data": 0
 		},
 		{
 			"item": "minecraft:paper"
@@ -12,6 +13,6 @@
 		}
 	],
 	"result": {
-		"item": "minecraft:research_kit"
+		"item": "rpm:research_kit"
 	}
 }
