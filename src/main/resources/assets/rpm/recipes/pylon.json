@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "SES",
+    "S#S",
+    "SBS"
+  ],
+  "key": {
+    "B": {
+      "item": "rpm:battery_lithium"
+    },
+	"E": {
+      "item": "rpm:transmitter_energy"
+    },
+    "#": {
+      "item": "rpm:casing_machine"
+    },
+    "S": {
+      "item": "rpm:ingot_steel"
+    }
+  },
+  "result": {
+    "item": "rpm:pylon"
+  }
+}

@@ -5,11 +5,11 @@
     ],
     "key": {
         "#": {
-            "item": "rpm:block_sapphire"
+            "item": "rpm:block_steel"
         }
     },
     "result": {
-        "item": "rpm:sapphire",
+        "item": "rpm:ingot_steel",
 		"count": 9
     }
 }

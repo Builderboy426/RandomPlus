@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "III",
+    "SRS",
+    "III"
+  ],
+  "key": {
+    "S": {
+      "item": "rpm:stick_iron"
+    },
+    "I": {
+      "item": "minecraft:iron_ingot"
+    },
+    "R": {
+      "item": "minecraft:redstone"
+    }
+  },
+  "result": {
+    "item": "rpm:casing_machine"
+  }
+}
