@@ -29,7 +29,7 @@ public class OreAmethyst extends OreBase {
 	
 	@Override
 	public int quantityDroppedWithBonus(int fortune, Random random) {
-		return random.nextInt(2) + fortune;
+		return 1 + fortune;
 	}
 	
 	@Override

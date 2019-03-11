@@ -9,6 +9,7 @@
         }
     },
     "result": {
-        "item": "rpm:ruby"
+        "item": "rpm:ruby",
+		"count": 9
     }
 }

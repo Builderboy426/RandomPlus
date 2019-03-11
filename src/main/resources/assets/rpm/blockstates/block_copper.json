@@ -1,0 +1,5 @@
+{
+    "variants": {
+        "normal": { "model": "rpm:block_copper" }
+    }
+}

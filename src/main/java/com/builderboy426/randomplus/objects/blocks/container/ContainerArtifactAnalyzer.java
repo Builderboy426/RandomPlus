@@ -43,7 +43,16 @@ public class ContainerArtifactAnalyzer extends Container {
 	
 	@Override
 	public void updateProgressBar(int id, int data) {
-		this.tileEntity.setField(id, data);
+		switch (id) {
+			case 0:
+				tileEntity.setEnergy(data);
+			break;
+			case 1:
+				tileEntity.setCookTime(data);
+			break;
+			default:
+				return;
+		}
 	}
 	
 	@Override
@@ -52,12 +61,12 @@ public class ContainerArtifactAnalyzer extends Container {
 		
 		for (int i = 0; i < this.listeners.size(); i++) {
 			IContainerListener listener = (IContainerListener)this.listeners.get(i);
-			if (this.energy != this.tileEntity.getField(0)) { listener.sendWindowProperty(this, 0, this.tileEntity.getField(0)); }
-			if (this.cookTime != this.tileEntity.getField(1)) { listener.sendWindowProperty(this, 1, this.tileEntity.getField(1)); }
+			if (this.energy != this.tileEntity.getEnergyStored()) { listener.sendWindowProperty(this, 0, this.tileEntity.getEnergyStored()); }
+			if (this.cookTime != this.tileEntity.getCookTime()) { listener.sendWindowProperty(this, 1, this.tileEntity.getCookTime()); }
 		}
 		
-		this.energy = this.tileEntity.getField(0);
-		this.cookTime = this.tileEntity.getField(1);
+		this.energy = this.tileEntity.getEnergyStored();
+		this.cookTime = this.tileEntity.getCookTime();
 	}
 	
 	@Override

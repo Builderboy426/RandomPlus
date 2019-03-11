@@ -2,8 +2,7 @@ package com.builderboy426.randomplus.objects.items.artifacts;
 
 import java.util.List;
 
-import com.builderboy426.randomplus.utils.config.RandomPlusConfig;
-import com.builderboy426.randomplus.utils.handlers.EnumHandler.ArtifactRarity;
+import com.builderboy426.randomplus.utils.RandomPlusConfig;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.I18n;
@@ -49,7 +48,10 @@ public class FireArtifact extends ArtifactBase {
 		ItemStack item = player.getHeldItem(hand);
 		if (this.active) { return new ActionResult<ItemStack>(EnumActionResult.PASS, item); }
 		if (!world.isRemote) {
-			if (player.isPotionActive(effect)) { return new ActionResult<ItemStack>(EnumActionResult.PASS, item); }
+			if (player.isPotionActive(effect)) {
+				player.sendMessage(new TextComponentString(getArtifactMessage()));
+				return new ActionResult<ItemStack>(EnumActionResult.PASS, item);
+			}
 			
 			NBTTagCompound nbt = item.getTagCompound();
 			
@@ -62,9 +64,6 @@ public class FireArtifact extends ArtifactBase {
 			if (usesLeft >= 1) {
 				if (!player.isPotionActive(effect)) {
 					player.addPotionEffect(new PotionEffect(this.effect, time, 1));
-					return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, item);
-				} else {
-					player.sendMessage(new TextComponentString("The artifact's power is still within you!"));
 					return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, item);
 				}
 			} else if (usesLeft < 1) {

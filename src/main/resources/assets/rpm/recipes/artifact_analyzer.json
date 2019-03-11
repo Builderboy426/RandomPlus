@@ -7,10 +7,10 @@
   ],
   "key": {
     "C": {
-      "item": "minecraft:cobblestone"
+      "item": "rpm:screen"
     },
     "#": {
-      "item": "rpm:star_chaos"
+      "item": "rpm:casing_machine"
     },
     "S": {
       "item": "rpm:stick_iron"
@@ -23,6 +23,6 @@
     }
   },
   "result": {
-    "item": "rpm:ancient_generator"
+    "item": "rpm:artifact_analyzer"
   }
 }

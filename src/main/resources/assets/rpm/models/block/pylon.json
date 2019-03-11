@@ -1,0 +1,9 @@
+{
+    "parent": "block/cube_bottom_top",
+    "textures": {
+        "particle": "rpm:blocks/ancient_generator_side",
+		"bottom": "rpm:blocks/artifact_analyzer_top",
+		"top": "rpm:blocks/artifact_analyzer_top",
+        "side": "rpm:blocks/pylon_side"
+    }
+}

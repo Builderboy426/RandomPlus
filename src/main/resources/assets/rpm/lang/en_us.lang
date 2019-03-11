@@ -10,13 +10,22 @@ item.star_gold.name=Gold Star
 item.star_diamond.name=Diamond Star
 item.star_chaos.name=Chaos Star
 
+item.battery_lithium.name=Lithium Battery
+item.casing_machine.name=Machine Casing
 item.research_kit.name=Research Kit
+item.screen.name=Screen
+item.transmitter_energy.name=Energy Transmitter
 
-item.ruby.name=Ruby
-item.sapphire.name=Sapphire
 item.amethyst.name=Amethyst
 item.chaos.name=Chaos Crystal
+item.ruby.name=Ruby
+item.sapphire.name=Sapphire
 item.shard_ancient.name=Ancient Shard
+
+item.ingot_aluminium.name=Aluminium Ingot
+item.ingot_copper.name=Copper Ingot
+item.ingot_steel.name=Steel Ingot
+item.lithium.name=Lithium
 
 item.sword_ruby.name=Ruby Sword
 item.pickaxe_ruby.name=Ruby Pickaxe
@@ -62,27 +71,38 @@ item.chestplate_emerald.name=Emerald Chestplate
 item.leggings_emerald.name=Emerald Leggings
 item.boots_emerald.name=Emerald Boots
 
-item.artifact_water.name=Artifact of Water
 item.artifact_fire.name=Artifact of Fire
 item.artifact_night.name=Artifact of Darkness
-item.artifact_war.name=Artifact of Warfare
 item.artifact_speed.name=Artifact of Speed
 item.artifact_unknown.name=Unknown Artifact
+item.artifact_war.name=Artifact of Warfare
+item.artifact_water.name=Artifact of Water
 
+tile.block_aluminium.name=Aluminium Block
+tile.block_amethyst.name=Amethyst Block
+tile.block_chaos.name=Chaos Block
+tile.block_copper.name=Copper Block
 tile.block_ruby.name=Ruby Block
 tile.block_sapphire.name=Sapphire Block
-tile.block_amethyst.name=Amethyst Block
-tile.ore_ruby.name=Ruby Ore
-tile.ore_sapphire.name=Sapphire Ore
+tile.block_steel.name=Steel Block
+
+tile.ore_aluminium.name=Aluminium Ore
 tile.ore_amethyst.name=Amethyst Ore
 tile.ore_chaos.name=Chaos Ore
-tile.block_chaos.name=Chaos Block
+tile.ore_copper.name=Copper Ore
+tile.ore_lithium.name=Lithium Ore
+tile.ore_ruby.name=Ruby Ore
+tile.ore_sapphire.name=Sapphire Ore
 tile.rock_ancient.name=Ancient Rock
 
+tile.alloy_press.name=Alloy Press
 tile.ancient_generator.name=Ancient Generator
 tile.artifact_analyzer.name=Artifact Analyzer
+tile.pylon.name=Pylon
 
 container.ancient_generator=Ancient Generator
 container.artifact_analyzer=Artifact Analyzer
+
+enchantment.archeology=Archeology
 
 itemGroup.randomplustab=RandomPlus

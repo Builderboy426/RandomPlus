@@ -1,0 +1,29 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"pattern": [
+		"OBO",
+		"S#S",
+		"III"
+	],
+	"key": {
+		"B": {
+			"item": "minecraft:gold_ingot"
+		},
+		"#": {
+			"item": "rpm:casing_machine"
+		},
+		"S": {
+			"item": "rpm:stick_gold"
+		},
+		"I": {
+			"item": "minecraft:iron_ingot"
+		},
+		"O": {
+			"item": "minecraft:stone",
+			"data": 0
+		}
+	},
+	"result": {
+		"item": "rpm:alloy_press"
+	}
+}

@@ -9,6 +9,7 @@
         }
     },
     "result": {
-        "item": "rpm:amethyst"
+        "item": "rpm:amethyst",
+		"count": 9
     }
 }

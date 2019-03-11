@@ -1,0 +1,12 @@
+{
+    "parent": "block/orientable",
+    "textures": {
+        "particle": "rpm:blocks/alloy_press_side",
+        "up": "rpm:blocks/artifact_analyzer_top",
+        "down": "rpm:blocks/artifact_analyzer_top",
+        "north": "rpm:blocks/alloy_press_front_on",
+        "east": "rpm:blocks/alloy_press_side",
+        "south": "rpm:blocks/alloy_press_side",
+        "west": "rpm:blocks/alloy_press_side"
+    }
+}

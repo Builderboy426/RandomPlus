@@ -1,11 +1,13 @@
 package com.builderboy426.randomplus.objects.blocks.tileentity;
 
-import com.builderboy426.randomplus.energy.AncientEnergyStorage;
 import com.builderboy426.randomplus.init.ItemInit;
 import com.builderboy426.randomplus.objects.blocks.machines.BlockAncientGenerator;
-import com.builderboy426.randomplus.utils.misc.Machines;
 
+import cofh.redstoneflux.api.IEnergyProvider;
+import cofh.redstoneflux.api.IEnergyReceiver;
+import cofh.redstoneflux.impl.EnergyStorage;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
@@ -16,59 +18,83 @@ import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.energy.CapabilityEnergy;
-import net.minecraftforge.fml.common.WorldAccessContainer;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 
-public class TileEntityAncientGenerator extends TileEntity implements ITickable {
+public class TileEntityAncientGenerator extends TileEntity implements ITickable, IEnergyProvider {
 	
 	private final int maxEnergy = 250000;
+	private final int maxSendEnergy = 250;
+	private int cookTime;
 	
-	public ItemStackHandler handler = new ItemStackHandler(1);
-	private AncientEnergyStorage storage = new AncientEnergyStorage(maxEnergy);
+	private EnergyStorage storage = new EnergyStorage(maxEnergy, maxSendEnergy);
 	private String customName;
+	public ItemStackHandler handler = new ItemStackHandler(1);
 	
-	public int cookTime = 0;
-	private int energy = storage.getEnergyStored();
-	private final int maxSendEnergy = 500;
+	private void extractEnergyToSurroundingReceivers(int x, int y, int z) {
+		for (EnumFacing facing : EnumFacing.VALUES) {
+			BlockPos tilePos = new BlockPos(pos.getX()+x, pos.getY()+y, pos.getZ()+z);
+			TileEntity tileEntity = world.getTileEntity(tilePos);
+			if (tileEntity instanceof IEnergyReceiver && ((IEnergyReceiver)tileEntity).canConnectEnergy(facing)) {
+				try {
+					int received = ((IEnergyReceiver)tileEntity).receiveEnergy(facing.getOpposite(), extractEnergy(facing, storage.getMaxExtract(), true), false);
+					extractEnergy(facing, received, false);
+				} catch (NullPointerException e) {}
+			}
+		}
+	}
+	
+	private void generateEnergy(int generatedAmount) {
+		if (storage.getEnergyStored() < storage.getMaxEnergyStored()) {
+			storage.modifyEnergyStored(generatedAmount);
+		}
+	}
+	
+	private void setState(boolean active) {
+		if (!active) {
+			BlockAncientGenerator.setState(active, world, pos);
+			cookTime = 0;
+			return;
+		}
+		BlockAncientGenerator.setState(active, world, pos);
+	}
 	
 	@Override
 	public void update() {
-		/*
-		 * if (!handler.getStackInSlot(0).isEmpty() &&
-		 * isItemFuel(handler.getStackInSlot(0))) { if (energy <= (maxEnergy-7500)) {
-		 * burnTime--; cookTime++;
-		 * 
-		 * if (burnTime == 0) { energy += getFuelValue(handler.getStackInSlot(0));
-		 * handler.getStackInSlot(0).shrink(1); burnTime = 40; cookTime = 0; } } else {
-		 * burnTime = 40; cookTime = 0; } } else { burnTime = 40; cookTime = 0; }
-		 */
+		for (int x = -2; x < 2; x++) {
+			for (int y = -2; y < 2; y++) {
+				for (int z = -2; z < 2; z++) {
+					extractEnergyToSurroundingReceivers(x, y, z);
+				}
+			}
+		}
 		
 		ItemStack fuel = handler.getStackInSlot(0);
-		if (isItemFuel(fuel)) {
-			if (fuel.isEmpty() || energy > (maxEnergy-7500)) { BlockAncientGenerator.setState(false, world, pos); }
-			
+		
+		//if (fuel.isEmpty() || storage.getEnergyStored() > (maxEnergy-7500)) { setState(false); }
+		
+		if (storage.getEnergyStored() > (maxEnergy-7500)) {
+			if (handler.getStackInSlot(0).getItem() == (Item)null) {
+				setState(false);
+			}
+		}
+		
+		if (isItemFuel(fuel)) {	
 			if (!fuel.isEmpty()) {
-				if (energy <= (maxEnergy-7500)) {
+				if (storage.getEnergyStored() <= (maxEnergy-7500)) {
 					cookTime++;
-					
-					BlockAncientGenerator.setState(true, world, pos);
-					
+					setState(true);
 					if (cookTime == 40) {
-						energy += getFuelValue(fuel);
+						generateEnergy(getFuelValue(fuel));
 						fuel.shrink(1);
 						cookTime = 0;
-						if (fuel.isEmpty()) { BlockAncientGenerator.setState(false, world, pos); }
+						if (fuel.isEmpty()) { setState(false); }
+						return;
 					}
-				} else { cookTime = 0; }
-			} else { cookTime = 0; }
-		} else { cookTime = 0; }
-		
-		//TODO: Generator radius (2)
-		getMachines(1,0);
-		getMachines(-1,0);
-		getMachines(0,1);
-		getMachines(0,-1);
+					return;
+				}
+			}
+		}
 	}
 
 	@Override
@@ -90,9 +116,9 @@ public class TileEntityAncientGenerator extends TileEntity implements ITickable 
 		super.writeToNBT(compound);
 		compound.setTag("inventory", this.handler.serializeNBT());
 		compound.setInteger("cooktime", this.cookTime);
-		compound.setInteger("guienergy", this.energy);
+		compound.setInteger("energy", storage.getEnergyStored());
 		compound.setString("name", getDisplayName().toString());
-		this.storage.writeToNBT(compound);
+		this.markDirty();
 		return compound;
 	}
 	
@@ -101,60 +127,30 @@ public class TileEntityAncientGenerator extends TileEntity implements ITickable 
 		super.readFromNBT(compound);
 		this.handler.deserializeNBT(compound.getCompoundTag("inventory"));
 		this.cookTime = compound.getInteger("cooktime");
-		this.energy = compound.getInteger("guienergy");
-		this.customName = compound.getString("name");
-		this.storage.readFromNBT(compound);
+		storage.setEnergyStored(compound.getInteger("energy"));
 	}
 	
-	public ITextComponent getDisplayName() { return new TextComponentTranslation("container.ancient_generator"); }
-	public int getEnergyStored() { return this.energy; }
-	public int getMaxEnergyStored() { return this.maxEnergy; }
-	
-	public void setField(int id, int value) {
-		switch (id) {
-		case 0:
-			this.energy = value;
-			break;
-		case 1:
-			this.cookTime = value;
-			break;
-		default:
-			return;
-		}
-	}
-	
-	public int getField(int id) {
-		switch (id) {
-		case 0:
-			return this.energy;
-		case 1:
-			return this.cookTime;
-		default:
-			return 0;
-		}
-	}
-	
-	public boolean isUseableByPlayer(EntityPlayer player) {
-		return this.world.getTileEntity(this.pos) != this ? false : player.getDistanceSq((double)this.pos.getX()+0.5, (double)this.pos.getY()+0.5, (double)this.pos.getZ()+0.5) <=64.0D;
-	}
-	
-/*	private boolean isItemUpgrade(ItemStack stack) {
-		if (stack.getItem() == ItemInit.UPGRADE) { return true; }
-		return false;
-	}*/
+	@Override
+	public int getEnergyStored(EnumFacing from) { return storage.getEnergyStored(); }
+
+	@Override
+	public int getMaxEnergyStored(EnumFacing from) { return storage.getMaxEnergyStored(); }
+
+	@Override
+	public boolean canConnectEnergy(EnumFacing from) { return true; }
+
+	@Override
+	public int extractEnergy(EnumFacing from, int maxExtract, boolean simulate) { return storage.extractEnergy(maxExtract, simulate); }
 	
 	private boolean isItemFuel(ItemStack stack) { return getFuelValue(stack) > 0; }
+	public boolean isUseableByPlayer(EntityPlayer player) { return this.world.getTileEntity(this.pos) != this ? false : player.getDistanceSq((double)this.pos.getX()+0.5, (double)this.pos.getY()+0.5, (double)this.pos.getZ()+0.5) <=64.0D; }
 	
-	private int getFuelValue(ItemStack stack) {
-		if (stack.getItem() == ItemInit.ANCIENT_SHARD) { return 7500; }
-		return 0;
-	}
+	private int getFuelValue(ItemStack stack) { if (stack.getItem() == ItemInit.ANCIENT_SHARD) { return 7500; } return 0; }
+	public ITextComponent getDisplayName() { return new TextComponentTranslation("container.ancient_generator"); }
+	public int getEnergyStored() { return storage.getEnergyStored(); }
+	public int getMaxEnergyStored() { return storage.getMaxEnergyStored(); }
+	public int getCookTime() { return cookTime; }
 	
-	private void getMachines(int x, int z) {
-		BlockPos newPos = new BlockPos(getPos().getX()+x, getPos().getY(), getPos().getZ()+z);
-		TileEntity tileEntity = getWorld().getTileEntity(newPos);
-		
-		TileEntityArtifactAnalyzer analyzer = Machines.getAnalyzer(tileEntity);
-		Machines.sendEnergyAnalyzer(analyzer, this.energy, maxSendEnergy, this);
-	}
+	public void setEnergy(int data) { storage.setEnergyStored(data); }
+	public void setCookTime(int data) { cookTime = data; }
 }
