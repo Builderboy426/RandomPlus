@@ -21,7 +21,7 @@ public class AlloyPressRecipes {
 	public static AlloyPressRecipes getInstance() { return INSTANCE; }
 	
 	private AlloyPressRecipes() {
-		//addSinteringRecipe(new ItemStack(Blocks.ACACIA_FENCE), new ItemStack(Blocks.ACACIA_FENCE_GATE), new ItemStack(BlockInit.COPPER_CHEST), 5.0F);
+		addAlloyPressRecipe(new ItemStack(Items.COAL), new ItemStack(Items.IRON_INGOT), new ItemStack(ItemInit.STEEL_INGOT), 1510, 5.0F);
 		addAlloyPressRecipe(new ItemStack(Items.IRON_INGOT), new ItemStack(Items.COAL), new ItemStack(ItemInit.STEEL_INGOT), 1510, 5.0F);
 	}
 
