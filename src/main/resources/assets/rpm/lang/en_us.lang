@@ -24,6 +24,7 @@ item.shard_ancient.name=Ancient Shard
 
 item.ingot_aluminium.name=Aluminium Ingot
 item.ingot_copper.name=Copper Ingot
+item.ingot_bronze.name=Bronze Ingot
 item.ingot_steel.name=Steel Ingot
 item.lithium.name=Lithium
 
@@ -51,6 +52,24 @@ item.axe_emerald.name=Emerald Axe
 item.shovel_emerald.name=Emerald Shovel
 item.hoe_emerald.name=Emerald Hoe
 
+item.sword_bronze.name=Bronze Sword
+item.pickaxe_bronze.name=Bronze Pickaxe
+item.axe_bronze.name=Bronze Axe
+item.shovel_bronze.name=Bronze Shovel
+item.hoe_bronze.name=Bronze Hoe
+
+item.sword_copper.name=Copper Sword
+item.pickaxe_copper.name=Copper Pickaxe
+item.axe_copper.name=Copper Axe
+item.shovel_copper.name=Copper Shovel
+item.hoe_copper.name=Copper Hoe
+
+item.sword_steel.name=Steel Sword
+item.pickaxe_steel.name=Steel Pickaxe
+item.axe_steel.name=Steel Axe
+item.shovel_steel.name=Steel Shovel
+item.hoe_steel.name=Steel Hoe
+
 item.helmet_ruby.name=Ruby Helmet
 item.chestplate_ruby.name=Ruby Chestplate
 item.leggings_ruby.name=Ruby Leggings
@@ -70,6 +89,21 @@ item.helmet_emerald.name=Emerald Helmet
 item.chestplate_emerald.name=Emerald Chestplate
 item.leggings_emerald.name=Emerald Leggings
 item.boots_emerald.name=Emerald Boots
+
+item.helmet_bronze.name=Bronze Helmet
+item.chestplate_bronze.name=Bronze Chestplate
+item.leggings_bronze.name=Bronze Leggings
+item.boots_bronze.name=Bronze Boots
+
+item.helmet_copper.name=Copper Helmet
+item.chestplate_copper.name=Copper Chestplate
+item.leggings_copper.name=Copper Leggings
+item.boots_copper.name=Copper Boots
+
+item.helmet_steel.name=Steel Helmet
+item.chestplate_steel.name=Steel Chestplate
+item.leggings_steel.name=Steel Leggings
+item.boots_steel.name=Steel Boots
 
 item.artifact_fire.name=Artifact of Fire
 item.artifact_night.name=Artifact of Darkness
@@ -93,6 +127,7 @@ tile.ore_copper.name=Copper Ore
 tile.ore_lithium.name=Lithium Ore
 tile.ore_ruby.name=Ruby Ore
 tile.ore_sapphire.name=Sapphire Ore
+tile.ore_tin.name=Tin Ore
 tile.rock_ancient.name=Ancient Rock
 
 tile.alloy_press.name=Alloy Press
