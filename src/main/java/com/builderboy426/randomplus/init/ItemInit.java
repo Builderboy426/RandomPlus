@@ -80,6 +80,8 @@ public class ItemInit {
 	
 	//Alloys
 	public static final Item STEEL_INGOT = new ItemBase("ingot_steel");
+	public static final Item BRONZE_INGOT = new ItemBase("ingot_bronze");
+	public static final Item MAGNITE_INGOT = new ItemBase("ingot_magnite");
 	
 	//Artifacts
 	public static final Item WATER_ARTIFACT = new WaterArtifact("artifact_water");

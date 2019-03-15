@@ -36,7 +36,7 @@ public class EnchanmentArcheology extends Enchantment {
 	
 	@Override
 	protected boolean canApplyTogether(Enchantment ench) {
-		return super.canApplyTogether(ench) && ench != Enchantments.FORTUNE;
+		return super.canApplyTogether(ench) && ench != Enchantments.FORTUNE && ench != Enchantments.SILK_TOUCH;
 	}
 	
 	@Override
