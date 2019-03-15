@@ -14,7 +14,7 @@ import net.minecraft.util.ResourceLocation;
 
 public class EnchanmentArcheology extends Enchantment {
 	public EnchanmentArcheology() {
-		super(Rarity.RARE, EnumEnchantmentType.DIGGER, new EntityEquipmentSlot[] {EntityEquipmentSlot.MAINHAND});
+		super(Rarity.UNCOMMON, EnumEnchantmentType.DIGGER, new EntityEquipmentSlot[] {EntityEquipmentSlot.MAINHAND});
 		this.setName("archeology");
 		this.setRegistryName(new ResourceLocation(Reference.MODID+":archeology"));
 	}
@@ -24,8 +24,9 @@ public class EnchanmentArcheology extends Enchantment {
 		return 20;
 	}
 	
+	@Override
 	public int getMaxEnchantability(int enchantmentLevel) {
-		return this.getMaxEnchantability(enchantmentLevel)+10;
+		return this.getMinEnchantability(enchantmentLevel)+10;
 	}
 	
 	@Override
