@@ -11,8 +11,6 @@ import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
-import org.apache.logging.log4j.Logger;
-
 import com.builderboy426.randomplus.creativetabs.RandomPlusTab;
 import com.builderboy426.randomplus.init.RegistryHandler;
 import com.builderboy426.randomplus.proxy.CommonProxy;
