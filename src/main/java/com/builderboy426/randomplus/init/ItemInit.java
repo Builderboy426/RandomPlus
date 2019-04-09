@@ -75,13 +75,15 @@ public class ItemInit {
 	//Metals
 	//Pure
 	public static final Item COPPER_INGOT = new ItemBase("ingot_copper");
-	
+	public static final Item TIN_INGOT = new ItemBase("ingot_tin");
 	public static final Item ALUMINIUM_INGOT = new ItemBase("ingot_aluminium");
+	public static final Item TITANIUM_INGOT = new ItemBase("ingot_titanium");
 	
 	//Alloys
 	public static final Item STEEL_INGOT = new ItemBase("ingot_steel");
 	public static final Item BRONZE_INGOT = new ItemBase("ingot_bronze");
 	public static final Item MAGNITE_INGOT = new ItemBase("ingot_magnite");
+	public static final Item REINFORCED_STEEL_INGOT = new ItemBase("ingot_reinforced_steel");
 	
 	//Artifacts
 	public static final Item WATER_ARTIFACT = new WaterArtifact("artifact_water");
@@ -178,7 +180,8 @@ public class ItemInit {
 		registerItems(LITHIUM_BATTERY, MACHINE_CASING, SCREEN, ENERGY_TRANSMITTER);
 		//Gems & Materials
 		registerItems(ALUMINIUM_INGOT, AMETHYST, ANCIENT_SHARD, CHAOS, COPPER_INGOT,
-				  LITHIUM, RUBY, SAPPHIRE, STEEL_INGOT);
+				  LITHIUM, RUBY, SAPPHIRE, STEEL_INGOT, TIN_INGOT, TITANIUM_INGOT,
+				  BRONZE_INGOT, MAGNITE_INGOT, REINFORCED_STEEL_INGOT);
 		//Artifacts
 		registerItems(FIRE_ARTIFACT, NIGHT_ARTIFACT, UNKNOWN_ARTIFACT, WAR_ARTIFACT, WATER_ARTIFACT);
 		//Tools

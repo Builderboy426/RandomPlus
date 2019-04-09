@@ -23,6 +23,8 @@ public class AlloyPressRecipes {
 	private AlloyPressRecipes() {
 		addAlloyPressRecipe(new ItemStack(Items.COAL), new ItemStack(Items.IRON_INGOT), new ItemStack(ItemInit.STEEL_INGOT), 1510, 5.0F);
 		addAlloyPressRecipe(new ItemStack(Items.IRON_INGOT), new ItemStack(Items.COAL), new ItemStack(ItemInit.STEEL_INGOT), 1510, 5.0F);
+		addAlloyPressRecipe(new ItemStack(ItemInit.STEEL_INGOT), new ItemStack(ItemInit.TITANIUM_INGOT), new ItemStack(ItemInit.REINFORCED_STEEL_INGOT), 2510, 5.0F);
+		addAlloyPressRecipe(new ItemStack(ItemInit.TITANIUM_INGOT), new ItemStack(ItemInit.STEEL_INGOT), new ItemStack(ItemInit.REINFORCED_STEEL_INGOT), 2510, 5.0F);
 	}
 
 	

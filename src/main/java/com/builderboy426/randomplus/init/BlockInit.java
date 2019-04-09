@@ -35,6 +35,11 @@ public class BlockInit {
 	public static final Block BLOCK_COPPER = new BlockBase("block_copper", Material.IRON, 5.0f);
 	public static final Block BLOCK_ALUMINIUM = new BlockBase("block_aluminium", Material.IRON, 5.0f);
 	public static final Block BLOCK_STEEL = new BlockBase("block_steel", Material.IRON, 10.5f);
+	public static final Block BLOCK_TIN = new BlockBase("block_tin", Material.IRON, 5.0f);
+	public static final Block BLOCK_TITANIUM = new BlockBase("block_titanium", Material.IRON, 10.5f);
+	public static final Block BLOCK_BRONZE = new BlockBase("block_bronze", Material.IRON, 10.5f);
+	public static final Block BLOCK_MAGNITE = new BlockBase("block_magnite", Material.IRON, 5.0f);
+	public static final Block BLOCK_REINFORCED_STEEL = new BlockBase("block_reinforced_steel", Material.IRON, 10.5f);
 	
 	//Ores / Materials
 	public static final Block ORE_RUBY = new OreRuby("ore_ruby", Material.ROCK, 1.75f);
@@ -45,6 +50,8 @@ public class BlockInit {
 	public static final Block ORE_LITHIUM = new OreLithium("ore_lithium", Material.ROCK, 1.75f);
 	public static final Block ORE_COPPER = new OreCopper("ore_copper", Material.ROCK, 1.75f);
 	public static final Block ORE_ALUMINIUM = new OreAluminium("ore_aluminium", Material.ROCK, 1.75f);
+	public static final Block ORE_TIN = new OreCopper("ore_tin", Material.ROCK, 1.75f);
+	public static final Block ORE_TITANIUM = new OreAluminium("ore_titanium", Material.ROCK, 1.75f);
 	
 	//Machines:
 	public static final Block ANCIENT_GENERATOR = new BlockAncientGenerator("ancient_generator");
@@ -57,10 +64,11 @@ public class BlockInit {
 	public static void init() {
 		//Materials
 		registerBlocks(BLOCK_AMETHYST, BLOCK_CHAOS, BLOCK_RUBY, BLOCK_SAPPHIRE, BLOCK_COPPER,
-				   BLOCK_ALUMINIUM, BLOCK_STEEL);
+				   BLOCK_ALUMINIUM, BLOCK_STEEL, BLOCK_TIN, BLOCK_TITANIUM, BLOCK_BRONZE,
+				   BLOCK_MAGNITE, BLOCK_REINFORCED_STEEL);
 		//Ores
 		registerBlocks(ORE_ALUMINIUM, ORE_AMETHYST, ORE_CHAOS, ORE_COPPER, ORE_LITHIUM,
-				   ORE_RUBY, ORE_SAPPHIRE, ROCK_ANCIENT);
+				   ORE_RUBY, ORE_SAPPHIRE, ROCK_ANCIENT, ORE_TIN, ORE_TITANIUM);
 		//Machines
 		registerBlocks(ANCIENT_GENERATOR, PYLON, ARTIFACT_ANALYZER, ALLOY_PRESS);
 	}
