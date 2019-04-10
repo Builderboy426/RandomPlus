@@ -1,9 +1,7 @@
 package com.builderboy426.randomplus.objects.armour;
 
 import com.builderboy426.randomplus.Main;
-import com.builderboy426.randomplus.init.ItemInit;
 
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemArmor;
 

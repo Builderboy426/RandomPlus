@@ -1,12 +1,10 @@
 package com.builderboy426.randomplus.enchantments;
 
-import com.builderboy426.randomplus.init.EnchantmentInit;
 import com.builderboy426.randomplus.utils.Reference;
 
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnumEnchantmentType;
 import net.minecraft.init.Enchantments;
-import net.minecraft.init.Items;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemPickaxe;
 import net.minecraft.item.ItemStack;

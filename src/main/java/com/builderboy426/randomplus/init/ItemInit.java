@@ -1,8 +1,5 @@
 package com.builderboy426.randomplus.init;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.builderboy426.randomplus.objects.armour.ArmorBase;
 import com.builderboy426.randomplus.objects.items.ItemBase;
 import com.builderboy426.randomplus.objects.items.artifacts.FireArtifact;
@@ -22,7 +19,6 @@ import net.minecraft.item.Item;
 import net.minecraft.item.Item.ToolMaterial;
 import net.minecraft.item.ItemArmor.ArmorMaterial;
 import net.minecraftforge.common.util.EnumHelper;
-import net.minecraftforge.fml.common.registry.GameRegistry.ObjectHolder;
 
 public class ItemInit {
 	

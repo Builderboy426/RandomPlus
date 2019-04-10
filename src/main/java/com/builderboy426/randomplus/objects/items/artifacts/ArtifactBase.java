@@ -1,30 +1,18 @@
 package com.builderboy426.randomplus.objects.items.artifacts;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Random;
 
-import com.builderboy426.randomplus.Main;
-import com.builderboy426.randomplus.init.ItemInit;
 import com.builderboy426.randomplus.objects.items.ItemBase;
 import com.builderboy426.randomplus.utils.RandomPlusConfig;
 
 import net.minecraft.enchantment.Enchantment;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.MobEffects;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.Potion;
-import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import net.minecraftforge.fml.common.gameevent.TickEvent;
 
 @EventBusSubscriber
 public class ArtifactBase extends ItemBase {
@@ -92,8 +80,8 @@ public class ArtifactBase extends ItemBase {
 	
 	protected boolean checkActive(EntityPlayer player) {
 		if (getRestrictedArtifacts()) {
-			for (int e = 0; e < this.EFFECTS.size(); e++) {
-				if (player.getActivePotionEffect(this.EFFECTS.get(e)) != null) {
+			for (int e = 0; e < ArtifactBase.EFFECTS.size(); e++) {
+				if (player.getActivePotionEffect(ArtifactBase.EFFECTS.get(e)) != null) {
 					return true;
 				}
 			}

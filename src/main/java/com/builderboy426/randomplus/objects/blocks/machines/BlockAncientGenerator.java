@@ -1,14 +1,11 @@
 package com.builderboy426.randomplus.objects.blocks.machines;
 
-import java.util.Random;
-
 import com.builderboy426.randomplus.Main;
 import com.builderboy426.randomplus.init.BlockInit;
 import com.builderboy426.randomplus.objects.blocks.BlockBase;
 import com.builderboy426.randomplus.objects.blocks.tileentity.TileEntityAncientGenerator;
 import com.builderboy426.randomplus.utils.Reference;
 
-import net.minecraft.block.Block;
 import net.minecraft.block.BlockHorizontal;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
