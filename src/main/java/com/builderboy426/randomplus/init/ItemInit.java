@@ -63,7 +63,6 @@ public class ItemInit {
 	public static final Item MACHINE_CASING = new ItemBase("casing_machine", 1);
 	public static final Item SCREEN = new ItemBase("screen", 16);
 	public static final Item ENERGY_TRANSMITTER = new ItemBase("transmitter_energy", 1);
-	public static final 
 	
 	//Gems and/or Materials
 	public static final Item RUBY = new ItemBase("ruby");

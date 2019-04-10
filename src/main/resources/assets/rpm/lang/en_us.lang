@@ -23,9 +23,13 @@ item.sapphire.name=Sapphire
 item.shard_ancient.name=Ancient Shard
 
 item.ingot_aluminium.name=Aluminium Ingot
-item.ingot_copper.name=Copper Ingot
 item.ingot_bronze.name=Bronze Ingot
+item.ingot_copper.name=Copper Ingot
+item.ingot_magnite.name=Magnite Ingot
+item.ingot_reinforced_steel=Reinforced Steel Ingot
 item.ingot_steel.name=Steel Ingot
+item.ingot_tin.name=Tin Ingot
+item.ingot_titanium=Titanium Ingot
 item.lithium.name=Lithium
 
 item.sword_ruby.name=Ruby Sword
@@ -114,9 +118,14 @@ item.artifact_water.name=Artifact of Water
 
 tile.block_aluminium.name=Aluminium Block
 tile.block_amethyst.name=Amethyst Block
+tile.block_bronze.name=Bronze Block
 tile.block_chaos.name=Chaos Block
 tile.block_copper.name=Copper Block
+tile.block_magnite.name=Magnite Block
+tile.block_reinforced_steel.name=Reinforced Steel Block
 tile.block_ruby.name=Ruby Block
+tile.block_tin.name=Tin Block
+tile.block_titanium.name=Titanium Block
 tile.block_sapphire.name=Sapphire Block
 tile.block_steel.name=Steel Block
 
