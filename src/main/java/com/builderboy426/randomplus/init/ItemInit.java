@@ -6,6 +6,7 @@ import com.builderboy426.randomplus.objects.items.artifacts.FireArtifact;
 import com.builderboy426.randomplus.objects.items.artifacts.NightArtifact;
 import com.builderboy426.randomplus.objects.items.artifacts.WarArtifact;
 import com.builderboy426.randomplus.objects.items.artifacts.WaterArtifact;
+import com.builderboy426.randomplus.objects.items.misc.ItemCircuit;
 import com.builderboy426.randomplus.objects.items.tools.ToolAxe;
 import com.builderboy426.randomplus.objects.items.tools.ToolHoe;
 import com.builderboy426.randomplus.objects.items.tools.ToolPickaxe;
@@ -59,6 +60,7 @@ public class ItemInit {
 	public static final Item MACHINE_CASING = new ItemBase("casing_machine", 1);
 	public static final Item SCREEN = new ItemBase("screen", 16);
 	public static final Item ENERGY_TRANSMITTER = new ItemBase("transmitter_energy", 1);
+	public static final Item CIRCUIT = new ItemCircuit("circuit");
 	
 	//Gems and/or Materials
 	public static final Item RUBY = new ItemBase("ruby");
@@ -173,7 +175,7 @@ public class ItemInit {
 				  STICK_CHAOS, STICK_DIAMOND, STICK_GOLD, STICK_IRON, STICK_STONE,
 				  RESEARCH_KIT);
 		//Machine Parts
-		registerItems(LITHIUM_BATTERY, MACHINE_CASING, SCREEN, ENERGY_TRANSMITTER);
+		registerItems(LITHIUM_BATTERY, MACHINE_CASING, SCREEN, ENERGY_TRANSMITTER, CIRCUIT);
 		//Gems & Materials
 		registerItems(ALUMINIUM_INGOT, AMETHYST, ANCIENT_SHARD, CHAOS, COPPER_INGOT,
 				  LITHIUM, RUBY, SAPPHIRE, STEEL_INGOT, TIN_INGOT, TITANIUM_INGOT,
