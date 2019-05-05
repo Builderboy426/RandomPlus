@@ -8,7 +8,9 @@ import com.google.common.collect.HashBasedTable;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Table;
 
+import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
+import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 
 public class AlloyPressRecipes {
@@ -23,8 +25,18 @@ public class AlloyPressRecipes {
 	private AlloyPressRecipes() {
 		addAlloyPressRecipe(new ItemStack(Items.COAL), new ItemStack(Items.IRON_INGOT), new ItemStack(ItemInit.STEEL_INGOT), 1510, 5.0F);
 		addAlloyPressRecipe(new ItemStack(Items.IRON_INGOT), new ItemStack(Items.COAL), new ItemStack(ItemInit.STEEL_INGOT), 1510, 5.0F);
+		
 		addAlloyPressRecipe(new ItemStack(ItemInit.STEEL_INGOT), new ItemStack(ItemInit.TITANIUM_INGOT), new ItemStack(ItemInit.REINFORCED_STEEL_INGOT), 2510, 5.0F);
 		addAlloyPressRecipe(new ItemStack(ItemInit.TITANIUM_INGOT), new ItemStack(ItemInit.STEEL_INGOT), new ItemStack(ItemInit.REINFORCED_STEEL_INGOT), 2510, 5.0F);
+		
+		addAlloyPressRecipe(new ItemStack(ItemInit.COPPER_INGOT), new ItemStack(ItemInit.TIN_INGOT), new ItemStack(ItemInit.BRONZE_INGOT), 2562, 5.0F);
+		addAlloyPressRecipe(new ItemStack(ItemInit.TIN_INGOT), new ItemStack(ItemInit.COPPER_INGOT), new ItemStack(ItemInit.BRONZE_INGOT), 2562, 5.0F);
+		
+		addAlloyPressRecipe(new ItemStack(new ItemBlock(Blocks.MAGMA)), new ItemStack(ItemInit.STEEL_INGOT), new ItemStack(ItemInit.MAGNITE_INGOT), 2627, 5.0F);
+		addAlloyPressRecipe(new ItemStack(ItemInit.STEEL_INGOT), new ItemStack(new ItemBlock(Blocks.MAGMA)), new ItemStack(ItemInit.MAGNITE_INGOT), 2627, 5.0F);
+		
+		//Ores
+		
 	}
 
 	
