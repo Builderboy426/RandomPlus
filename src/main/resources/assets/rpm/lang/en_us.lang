@@ -15,6 +15,7 @@ item.casing_machine.name=Machine Casing
 item.research_kit.name=Research Kit
 item.screen.name=Screen
 item.transmitter_energy.name=Energy Transmitter
+item.circuit.name=Circuit
 
 item.amethyst.name=Amethyst
 item.chaos.name=Chaos Crystal
