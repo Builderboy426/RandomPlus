@@ -1,9 +1,5 @@
 package com.builderboy426.randomplus.objects.blocks.tileentity;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import com.builderboy426.randomplus.init.RecipeInit;
 import com.builderboy426.randomplus.objects.blocks.machines.BlockAlloyPress;
 import com.builderboy426.randomplus.recipes.AlloyPressRecipes;
 

@@ -1,14 +1,12 @@
 package com.builderboy426.randomplus.objects.blocks.gui;
 
 import com.builderboy426.randomplus.objects.blocks.container.ContainerArtifactAnalyzer;
-import com.builderboy426.randomplus.objects.blocks.tileentity.TileEntityAncientGenerator;
 import com.builderboy426.randomplus.objects.blocks.tileentity.TileEntityArtifactAnalyzer;
 import com.builderboy426.randomplus.utils.Reference;
 
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.player.InventoryPlayer;
-import net.minecraft.inventory.Container;
 import net.minecraft.util.ResourceLocation;
 
 public class GuiArtifactAnalyzer extends GuiContainer {

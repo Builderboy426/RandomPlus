@@ -1,17 +1,11 @@
 package com.builderboy426.randomplus.objects.blocks.tileentity;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
 import com.builderboy426.randomplus.init.ItemInit;
-import com.builderboy426.randomplus.objects.blocks.machines.BlockArtifactAnalyzer;
 import com.builderboy426.randomplus.objects.items.artifacts.ArtifactBase;
 import com.builderboy426.randomplus.objects.items.artifacts.ArtifactBase.ArtifactRarity;
-import com.builderboy426.randomplus.objects.items.artifacts.FireArtifact;
-import com.builderboy426.randomplus.objects.items.artifacts.NightArtifact;
-import com.builderboy426.randomplus.objects.items.artifacts.WarArtifact;
-import com.builderboy426.randomplus.objects.items.artifacts.WaterArtifact;
 
 import cofh.redstoneflux.api.IEnergyReceiver;
 import cofh.redstoneflux.impl.EnergyStorage;

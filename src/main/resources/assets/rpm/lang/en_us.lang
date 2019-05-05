@@ -137,6 +137,7 @@ tile.ore_lithium.name=Lithium Ore
 tile.ore_ruby.name=Ruby Ore
 tile.ore_sapphire.name=Sapphire Ore
 tile.ore_tin.name=Tin Ore
+tile.ore_titanium.name=Titanium Ore
 tile.rock_ancient.name=Ancient Rock
 
 tile.alloy_press.name=Alloy Press

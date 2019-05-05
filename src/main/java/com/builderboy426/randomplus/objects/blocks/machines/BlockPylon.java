@@ -1,14 +1,10 @@
 package com.builderboy426.randomplus.objects.blocks.machines;
 
-import com.builderboy426.randomplus.Main;
 import com.builderboy426.randomplus.objects.blocks.BlockBase;
-import com.builderboy426.randomplus.objects.blocks.tileentity.TileEntityAncientGenerator;
 import com.builderboy426.randomplus.objects.blocks.tileentity.TileEntityPylon;
-import com.builderboy426.randomplus.utils.Reference;
 
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;

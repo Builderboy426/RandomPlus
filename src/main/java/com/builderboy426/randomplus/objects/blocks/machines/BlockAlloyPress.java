@@ -4,7 +4,6 @@ import com.builderboy426.randomplus.Main;
 import com.builderboy426.randomplus.init.BlockInit;
 import com.builderboy426.randomplus.objects.blocks.BlockBase;
 import com.builderboy426.randomplus.objects.blocks.tileentity.TileEntityAlloyPress;
-import com.builderboy426.randomplus.objects.blocks.tileentity.TileEntityAncientGenerator;
 import com.builderboy426.randomplus.utils.Reference;
 
 import net.minecraft.block.BlockHorizontal;
