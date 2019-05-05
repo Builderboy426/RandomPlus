@@ -18,7 +18,8 @@ public class WorldGenCustomOres implements IWorldGenerator {
 	
 	private WorldGenerator ore_ruby, ore_sapphire, ore_amethyst,
 						 ore_chaos, ore_ancient, ore_copper,
-						 ore_aluminium, ore_tin, ore_lithium;
+						 ore_aluminium, ore_tin, ore_lithium, 
+						 ore_titanium;
 	
 	public WorldGenCustomOres() {
 		ore_ruby = new WorldGenMinable(BlockInit.ORE_RUBY.getDefaultState(), 4, BlockMatcher.forBlock(Blocks.STONE));
@@ -30,6 +31,7 @@ public class WorldGenCustomOres implements IWorldGenerator {
 		ore_tin= new WorldGenMinable(BlockInit.ORE_TIN.getDefaultState(), 5, BlockMatcher.forBlock(Blocks.STONE));
 		ore_aluminium = new WorldGenMinable(BlockInit.ORE_ALUMINIUM.getDefaultState(), 5, BlockMatcher.forBlock(Blocks.STONE));
 		ore_lithium = new WorldGenMinable(BlockInit.ORE_LITHIUM.getDefaultState(), 3, BlockMatcher.forBlock(Blocks.STONE));
+		ore_titanium = new WorldGenMinable(BlockInit.ORE_TITANIUM.getDefaultState(), 3, BlockMatcher.forBlock(Blocks.STONE));
 	}
 	
 	@Override
@@ -47,6 +49,7 @@ public class WorldGenCustomOres implements IWorldGenerator {
 				runGenerator(ore_aluminium, world, random, chunkX, chunkZ, 15, 15, 50);
 				runGenerator(ore_tin, world, random, chunkX, chunkZ, 15, 15, 50);
 				runGenerator(ore_lithium, world, random, chunkX, chunkZ, 10, 0, 25);
+				runGenerator(ore_titanium, world, random, chunkX, chunkZ, 10, 0, 25);
 			break;
 			case 1: //End
 			break;

@@ -29,7 +29,7 @@ item.ingot_magnite.name=Magnite Ingot
 item.ingot_reinforced_steel=Reinforced Steel Ingot
 item.ingot_steel.name=Steel Ingot
 item.ingot_tin.name=Tin Ingot
-item.ingot_titanium=Titanium Ingot
+item.ingot_titanium.name=Titanium Ingot
 item.lithium.name=Lithium
 
 item.sword_ruby.name=Ruby Sword
