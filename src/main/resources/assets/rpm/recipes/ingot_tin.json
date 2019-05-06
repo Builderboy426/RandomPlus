@@ -5,11 +5,11 @@
     ],
     "key": {
         "#": {
-            "item": "rpm:block_chaos"
+            "item": "rpm:block_tin"
         }
     },
     "result": {
-        "item": "rpm:chaos",
+        "item": "rpm:ingot_tin",
 		"count": 9
     }
 }

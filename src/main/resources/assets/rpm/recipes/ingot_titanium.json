@@ -5,11 +5,11 @@
     ],
     "key": {
         "#": {
-            "item": "rpm:block_chaos"
+            "item": "rpm:block_titanium"
         }
     },
     "result": {
-        "item": "rpm:chaos",
+        "item": "rpm:ingot_titanium",
 		"count": 9
     }
 }

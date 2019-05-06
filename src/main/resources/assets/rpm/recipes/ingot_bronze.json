@@ -5,11 +5,11 @@
     ],
     "key": {
         "#": {
-            "item": "rpm:block_chaos"
+            "item": "rpm:block_bronze"
         }
     },
     "result": {
-        "item": "rpm:chaos",
+        "item": "rpm:ingot_bronze",
 		"count": 9
     }
 }

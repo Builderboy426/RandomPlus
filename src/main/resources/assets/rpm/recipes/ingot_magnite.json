@@ -5,11 +5,11 @@
     ],
     "key": {
         "#": {
-            "item": "rpm:block_chaos"
+            "item": "rpm:block_magnite"
         }
     },
     "result": {
-        "item": "rpm:chaos",
+        "item": "rpm:ingot_magnite",
 		"count": 9
     }
 }

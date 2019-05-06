@@ -5,11 +5,11 @@
     ],
     "key": {
         "#": {
-            "item": "rpm:block_chaos"
+            "item": "rpm:block_reinforced_steel"
         }
     },
     "result": {
-        "item": "rpm:chaos",
+        "item": "rpm:ingot_reinforced_steel",
 		"count": 9
     }
 }
