@@ -7,10 +7,10 @@
     ],
     "key": {
         "#": {
-            "item": "rpm:ingot_tin"
+            "item": "rpm:ingot_magnite"
         }
     },
     "result": {
-        "item": "rpm:block_tin"
+        "item": "rpm:block_magnite"
     }
 }
