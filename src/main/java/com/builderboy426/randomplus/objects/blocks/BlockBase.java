@@ -13,8 +13,17 @@ public class BlockBase extends Block {
 		setUnlocalizedName(name);
 		setRegistryName(name);
 		setCreativeTab(Main.RANDOM_PLUS);
-		setSoundType(SoundType.METAL); // Temporary until we have blocks with sounds other than metal.
 		setHardness(hardness);
 		setResistance(15.0f);
+	}
+	// For glowing blocks
+	public BlockBase(String name, Material mat, float hardness, float lightLevel) {
+		super(mat);
+		setUnlocalizedName(name);
+		setRegistryName(name);
+		setCreativeTab(Main.RANDOM_PLUS);
+		setHardness(hardness);
+		setResistance(15.0f);
+		setLightLevel(lightLevel);
 	}
 }

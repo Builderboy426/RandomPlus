@@ -38,7 +38,7 @@ public class BlockInit {
 	public static final Block BLOCK_TIN = new BlockBase("block_tin", Material.IRON, 5.0f);
 	public static final Block BLOCK_TITANIUM = new BlockBase("block_titanium", Material.IRON, 10.5f);
 	public static final Block BLOCK_BRONZE = new BlockBase("block_bronze", Material.IRON, 10.5f);
-	public static final Block BLOCK_MAGNITE = new BlockBase("block_magnite", Material.IRON, 5.0f);
+	public static final Block BLOCK_MAGNITE = new BlockBase("block_magnite", Material.IRON, 5.0f, 0.2f);
 	public static final Block BLOCK_REINFORCED_STEEL = new BlockBase("block_reinforced_steel", Material.IRON, 10.5f);
 	
 	//Ores / Materials

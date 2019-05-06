@@ -27,7 +27,7 @@ item.ingot_aluminium.name=Aluminium Ingot
 item.ingot_bronze.name=Bronze Ingot
 item.ingot_copper.name=Copper Ingot
 item.ingot_magnite.name=Magnite Ingot
-item.ingot_reinforced_steel=Reinforced Steel Ingot
+item.ingot_reinforced_steel.name=Reinforced Steel Ingot
 item.ingot_steel.name=Steel Ingot
 item.ingot_tin.name=Tin Ingot
 item.ingot_titanium.name=Titanium Ingot
@@ -75,6 +75,12 @@ item.axe_steel.name=Steel Axe
 item.shovel_steel.name=Steel Shovel
 item.hoe_steel.name=Steel Hoe
 
+item.sword_titanium.name=Titanium Sword
+item.pickaxe_titanium.name=Titanium Pickaxe
+item.axe_titanium.name=Titanium Axe
+item.shovel_titanium.name=Titanium Shovel
+item.hoe_titanium.name=Titanium Hoe
+
 item.helmet_ruby.name=Ruby Helmet
 item.chestplate_ruby.name=Ruby Chestplate
 item.leggings_ruby.name=Ruby Leggings
@@ -109,6 +115,11 @@ item.helmet_steel.name=Steel Helmet
 item.chestplate_steel.name=Steel Chestplate
 item.leggings_steel.name=Steel Leggings
 item.boots_steel.name=Steel Boots
+
+item.helmet_titanium.name=Titanium Helmet
+item.chestplate_titanium.name=Titanium Chestplate
+item.leggings_titanium.name=Titanium Leggings
+item.boots_titanium.name=Titanium Boots
 
 item.artifact_fire.name=Artifact of Fire
 item.artifact_night.name=Artifact of Darkness
