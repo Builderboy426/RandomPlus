@@ -81,6 +81,12 @@ item.axe_titanium.name=Titanium Axe
 item.shovel_titanium.name=Titanium Shovel
 item.hoe_titanium.name=Titanium Hoe
 
+item.sword_magnite.name=Magnite Sword
+item.pickaxe_magnite.name=Magnite Pickaxe
+item.axe_magnite.name=Magnite Axe
+item.shovel_magnite.name=Magnite Shovel
+item.hoe_magnite.name=Magnite Hoe
+
 item.helmet_ruby.name=Ruby Helmet
 item.chestplate_ruby.name=Ruby Chestplate
 item.leggings_ruby.name=Ruby Leggings
@@ -120,6 +126,11 @@ item.helmet_titanium.name=Titanium Helmet
 item.chestplate_titanium.name=Titanium Chestplate
 item.leggings_titanium.name=Titanium Leggings
 item.boots_titanium.name=Titanium Boots
+
+item.helmet_magnite.name=Magnite Helmet
+item.chestplate_magnite.name=Magnite Chestplate
+item.leggings_magnite.name=Magnite Leggings
+item.boots_magnite.name=Magnite Boots
 
 item.artifact_fire.name=Artifact of Fire
 item.artifact_night.name=Artifact of Darkness
