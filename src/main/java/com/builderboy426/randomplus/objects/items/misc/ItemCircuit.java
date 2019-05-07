@@ -21,7 +21,7 @@ public class ItemCircuit extends ItemBase {
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
 		ItemStack item = player.getHeldItem(hand);
-		world.playSound(player, player.getPosition(), new SoundEvent(new ResourceLocation("ui.button.click")), SoundCategory.MASTER, 0.5F, 0.0F);
+		world.playSound(player, player.getPosition(), new SoundEvent(new ResourceLocation("ui.button.click")), SoundCategory.MASTER, 0.5F, ((float) Math.random()));
 		return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, item);
 	}
 }
