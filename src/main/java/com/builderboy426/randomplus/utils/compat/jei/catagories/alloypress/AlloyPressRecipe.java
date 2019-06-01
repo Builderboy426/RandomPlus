@@ -1,15 +1,9 @@
 package com.builderboy426.randomplus.utils.compat.jei.catagories.alloypress;
 
-import java.awt.Color;
 import java.util.List;
-
-import com.builderboy426.randomplus.recipes.AlloyPressRecipes;
-import com.builderboy426.randomplus.utils.compat.jei.JEICompat;
 
 import mezz.jei.api.ingredients.IIngredients;
 import mezz.jei.api.recipe.IRecipeWrapper;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.item.ItemStack;
 
 public class AlloyPressRecipe implements IRecipeWrapper {

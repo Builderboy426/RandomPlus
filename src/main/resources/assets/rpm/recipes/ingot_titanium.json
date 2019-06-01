@@ -1,0 +1,15 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "#"
+    ],
+    "key": {
+        "#": {
+            "item": "rpm:block_titanium"
+        }
+    },
+    "result": {
+        "item": "rpm:ingot_titanium",
+		"count": 9
+    }
+}

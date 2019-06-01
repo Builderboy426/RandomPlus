@@ -9,6 +9,7 @@
         }
     },
     "result": {
-        "item": "rpm:chaos"
+        "item": "rpm:chaos",
+		"count": 9
     }
 }

@@ -1,9 +1,6 @@
 package com.builderboy426.randomplus.objects.blocks.machines;
 
-import java.util.Random;
-
 import com.builderboy426.randomplus.Main;
-import com.builderboy426.randomplus.init.BlockInit;
 import com.builderboy426.randomplus.objects.blocks.BlockBase;
 import com.builderboy426.randomplus.objects.blocks.tileentity.TileEntityArtifactAnalyzer;
 import com.builderboy426.randomplus.utils.Reference;

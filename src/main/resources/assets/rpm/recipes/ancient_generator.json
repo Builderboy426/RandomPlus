@@ -1,13 +1,13 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "OCO",
+    "OBO",
     "I#I",
     "AAA"
   ],
   "key": {
     "C": {
-      "item": "rpm:chaos"
+      "item": "rpm:battery_lithium"
     },
     "#": {
       "item": "rpm:casing_machine"

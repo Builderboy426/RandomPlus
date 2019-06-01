@@ -1,14 +1,12 @@
 package com.builderboy426.randomplus.init;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.builderboy426.randomplus.objects.armour.ArmorBase;
 import com.builderboy426.randomplus.objects.items.ItemBase;
 import com.builderboy426.randomplus.objects.items.artifacts.FireArtifact;
 import com.builderboy426.randomplus.objects.items.artifacts.NightArtifact;
 import com.builderboy426.randomplus.objects.items.artifacts.WarArtifact;
 import com.builderboy426.randomplus.objects.items.artifacts.WaterArtifact;
+import com.builderboy426.randomplus.objects.items.misc.ItemCircuit;
 import com.builderboy426.randomplus.objects.items.tools.ToolAxe;
 import com.builderboy426.randomplus.objects.items.tools.ToolHoe;
 import com.builderboy426.randomplus.objects.items.tools.ToolPickaxe;
@@ -22,7 +20,6 @@ import net.minecraft.item.Item;
 import net.minecraft.item.Item.ToolMaterial;
 import net.minecraft.item.ItemArmor.ArmorMaterial;
 import net.minecraftforge.common.util.EnumHelper;
-import net.minecraftforge.fml.common.registry.GameRegistry.ObjectHolder;
 
 public class ItemInit {
 	
@@ -31,11 +28,21 @@ public class ItemInit {
 	public static final ToolMaterial TOOL_SAPPHIRE = EnumHelper.addToolMaterial("tool_sapphire", 2, 340, 6.0f, 1.5f, 16);
 	public static final ToolMaterial TOOL_AMETHYST = EnumHelper.addToolMaterial("tool_amethyst", 2, 325, 6.1f, 1.5f, 16);
 	public static final ToolMaterial TOOL_EMERALD = EnumHelper.addToolMaterial("tool_emerald", 2, 365, 6.25f, 2.75f, 22);
+	public static final ToolMaterial TOOL_COPPER = EnumHelper.addToolMaterial("tool_copper", 2, 255, 5f, 2f, 12);
+	public static final ToolMaterial TOOL_BRONZE = EnumHelper.addToolMaterial("tool_bronze", 2, 285, 5.75f, 2.25f, 14);
+	public static final ToolMaterial TOOL_STEEL = EnumHelper.addToolMaterial("tool_steel", 2, 345, 6f, 2.5f, 10);
+	public static final ToolMaterial TOOL_TITANIUM = EnumHelper.addToolMaterial("tool_titanium", 2, 420, 6f, 2.5f, 10);
+	public static final ToolMaterial TOOL_MAGNITE = EnumHelper.addToolMaterial("tool_magnite", 2, 365, 6f, 2.5f, 10);
 	
 	public static final ArmorMaterial ARMOUR_RUBY = EnumHelper.addArmorMaterial("armour_ruby", Reference.MODID+":ruby", 17, new int[]{3, 6, 5, 3}, 8, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 0.0F);
 	public static final ArmorMaterial ARMOUR_SAPPHIRE = EnumHelper.addArmorMaterial("armour_sapphire", Reference.MODID+":sapphire", 17, new int[]{3, 6, 5, 3}, 8, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 0.0F);
 	public static final ArmorMaterial ARMOUR_AMETHYST = EnumHelper.addArmorMaterial("armour_amethyst", Reference.MODID+":amethyst", 17, new int[]{3, 6, 5, 3}, 8, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 0.0F);
 	public static final ArmorMaterial ARMOUR_EMERALD = EnumHelper.addArmorMaterial("armour_emerald", Reference.MODID+":emerald", 49, new int[]{4, 8, 9, 4}, 12, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 2.25F);
+	public static final ArmorMaterial ARMOUR_COPPER = EnumHelper.addArmorMaterial("armour_copper", Reference.MODID+":copper", 49, new int[]{3, 5, 6, 3}, 6, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0.0F);
+	public static final ArmorMaterial ARMOUR_BRONZE = EnumHelper.addArmorMaterial("armour_bronze", Reference.MODID+":bronze", 49, new int[]{4, 6, 7, 4}, 7, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0.0F);
+	public static final ArmorMaterial ARMOUR_STEEL = EnumHelper.addArmorMaterial("armour_steel", Reference.MODID+":steel", 49, new int[]{5, 7, 8, 5}, 5, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0.0F);
+	public static final ArmorMaterial ARMOUR_TITANIUM = EnumHelper.addArmorMaterial("armour_titanium", Reference.MODID+":titanium", 49, new int[]{6, 8, 9, 6}, 5, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0.0F);
+	public static final ArmorMaterial ARMOUR_MAGNITE = EnumHelper.addArmorMaterial("armour_magnite", Reference.MODID+":magnite", 49, new int[]{6, 8, 9, 6}, 5, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0.0F);
 	
 	//Items
 	public static final Item STICK_STONE = new ItemBase("stick_stone");
@@ -57,6 +64,7 @@ public class ItemInit {
 	public static final Item MACHINE_CASING = new ItemBase("casing_machine", 1);
 	public static final Item SCREEN = new ItemBase("screen", 16);
 	public static final Item ENERGY_TRANSMITTER = new ItemBase("transmitter_energy", 1);
+	public static final Item CIRCUIT = new ItemCircuit("circuit");
 	
 	//Gems and/or Materials
 	public static final Item RUBY = new ItemBase("ruby");
@@ -69,11 +77,15 @@ public class ItemInit {
 	//Metals
 	//Pure
 	public static final Item COPPER_INGOT = new ItemBase("ingot_copper");
-	
+	public static final Item TIN_INGOT = new ItemBase("ingot_tin");
 	public static final Item ALUMINIUM_INGOT = new ItemBase("ingot_aluminium");
+	public static final Item TITANIUM_INGOT = new ItemBase("ingot_titanium");
 	
 	//Alloys
 	public static final Item STEEL_INGOT = new ItemBase("ingot_steel");
+	public static final Item BRONZE_INGOT = new ItemBase("ingot_bronze");
+	public static final Item MAGNITE_INGOT = new ItemBase("ingot_magnite");
+	public static final Item REINFORCED_STEEL_INGOT = new ItemBase("ingot_reinforced_steel");
 	
 	//Artifacts
 	public static final Item WATER_ARTIFACT = new WaterArtifact("artifact_water");
@@ -107,6 +119,36 @@ public class ItemInit {
 	public static final Item SHOVEL_EMERALD = new ToolShovel("shovel_emerald", TOOL_EMERALD);
 	public static final Item SWORD_EMERALD = new ToolSword("sword_emerald", TOOL_EMERALD);
 	
+	public static final Item AXE_COPPER = new ToolAxe("axe_copper", TOOL_COPPER);
+	public static final Item HOE_COPPER = new ToolHoe("hoe_copper", TOOL_COPPER);
+	public static final Item PICKAXE_COPPER = new ToolPickaxe("pickaxe_copper", TOOL_COPPER);
+	public static final Item SHOVEL_COPPER = new ToolShovel("shovel_copper", TOOL_COPPER);
+	public static final Item SWORD_COPPER = new ToolSword("sword_copper", TOOL_COPPER);
+	
+	public static final Item AXE_BRONZE = new ToolAxe("axe_bronze", TOOL_BRONZE);
+	public static final Item HOE_BRONZE = new ToolHoe("hoe_bronze", TOOL_BRONZE);
+	public static final Item PICKAXE_BRONZE = new ToolPickaxe("pickaxe_bronze", TOOL_BRONZE);
+	public static final Item SHOVEL_BRONZE = new ToolShovel("shovel_bronze", TOOL_BRONZE);
+	public static final Item SWORD_BRONZE = new ToolSword("sword_bronze", TOOL_BRONZE);
+	
+	public static final Item AXE_STEEL = new ToolAxe("axe_steel", TOOL_STEEL);
+	public static final Item HOE_STEEL = new ToolHoe("hoe_steel", TOOL_STEEL);
+	public static final Item PICKAXE_STEEL = new ToolPickaxe("pickaxe_steel", TOOL_STEEL);
+	public static final Item SHOVEL_STEEL = new ToolShovel("shovel_steel", TOOL_STEEL);
+	public static final Item SWORD_STEEL = new ToolSword("sword_steel", TOOL_STEEL);
+	
+	public static final Item AXE_TITANIUM = new ToolAxe("axe_titanium", TOOL_TITANIUM);
+	public static final Item HOE_TITANIUM = new ToolHoe("hoe_titanium", TOOL_TITANIUM);
+	public static final Item PICKAXE_TITANIUM = new ToolPickaxe("pickaxe_titanium", TOOL_TITANIUM);
+	public static final Item SHOVEL_TITANIUM = new ToolShovel("shovel_titanium", TOOL_TITANIUM);
+	public static final Item SWORD_TITANIUM = new ToolSword("sword_titanium", TOOL_TITANIUM);
+	
+	public static final Item AXE_MAGNITE = new ToolAxe("axe_magnite", TOOL_MAGNITE);
+	public static final Item HOE_MAGNITE = new ToolHoe("hoe_magnite", TOOL_MAGNITE);
+	public static final Item PICKAXE_MAGNITE = new ToolPickaxe("pickaxe_magnite", TOOL_MAGNITE);
+	public static final Item SHOVEL_MAGNITE = new ToolShovel("shovel_magnite", TOOL_MAGNITE);
+	public static final Item SWORD_MAGNITE = new ToolSword("sword_magnite", TOOL_MAGNITE);
+	
 	//Armour
 	public static final Item HELMET_EMERALD = new ArmorBase("helmet_emerald", ARMOUR_EMERALD, 1, EntityEquipmentSlot.HEAD);
 	public static final Item CHESTPLATE_EMERALD = new ArmorBase("chestplate_emerald", ARMOUR_EMERALD, 1, EntityEquipmentSlot.CHEST);
@@ -128,16 +170,42 @@ public class ItemInit {
 	public static final Item LEGGINGS_AMETHYST = new ArmorBase("leggings_amethyst", ARMOUR_AMETHYST, 2, EntityEquipmentSlot.LEGS);
 	public static final Item BOOTS_AMETHYST = new ArmorBase("boots_amethyst", ARMOUR_AMETHYST, 1, EntityEquipmentSlot.FEET);
 	
+	public static final Item HELMET_COPPER = new ArmorBase("helmet_copper", ARMOUR_COPPER, 1, EntityEquipmentSlot.HEAD);
+	public static final Item CHESTPLATE_COPPER = new ArmorBase("chestplate_copper", ARMOUR_COPPER, 1, EntityEquipmentSlot.CHEST);
+	public static final Item LEGGINGS_COPPER = new ArmorBase("leggings_copper", ARMOUR_COPPER, 2, EntityEquipmentSlot.LEGS);
+	public static final Item BOOTS_COPPER = new ArmorBase("boots_copper", ARMOUR_COPPER, 1, EntityEquipmentSlot.FEET);
+	
+	public static final Item HELMET_BRONZE = new ArmorBase("helmet_bronze", ARMOUR_BRONZE, 1, EntityEquipmentSlot.HEAD);
+	public static final Item CHESTPLATE_BRONZE = new ArmorBase("chestplate_bronze", ARMOUR_BRONZE, 1, EntityEquipmentSlot.CHEST);
+	public static final Item LEGGINGS_BRONZE = new ArmorBase("leggings_bronze", ARMOUR_BRONZE, 2, EntityEquipmentSlot.LEGS);
+	public static final Item BOOTS_BRONZE = new ArmorBase("boots_bronze", ARMOUR_BRONZE, 1, EntityEquipmentSlot.FEET);
+	
+	public static final Item HELMET_STEEL = new ArmorBase("helmet_steel", ARMOUR_STEEL, 1, EntityEquipmentSlot.HEAD);
+	public static final Item CHESTPLATE_STEEL = new ArmorBase("chestplate_steel", ARMOUR_STEEL, 1, EntityEquipmentSlot.CHEST);
+	public static final Item LEGGINGS_STEEL = new ArmorBase("leggings_steel", ARMOUR_STEEL, 2, EntityEquipmentSlot.LEGS);
+	public static final Item BOOTS_STEEL = new ArmorBase("boots_steel", ARMOUR_STEEL, 1, EntityEquipmentSlot.FEET);
+	
+	public static final Item HELMET_TITANIUM = new ArmorBase("helmet_titanium", ARMOUR_TITANIUM, 1, EntityEquipmentSlot.HEAD);
+	public static final Item CHESTPLATE_TITANIUM = new ArmorBase("chestplate_titanium", ARMOUR_TITANIUM, 1, EntityEquipmentSlot.CHEST);
+	public static final Item LEGGINGS_TITANIUM = new ArmorBase("leggings_titanium", ARMOUR_TITANIUM, 2, EntityEquipmentSlot.LEGS);
+	public static final Item BOOTS_TITANIUM = new ArmorBase("boots_titanium", ARMOUR_TITANIUM, 1, EntityEquipmentSlot.FEET);
+	
+	public static final Item HELMET_MAGNITE = new ArmorBase("helmet_magnite", ARMOUR_MAGNITE, 1, EntityEquipmentSlot.HEAD);
+	public static final Item CHESTPLATE_MAGNITE = new ArmorBase("chestplate_magnite", ARMOUR_MAGNITE, 1, EntityEquipmentSlot.CHEST);
+	public static final Item LEGGINGS_MAGNITE = new ArmorBase("leggings_magnite", ARMOUR_MAGNITE, 2, EntityEquipmentSlot.LEGS);
+	public static final Item BOOTS_MAGNITE = new ArmorBase("boots_magnite", ARMOUR_MAGNITE, 1, EntityEquipmentSlot.FEET);
+	
 	public static void init() {
 		//Items
 		registerItems(STAR_CHAOS, STAR_DIAMOND, STAR_GOLD, STAR_IRON, STAR_STONE,
 				  STICK_CHAOS, STICK_DIAMOND, STICK_GOLD, STICK_IRON, STICK_STONE,
 				  RESEARCH_KIT);
 		//Machine Parts
-		registerItems(LITHIUM_BATTERY, MACHINE_CASING, SCREEN, ENERGY_TRANSMITTER);
+		registerItems(LITHIUM_BATTERY, MACHINE_CASING, SCREEN, ENERGY_TRANSMITTER, CIRCUIT);
 		//Gems & Materials
 		registerItems(ALUMINIUM_INGOT, AMETHYST, ANCIENT_SHARD, CHAOS, COPPER_INGOT,
-				  LITHIUM, RUBY, SAPPHIRE, STEEL_INGOT);
+				  LITHIUM, RUBY, SAPPHIRE, STEEL_INGOT, TIN_INGOT, TITANIUM_INGOT,
+				  BRONZE_INGOT, MAGNITE_INGOT, REINFORCED_STEEL_INGOT);
 		//Artifacts
 		registerItems(FIRE_ARTIFACT, NIGHT_ARTIFACT, UNKNOWN_ARTIFACT, WAR_ARTIFACT, WATER_ARTIFACT);
 		//Tools
@@ -145,11 +213,21 @@ public class ItemInit {
 		registerItems(AXE_EMERALD, HOE_EMERALD, PICKAXE_EMERALD, SHOVEL_EMERALD, SWORD_EMERALD);
 		registerItems(AXE_RUBY, HOE_RUBY, PICKAXE_RUBY, SHOVEL_RUBY, SWORD_RUBY);
 		registerItems(AXE_SAPPHIRE, HOE_SAPPHIRE, PICKAXE_SAPPHIRE, SHOVEL_SAPPHIRE, SWORD_SAPPHIRE);
+		registerItems(AXE_COPPER, HOE_COPPER, PICKAXE_COPPER, SHOVEL_COPPER, SWORD_COPPER);
+		registerItems(AXE_BRONZE, HOE_BRONZE, PICKAXE_BRONZE, SHOVEL_BRONZE, SWORD_BRONZE);
+		registerItems(AXE_STEEL, HOE_STEEL, PICKAXE_STEEL, SHOVEL_STEEL, SWORD_STEEL);
+		registerItems(AXE_TITANIUM, HOE_TITANIUM, PICKAXE_TITANIUM, SHOVEL_TITANIUM, SWORD_TITANIUM);
+		registerItems(AXE_MAGNITE, HOE_MAGNITE, PICKAXE_MAGNITE, SHOVEL_MAGNITE, SWORD_MAGNITE);
 		//Armor
 		registerItems(BOOTS_AMETHYST, CHESTPLATE_AMETHYST, HELMET_AMETHYST, LEGGINGS_AMETHYST);
 		registerItems(BOOTS_EMERALD, CHESTPLATE_EMERALD, HELMET_EMERALD, LEGGINGS_EMERALD);
 		registerItems(BOOTS_RUBY, CHESTPLATE_RUBY, HELMET_RUBY, LEGGINGS_RUBY);
 		registerItems(BOOTS_SAPPHIRE, CHESTPLATE_SAPPHIRE, HELMET_SAPPHIRE, LEGGINGS_SAPPHIRE);
+		registerItems(BOOTS_COPPER, CHESTPLATE_COPPER, HELMET_COPPER, LEGGINGS_COPPER);
+		registerItems(BOOTS_BRONZE, CHESTPLATE_BRONZE, HELMET_BRONZE, LEGGINGS_BRONZE);
+		registerItems(BOOTS_STEEL, CHESTPLATE_STEEL, HELMET_STEEL, LEGGINGS_STEEL);
+		registerItems(BOOTS_TITANIUM, CHESTPLATE_TITANIUM, HELMET_TITANIUM, LEGGINGS_TITANIUM);
+		registerItems(BOOTS_MAGNITE, CHESTPLATE_MAGNITE, HELMET_MAGNITE, LEGGINGS_MAGNITE);
 	}
 	
 	public static void registerItems(Item... items) {

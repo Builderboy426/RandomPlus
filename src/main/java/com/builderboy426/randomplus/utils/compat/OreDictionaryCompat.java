@@ -12,7 +12,6 @@ public class OreDictionaryCompat {
 		OreDictionary.registerOre("oreRuby", BlockInit.ORE_RUBY);
 		OreDictionary.registerOre("oreSapphire", BlockInit.ORE_SAPPHIRE);
 		OreDictionary.registerOre("oreAmethyst", BlockInit.ORE_AMETHYST);
-		OreDictionary.registerOre("oreChaos", BlockInit.ORE_CHAOS);
 		OreDictionary.registerOre("oreCopper", BlockInit.ORE_COPPER);
 		OreDictionary.registerOre("oreAluminium", BlockInit.ORE_ALUMINIUM);
 		OreDictionary.registerOre("oreLithium", BlockInit.ORE_LITHIUM);
@@ -20,6 +19,12 @@ public class OreDictionaryCompat {
 		//Ingots
 		OreDictionary.registerOre("ingotCopper", ItemInit.COPPER_INGOT);
 		OreDictionary.registerOre("ingotAluminium", ItemInit.ALUMINIUM_INGOT);
-		OreDictionary.registerOre("ingotLithium", ItemInit.LITHIUM);
+		OreDictionary.registerOre("ingotSteel", ItemInit.STEEL_INGOT);
+		OreDictionary.registerOre("lithium", ItemInit.LITHIUM);
+		
+		//Gems
+		OreDictionary.registerOre("gemRuby", ItemInit.RUBY);
+		OreDictionary.registerOre("gemSapphire", ItemInit.SAPPHIRE);
+		OreDictionary.registerOre("gemAmethyst", ItemInit.AMETHYST);
 	}
 }

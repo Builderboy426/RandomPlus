@@ -1,18 +1,10 @@
 package com.builderboy426.randomplus.objects.blocks.ores;
 
-import java.util.Random;
-
 import com.builderboy426.randomplus.Main;
-import com.builderboy426.randomplus.init.BlockInit;
-import com.builderboy426.randomplus.init.ItemInit;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.block.state.IBlockState;
-import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.init.Items;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemBlock;
+
 
 public class OreBase extends Block {
 	

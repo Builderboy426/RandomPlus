@@ -1,12 +1,10 @@
 package com.builderboy426.randomplus.enchantments;
 
-import com.builderboy426.randomplus.init.EnchantmentInit;
 import com.builderboy426.randomplus.utils.Reference;
 
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnumEnchantmentType;
 import net.minecraft.init.Enchantments;
-import net.minecraft.init.Items;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemPickaxe;
 import net.minecraft.item.ItemStack;
@@ -14,7 +12,7 @@ import net.minecraft.util.ResourceLocation;
 
 public class EnchanmentArcheology extends Enchantment {
 	public EnchanmentArcheology() {
-		super(Rarity.RARE, EnumEnchantmentType.DIGGER, new EntityEquipmentSlot[] {EntityEquipmentSlot.MAINHAND});
+		super(Rarity.UNCOMMON, EnumEnchantmentType.DIGGER, new EntityEquipmentSlot[] {EntityEquipmentSlot.MAINHAND});
 		this.setName("archeology");
 		this.setRegistryName(new ResourceLocation(Reference.MODID+":archeology"));
 	}
@@ -24,8 +22,9 @@ public class EnchanmentArcheology extends Enchantment {
 		return 20;
 	}
 	
+	@Override
 	public int getMaxEnchantability(int enchantmentLevel) {
-		return this.getMaxEnchantability(enchantmentLevel)+10;
+		return this.getMinEnchantability(enchantmentLevel)+10;
 	}
 	
 	@Override
@@ -35,7 +34,7 @@ public class EnchanmentArcheology extends Enchantment {
 	
 	@Override
 	protected boolean canApplyTogether(Enchantment ench) {
-		return super.canApplyTogether(ench) && ench != Enchantments.FORTUNE;
+		return super.canApplyTogether(ench) && ench != Enchantments.FORTUNE && ench != Enchantments.SILK_TOUCH;
 	}
 	
 	@Override

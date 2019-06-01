@@ -1,0 +1,16 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "###",
+        "# #",
+        "# #"
+    ],
+    "key": {
+        "#": {
+            "item": "rpm:ingot_titanium"
+        }
+    },
+    "result": {
+        "item": "rpm:leggings_titanium"
+    }
+}

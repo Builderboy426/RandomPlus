@@ -3,9 +3,9 @@ package com.builderboy426.randomplus.utils.compat.jei;
 import java.util.IllegalFormatException;
 
 import com.builderboy426.randomplus.objects.blocks.container.ContainerAlloyPress;
-import com.builderboy426.randomplus.objects.blocks.gui.GuiAlloyPress;
 import com.builderboy426.randomplus.utils.compat.jei.catagories.alloypress.AlloyPressCatagory;
 import com.builderboy426.randomplus.utils.compat.jei.catagories.alloypress.AlloyPressRecipeMaker;
+import com.builderboy426.randomplus.utils.compat.jei.catagories.artifactanalyzer.ArtifactAnalyzerCatagory;
 
 import mezz.jei.api.IGuiHelper;
 import mezz.jei.api.IJeiHelpers;
@@ -26,6 +26,7 @@ public class JEICompat implements IModPlugin {
 		final IGuiHelper gui = helpers.getGuiHelper();
 		
 		registry.addRecipeCategories(new AlloyPressCatagory(gui));
+		//registry.addRecipeCategories(new ArtifactAnalyzerCatagory(gui));
 	}
 	
 	@Override
