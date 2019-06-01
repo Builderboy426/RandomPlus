@@ -1,4 +1,4 @@
-package com.builderboy426.randomplus.utils.compat.jei.catagories.alloypress;
+package com.builderboy426.randomplus.utils.compat.jei.catagories.artifactanalyzer;
 
 import com.builderboy426.randomplus.utils.Reference;
 
@@ -9,9 +9,9 @@ import mezz.jei.api.recipe.IRecipeCategory;
 import mezz.jei.api.recipe.IRecipeWrapper;
 import net.minecraft.util.ResourceLocation;
 
-public abstract class AbstractAlloyPressCatagory<T extends IRecipeWrapper> implements IRecipeCategory<T>{
+public abstract class AbstractArtifactAnalyzerCatagory<T extends IRecipeWrapper> implements IRecipeCategory<T>{
 	
-	protected static final ResourceLocation TEXTURES = new ResourceLocation(Reference.MODID+":textures/gui/artifact_analyzer.png");
+	protected static final ResourceLocation TEXTURES = new ResourceLocation(Reference.MODID+":textures/gui/alloy_press.png");
 	
 	protected static final int input1 = 0;
 	protected static final int input2 = 1;
@@ -19,7 +19,7 @@ public abstract class AbstractAlloyPressCatagory<T extends IRecipeWrapper> imple
 	
 	protected final IDrawableAnimated animatedArrow;
 	
-	public AbstractAlloyPressCatagory(IGuiHelper helper) {
+	public AbstractArtifactAnalyzerCatagory(IGuiHelper helper) {
 		IDrawableStatic staticArrow = helper.createDrawable(TEXTURES, 176, 14, 24, 17);
 		animatedArrow = helper.createAnimatedDrawable(staticArrow, 200, IDrawableAnimated.StartDirection.LEFT, false);
 	}

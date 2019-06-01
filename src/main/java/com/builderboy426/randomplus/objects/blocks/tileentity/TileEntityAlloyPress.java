@@ -77,7 +77,7 @@ public class TileEntityAlloyPress extends TileEntity implements ITickable, IEner
 							if (handler.getStackInSlot(2).getCount() > 0) {
 								handler.getStackInSlot(0).shrink(1);
 								handler.getStackInSlot(1).shrink(1);
-								handler.getStackInSlot(2).grow(1);
+								handler.getStackInSlot(2).grow(output.getCount());
 							} else {
 								handler.getStackInSlot(0).shrink(1);
 								handler.getStackInSlot(1).shrink(1);

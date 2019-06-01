@@ -3,6 +3,7 @@ package com.builderboy426.randomplus.recipes;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import com.builderboy426.randomplus.init.BlockInit;
 import com.builderboy426.randomplus.init.ItemInit;
 import com.google.common.collect.HashBasedTable;
 import com.google.common.collect.Maps;
@@ -11,6 +12,7 @@ import com.google.common.collect.Table;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemBlock;
+import net.minecraft.item.ItemBlockSpecial;
 import net.minecraft.item.ItemStack;
 
 public class AlloyPressRecipes {
@@ -36,7 +38,13 @@ public class AlloyPressRecipes {
 		addAlloyPressRecipe(new ItemStack(ItemInit.STEEL_INGOT), new ItemStack(new ItemBlock(Blocks.MAGMA)), new ItemStack(ItemInit.MAGNITE_INGOT), 2627, 5.0F);
 		
 		//Ores
-		
+		addAlloyPressRecipe(new ItemStack(new ItemBlock(Blocks.IRON_ORE)), new ItemStack(new ItemBlock(Blocks.IRON_ORE)), new ItemStack(Items.IRON_INGOT, 4), 750, 5.0F);
+		addAlloyPressRecipe(new ItemStack(new ItemBlock(Blocks.GOLD_ORE)), new ItemStack(new ItemBlock(Blocks.GOLD_ORE)), new ItemStack(Items.GOLD_INGOT, 4), 750, 5.0F);
+		addAlloyPressRecipe(new ItemStack(new ItemBlock(BlockInit.ORE_ALUMINIUM)), new ItemStack(new ItemBlock(BlockInit.ORE_ALUMINIUM)), new ItemStack(ItemInit.ALUMINIUM_INGOT, 4), 750, 5.0F);
+		addAlloyPressRecipe(new ItemStack(new ItemBlock(BlockInit.ORE_COPPER)), new ItemStack(new ItemBlock(BlockInit.ORE_COPPER)), new ItemStack(ItemInit.COPPER_INGOT, 4), 750, 5.0F);
+		addAlloyPressRecipe(new ItemStack(new ItemBlock(BlockInit.ORE_LITHIUM)), new ItemStack(new ItemBlock(BlockInit.ORE_LITHIUM)), new ItemStack(ItemInit.LITHIUM, 4), 750, 5.0F);
+		addAlloyPressRecipe(new ItemStack(new ItemBlock(BlockInit.ORE_TIN)), new ItemStack(new ItemBlock(BlockInit.ORE_TIN)), new ItemStack(ItemInit.TIN_INGOT, 4), 750, 5.0F);
+		addAlloyPressRecipe(new ItemStack(new ItemBlock(BlockInit.ORE_TITANIUM)), new ItemStack(new ItemBlock(BlockInit.ORE_TITANIUM)), new ItemStack(ItemInit.TITANIUM_INGOT, 4), 750, 5.0F);
 	}
 
 	
