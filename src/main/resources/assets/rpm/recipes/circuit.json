@@ -1,0 +1,29 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"pattern": [
+		"OBO",
+		"S#S",
+		"III"
+	],
+	"key": {
+		"B": {
+			"item": "minecraft:stone_button"
+		},
+		"#": {
+			"item": "rpm:ingot_copper"
+		},
+		"S": {
+			"item": "rpm:stick_gold"
+		},
+		"I": {
+			"item": "minecraft:iron_ingot"
+		},
+		"O": {
+			"item": "minecraft:redstone",
+			"data": 0
+		}
+	},
+	"result": {
+		"item": "rpm:circuit"
+	}
+}

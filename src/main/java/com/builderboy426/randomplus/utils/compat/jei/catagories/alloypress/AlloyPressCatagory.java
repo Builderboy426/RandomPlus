@@ -4,11 +4,18 @@ import com.builderboy426.randomplus.utils.Reference;
 import com.builderboy426.randomplus.utils.compat.jei.RecipeCatagories;
 
 import mezz.jei.api.IGuiHelper;
+import mezz.jei.api.gui.ICraftingGridHelper;
 import mezz.jei.api.gui.IDrawable;
+import mezz.jei.api.gui.IDrawableAnimated;
+import mezz.jei.api.gui.IDrawableStatic;
 import mezz.jei.api.gui.IGuiItemStackGroup;
 import mezz.jei.api.gui.IRecipeLayout;
+import mezz.jei.api.gui.ITickTimer;
+import mezz.jei.api.gui.IDrawableAnimated.StartDirection;
 import mezz.jei.api.ingredients.IIngredients;
+import mezz.jei.gui.GuiHelper;
 import net.minecraft.client.Minecraft;
+import net.minecraft.util.ResourceLocation;
 
 public class AlloyPressCatagory extends AbstractAlloyPressCatagory<AlloyPressRecipe> {
 	private IDrawable background;
@@ -25,7 +32,7 @@ public class AlloyPressCatagory extends AbstractAlloyPressCatagory<AlloyPressRec
 	
 	@Override
 	public void drawExtras(Minecraft minecraft) {
-		animatedArrow.draw(minecraft, 30, 29);
+		animatedArrow.draw(minecraft, 61, 29);
 	}
 	
 	public String getTitle() { return name; }
@@ -38,9 +45,9 @@ public class AlloyPressCatagory extends AbstractAlloyPressCatagory<AlloyPressRec
 	@Override
 	public void setRecipe(IRecipeLayout recipeLayout, AlloyPressRecipe recipeWrapper, IIngredients ingredients) {
 		IGuiItemStackGroup stacks = recipeLayout.getItemStacks();
-		stacks.init(input1, true, 3, 17);
-		stacks.init(input2, true, 3, 38);
-		stacks.init(output, false, 63, 28);
+		stacks.init(input1, true, 34, 17);
+		stacks.init(input2, true, 34, 38);
+		stacks.init(output, false, 94, 28);
 		stacks.set(ingredients);
 	}
 }

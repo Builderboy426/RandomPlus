@@ -1,11 +1,14 @@
 package com.builderboy426.randomplus.objects.blocks.tileentity;
 
+import com.builderboy426.randomplus.init.ItemInit;
 import com.builderboy426.randomplus.objects.blocks.machines.BlockAlloyPress;
 import com.builderboy426.randomplus.recipes.AlloyPressRecipes;
 
 import cofh.redstoneflux.api.IEnergyReceiver;
 import cofh.redstoneflux.impl.EnergyStorage;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
@@ -58,6 +61,17 @@ public class TileEntityAlloyPress extends TileEntity implements ITickable, IEner
 		BlockAlloyPress.setState(active, world, pos);
 	}
 	
+	private int checkOutput(ItemStack output) {
+		Item item = output.getItem();
+		if (item == Items.IRON_INGOT || item == Items.GOLD_INGOT
+		|| item == ItemInit.ALUMINIUM_INGOT || item == ItemInit.COPPER_INGOT
+		|| item == ItemInit.COPPER_INGOT || item == ItemInit.TIN_INGOT
+		|| item == ItemInit.TITANIUM_INGOT || item == ItemInit.LITHIUM) {
+			return 1;
+		}
+		return 0;
+	}
+	
 	@Override
 	public void update() {
 		this.markDirty();
@@ -65,30 +79,38 @@ public class TileEntityAlloyPress extends TileEntity implements ITickable, IEner
 		else { modifyTemperature(-100); }
 		
 		if (storage.getEnergyStored() >= 1500) {
-			ItemStack[] inputs = {handler.getStackInSlot(0), handler.getStackInSlot(1)};
-			ItemStack output = AlloyPressRecipes.getInstance().getAlloyPressResult(inputs[0], inputs[1]);
-			
-			if (!output.isEmpty()) {
-				int temp = AlloyPressRecipes.getInstance().getTemperature(output);
-				if (temp != 0) {
-					if (temperature >= temp) {
-						setState(true);
-						if (cookTime == maxCook) {
-							if (handler.getStackInSlot(2).getCount() > 0) {
-								handler.getStackInSlot(0).shrink(1);
-								handler.getStackInSlot(1).shrink(1);
-								handler.getStackInSlot(2).grow(output.getCount());
-							} else {
-								handler.getStackInSlot(0).shrink(1);
-								handler.getStackInSlot(1).shrink(1);
-								handler.insertItem(2, output, false);
-							}
-							cookTime = 0;
-							storage.modifyEnergyStored(-1500);
-						} else { cookTime++; }
+			if (handler.getStackInSlot(2).getCount() == 64) {
+				ItemStack[] inputs = {handler.getStackInSlot(0), handler.getStackInSlot(1)};
+				ItemStack output = AlloyPressRecipes.getInstance().getAlloyPressResult(inputs[0], inputs[1]);
+				
+				if (!output.isEmpty()) {
+					int temp = AlloyPressRecipes.getInstance().getTemperature(output);
+					if (temp != 0) {
+						if (temperature >= temp) {
+							setState(true);
+							if (cookTime == maxCook) {
+								if (handler.getStackInSlot(2).getCount() > 0) {
+									if (checkOutput(output) == 0) { //Alloys
+										handler.getStackInSlot(0).shrink(1);
+										handler.getStackInSlot(1).shrink(1);
+										handler.getStackInSlot(2).grow(1);
+									} else if (checkOutput(output) == 1) { //Ores
+										handler.getStackInSlot(0).shrink(1);
+										handler.getStackInSlot(1).shrink(1);
+										handler.getStackInSlot(2).grow(4);
+									}
+								} else {
+									handler.getStackInSlot(0).shrink(1);
+									handler.getStackInSlot(1).shrink(1);
+									handler.insertItem(2, output, false);
+								}
+								cookTime = 0;
+								storage.modifyEnergyStored(-1500);
+							} else { cookTime++; }
+						}
 					}
-				}
-				return;
+					return;
+				} else { setState(false); }
 			} else { setState(false); }
 		}
 	}

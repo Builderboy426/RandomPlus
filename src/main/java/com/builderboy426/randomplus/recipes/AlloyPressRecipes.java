@@ -38,13 +38,13 @@ public class AlloyPressRecipes {
 		addAlloyPressRecipe(new ItemStack(ItemInit.STEEL_INGOT), new ItemStack(new ItemBlock(Blocks.MAGMA)), new ItemStack(ItemInit.MAGNITE_INGOT), 2627, 5.0F);
 		
 		//Ores
-		addAlloyPressRecipe(new ItemStack(new ItemBlock(Blocks.IRON_ORE)), new ItemStack(new ItemBlock(Blocks.IRON_ORE)), new ItemStack(Items.IRON_INGOT, 4), 750, 5.0F);
-		addAlloyPressRecipe(new ItemStack(new ItemBlock(Blocks.GOLD_ORE)), new ItemStack(new ItemBlock(Blocks.GOLD_ORE)), new ItemStack(Items.GOLD_INGOT, 4), 750, 5.0F);
-		addAlloyPressRecipe(new ItemStack(new ItemBlock(BlockInit.ORE_ALUMINIUM)), new ItemStack(new ItemBlock(BlockInit.ORE_ALUMINIUM)), new ItemStack(ItemInit.ALUMINIUM_INGOT, 4), 750, 5.0F);
-		addAlloyPressRecipe(new ItemStack(new ItemBlock(BlockInit.ORE_COPPER)), new ItemStack(new ItemBlock(BlockInit.ORE_COPPER)), new ItemStack(ItemInit.COPPER_INGOT, 4), 750, 5.0F);
-		addAlloyPressRecipe(new ItemStack(new ItemBlock(BlockInit.ORE_LITHIUM)), new ItemStack(new ItemBlock(BlockInit.ORE_LITHIUM)), new ItemStack(ItemInit.LITHIUM, 4), 750, 5.0F);
-		addAlloyPressRecipe(new ItemStack(new ItemBlock(BlockInit.ORE_TIN)), new ItemStack(new ItemBlock(BlockInit.ORE_TIN)), new ItemStack(ItemInit.TIN_INGOT, 4), 750, 5.0F);
-		addAlloyPressRecipe(new ItemStack(new ItemBlock(BlockInit.ORE_TITANIUM)), new ItemStack(new ItemBlock(BlockInit.ORE_TITANIUM)), new ItemStack(ItemInit.TITANIUM_INGOT, 4), 750, 5.0F);
+		addAlloyPressRecipe(new ItemStack(Blocks.IRON_ORE), new ItemStack(Blocks.IRON_ORE), new ItemStack(Items.IRON_INGOT, 4), 750, 5.0F);
+		addAlloyPressRecipe(new ItemStack(Blocks.GOLD_ORE), new ItemStack(Blocks.GOLD_ORE), new ItemStack(Items.GOLD_INGOT, 4), 750, 5.0F);
+		addAlloyPressRecipe(new ItemStack(BlockInit.ORE_ALUMINIUM), new ItemStack(BlockInit.ORE_ALUMINIUM), new ItemStack(ItemInit.ALUMINIUM_INGOT, 4), 750, 5.0F);
+		addAlloyPressRecipe(new ItemStack(BlockInit.ORE_COPPER), new ItemStack(BlockInit.ORE_COPPER), new ItemStack(ItemInit.COPPER_INGOT, 4), 750, 5.0F);
+		addAlloyPressRecipe(new ItemStack(BlockInit.ORE_LITHIUM), new ItemStack(BlockInit.ORE_LITHIUM), new ItemStack(ItemInit.LITHIUM, 4), 750, 5.0F);
+		addAlloyPressRecipe(new ItemStack(BlockInit.ORE_TIN), new ItemStack(BlockInit.ORE_TIN), new ItemStack(ItemInit.TIN_INGOT, 4), 750, 5.0F);
+		addAlloyPressRecipe(new ItemStack(BlockInit.ORE_TITANIUM), new ItemStack(BlockInit.ORE_TITANIUM), new ItemStack(ItemInit.TITANIUM_INGOT, 4), 750, 5.0F);
 	}
 
 	
