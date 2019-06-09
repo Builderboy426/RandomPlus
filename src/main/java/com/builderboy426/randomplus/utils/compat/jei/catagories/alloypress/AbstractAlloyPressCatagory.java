@@ -8,7 +8,6 @@ import mezz.jei.api.gui.IDrawableAnimated;
 import mezz.jei.api.gui.IDrawableStatic;
 import mezz.jei.api.recipe.IRecipeCategory;
 import mezz.jei.api.recipe.IRecipeWrapper;
-import mezz.jei.gui.GuiHelper;
 import net.minecraft.util.ResourceLocation;
 
 public abstract class AbstractAlloyPressCatagory<T extends IRecipeWrapper> implements IRecipeCategory<T>{

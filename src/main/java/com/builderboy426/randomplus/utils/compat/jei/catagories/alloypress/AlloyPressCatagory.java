@@ -13,7 +13,6 @@ import mezz.jei.api.gui.IRecipeLayout;
 import mezz.jei.api.gui.ITickTimer;
 import mezz.jei.api.gui.IDrawableAnimated.StartDirection;
 import mezz.jei.api.ingredients.IIngredients;
-import mezz.jei.gui.GuiHelper;
 import net.minecraft.client.Minecraft;
 import net.minecraft.util.ResourceLocation;
 
