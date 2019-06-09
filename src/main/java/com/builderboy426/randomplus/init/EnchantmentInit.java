@@ -10,6 +10,7 @@ import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
@@ -34,9 +35,12 @@ public class EnchantmentInit {
 				ItemStack tool = player.getHeldItem(EnumHand.MAIN_HAND);
 				if (chance > 975) {
 					if (isEnchantment(EnchantmentHelper.getEnchantments(tool), ARCHEOLOGY)) {
-						System.out.println("Unknown Artifact Found");
 						BlockPos pos = event.getPos();
-						world.spawnEntity(new EntityItem(world, pos.getX(), pos.getY(), pos.getZ(), new ItemStack(ItemInit.UNKNOWN_ARTIFACT)));
+						if (world.getBlockState(pos) == Blocks.STONE.getDefaultState() || world.getBlockState(pos) == Blocks.COBBLESTONE.getDefaultState()
+						|| world.getBlockState(pos) == Blocks.MOSSY_COBBLESTONE.getDefaultState()) {
+							System.out.println("Unknown Artifact Found");
+							world.spawnEntity(new EntityItem(world, pos.getX(), pos.getY(), pos.getZ(), new ItemStack(ItemInit.UNKNOWN_ARTIFACT)));
+						}
 					} else {
 						System.out.println("Archeology Enchantment NOT Found!");
 					}
